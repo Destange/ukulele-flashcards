@@ -66,9 +66,15 @@
     .card-scene { width: 100%; perspective: 900px; margin-bottom: 20px; }
     .card-body { width: 100%; height: 400px; position: relative; transform-style: preserve-3d; transition: transform 0.52s cubic-bezier(.4,0,.2,1); }
     .card-body.flipped { transform: rotateY(180deg); }
-    .card-face { position: absolute; inset: 0; background: var(--card); border-radius: 22px; box-shadow: 0 2px 10px rgba(0,0,0,.06), 0 8px 28px rgba(0,0,0,.07); backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 18px 24px; }
+    .card-face { position: absolute; inset: 0; background: var(--card); border-radius: 22px; box-shadow: 0 2px 10px rgba(0,0,0,.06), 0 8px 28px rgba(0,0,0,.07); backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 18px 24px; overflow: hidden; }
     .card-face.back { transform: rotateY(180deg); }
-    .face-tag { font-size: 14px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; text-align: center; line-height: 1.3; }
+    /* Face réponse avec diagramme : tag (1 ligne) + diagramme centrés en bloc, marge équilibrée */
+    .card-face.has-diag { justify-content: center; padding-top: 30px; padding-bottom: 30px; }
+    .card-face.has-diag .face-tag { margin-bottom: -10px !important; }
+    /* Question avec diagramme : tag (2 lignes) + diagramme, ancrage haut */
+    .card-face.has-diag-q { justify-content: flex-start; padding-top: 32px; padding-bottom: 20px; }
+    .card-face.has-diag-q .face-tag { margin-bottom: -10px !important; }
+    .face-tag { font-size: 20px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; text-align: center; line-height: 1.3; }
     .face-tag.hi { color: var(--accent); }
     .chord-big { font-family: 'Playfair Display', serif; font-size: 140px; line-height: 1; letter-spacing: -4px; text-align: center; }
     .chord-big.md { font-size: 110px; letter-spacing: -3px; }
@@ -313,13 +319,13 @@
     @keyframes flyOutRight { to { transform: translateX( 130%) rotate( 16deg); opacity: 0; } }
     @keyframes comeIn      { from { transform: scale(.92); opacity: .55; } to { transform: scale(1); opacity: 1; } }
 
-    @media (min-width: 400px) { .card-body { height: 450px; } .chord-big { font-size: 150px; } .chord-big.md { font-size: 118px; } .chord-big.sm { font-size: 90px; } .diag-holder svg { width: 220px; } }
-    @media (max-width: 340px) { .card-body { height: 360px; } .chord-big { font-size: 116px; } .chord-big.md { font-size: 92px; } .chord-big.sm { font-size: 70px; } .ref-grid { grid-template-columns: repeat(2, 1fr); } .diag-holder svg { width: 170px; } }
+    @media (min-width: 400px) { .card-body { height: 450px; } .chord-big { font-size: 150px; } .chord-big.md { font-size: 118px; } .chord-big.sm { font-size: 90px; } .face-tag { font-size: 23px; margin-bottom: 24px; } .diag-holder svg { width: 220px; } }
+    @media (max-width: 340px) { .card-body { height: 360px; } .chord-big { font-size: 116px; } .chord-big.md { font-size: 92px; } .chord-big.sm { font-size: 70px; } .face-tag { font-size: 17px; margin-bottom: 16px; } .ref-grid { grid-template-columns: repeat(2, 1fr); } .diag-holder svg { width: 170px; } }
   </style>
 </head>
 <body>
 <div id="app"></div>
-<footer class="app-footer">Réalisé par <a href="https://www.instagram.com/juliendestange/" target="_blank" rel="noopener" class="footer-link">Julien Destange</a> · v3.5</footer>
+<footer class="app-footer">Réalisé par <a href="https://www.instagram.com/juliendestange/" target="_blank" rel="noopener" class="footer-link">Julien Destange</a> · v3.19</footer>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ══════════════════════════════════════════
    SVG ICONS (Lucide-style, trait 2.5px)
@@ -1036,26 +1042,28 @@ function renderSession(root){
     '<div class="prog-track"><div class="prog-fill" style="width:'+pct+'%;background:'+mode.progColor+'"></div></div>';
   root.appendChild(pg);
 
-  var frontHTML, backHTML;
+  var frontHTML, backHTML, frontClass='front', backClass='back';
   if(item.side==='name'){
     frontHTML='<div class="face-tag">Joue cet accord<br>sur ton ukulélé</div>'+
       '<div class="chord-big '+sizeClass(chord.name)+'">'+chord.name+'</div>'+
       (chord.sub ? '<div class="chord-sub">'+chord.sub+'</div>' : '');
     backHTML='<div class="face-tag hi">La réponse !</div>'+
       '<div class="diag-holder">'+drawDiagram(chord,'lg')+'</div>';
+    backClass += ' has-diag';
   } else {
     frontHTML='<div class="face-tag">Trouve le nom<br>de cet accord</div>'+
       '<div class="diag-holder">'+drawDiagram(chord,'lg')+'</div>';
     backHTML='<div class="face-tag hi">La réponse !</div>'+
       '<div class="chord-big '+sizeClass(chord.name)+'">'+chord.name+'</div>'+
       (chord.sub ? '<div class="chord-sub">'+chord.sub+'</div>' : '');
+    frontClass += ' has-diag-q';
   }
 
   var scene=document.createElement('div');
   scene.className='card-scene fadein';
   scene.innerHTML='<div class="card-body" id="cBody">'+
-    '<div class="card-face front">'+frontHTML+'</div>'+
-    '<div class="card-face back">'+backHTML+'</div>'+
+    '<div class="card-face '+frontClass+'">'+frontHTML+'</div>'+
+    '<div class="card-face '+backClass+'">'+backHTML+'</div>'+
     '</div>';
   root.appendChild(scene);
 
