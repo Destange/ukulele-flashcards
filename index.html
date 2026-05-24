@@ -319,7 +319,7 @@
 </head>
 <body>
 <div id="app"></div>
-<footer class="app-footer">Réalisé par <a href="https://www.instagram.com/juliendestange/" target="_blank" rel="noopener" class="footer-link">Julien Destange</a></footer>
+<footer class="app-footer">Réalisé par <a href="https://www.instagram.com/juliendestange/" target="_blank" rel="noopener" class="footer-link">Julien Destange</a> · v3.5</footer>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ══════════════════════════════════════════
    SVG ICONS (Lucide-style, trait 2.5px)
@@ -1085,6 +1085,11 @@ function renderSession(root){
     btnReveal.classList.add('hidden');
     revealed = true;
     cBody.style.cursor = 'pointer';
+    // Retire complètement le bouton du DOM après le fade pour éviter tout
+    // résidu visuel (sur mobile, opacity 0 peut laisser une trace)
+    setTimeout(function(){
+      if (btnReveal && btnReveal.parentNode) btnReveal.parentNode.removeChild(btnReveal);
+    }, 200);
     setTimeout(function(){ document.getElementById('bRow').classList.add('vis'); }, 490);
   }
 
