@@ -78,8 +78,8 @@
     .diag-holder svg { width: 200px; height: auto; }
 
     /* BUTTONS */
-    .btn-main { width: 100%; padding: 18px; font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 500; background: var(--accent); color: #FFF; border: none; border-radius: 16px; cursor: pointer; transition: opacity .12s, transform .1s; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(184,92,42,.22); }
-    .btn-main.hidden { opacity: 0; pointer-events: none; }
+    .btn-main { width: 100%; padding: 18px; font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 500; background: var(--accent); color: #FFF; border: none; border-radius: 16px; cursor: pointer; transition: opacity .15s ease, visibility 0s .15s, transform .1s; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(184,92,42,.22); visibility: visible; }
+    .btn-main.hidden { opacity: 0; pointer-events: none; visibility: hidden; }
     /* Stack reveal-btn + ok/ko-row dans la même cellule grid : hauteur stable */
     .actions-stack { width: 100%; display: grid; grid-template-areas: 'a'; }
     .actions-stack > .btn-main { grid-area: a; margin-bottom: 0; }
