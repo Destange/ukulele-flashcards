@@ -1,0 +1,16 @@
+{
+  "name": "Accords Ukulélé — Flashcards",
+  "short_name": "Accords Ukulélé",
+  "description": "Mémorise tes accords d'ukulélé avec la répétition espacée",
+  "start_url": "/ukulele-flashcards/",
+  "scope": "/ukulele-flashcards/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F5F0E8",
+  "theme_color": "#2D7D5A",
+  "lang": "fr",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
