@@ -64,21 +64,27 @@
 
     /* CARD */
     .card-scene { width: 100%; perspective: 900px; margin-bottom: 20px; }
-    .card-body { width: 100%; height: 300px; position: relative; transform-style: preserve-3d; transition: transform 0.52s cubic-bezier(.4,0,.2,1); }
+    .card-body { width: 100%; height: 400px; position: relative; transform-style: preserve-3d; transition: transform 0.52s cubic-bezier(.4,0,.2,1); }
     .card-body.flipped { transform: rotateY(180deg); }
     .card-face { position: absolute; inset: 0; background: var(--card); border-radius: 22px; box-shadow: 0 2px 10px rgba(0,0,0,.06), 0 8px 28px rgba(0,0,0,.07); backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 18px 24px; }
     .card-face.back { transform: rotateY(180deg); }
-    .face-tag { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .face-tag { font-size: 14px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; text-align: center; line-height: 1.3; }
     .face-tag.hi { color: var(--accent); }
-    .chord-big { font-family: 'Playfair Display', serif; font-size: 92px; line-height: 1; letter-spacing: -3px; text-align: center; }
-    .chord-big.md { font-size: 72px; letter-spacing: -2px; }
-    .chord-big.sm { font-size: 56px; letter-spacing: -1px; }
+    .chord-big { font-family: 'Playfair Display', serif; font-size: 140px; line-height: 1; letter-spacing: -4px; text-align: center; }
+    .chord-big.md { font-size: 110px; letter-spacing: -3px; }
+    .chord-big.sm { font-size: 84px; letter-spacing: -2px; }
     .chord-sub { font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; color: var(--muted); margin-top: 6px; letter-spacing: 0; text-align: center; }
     .card-hint { font-size: 13px; color: var(--muted); margin-top: 10px; text-align: center; font-weight: 300; }
     .diag-holder svg { width: 200px; height: auto; }
 
     /* BUTTONS */
-    .btn-main { width: 100%; padding: 18px; font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 500; background: var(--text); color: #FFF; border: none; border-radius: 16px; cursor: pointer; transition: opacity .12s, transform .1s; margin-bottom: 12px; }
+    .btn-main { width: 100%; padding: 18px; font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 500; background: var(--accent); color: #FFF; border: none; border-radius: 16px; cursor: pointer; transition: opacity .12s, transform .1s; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(184,92,42,.22); }
+    .btn-main.hidden { opacity: 0; pointer-events: none; }
+    /* Stack reveal-btn + ok/ko-row dans la même cellule grid : hauteur stable */
+    .actions-stack { width: 100%; display: grid; grid-template-areas: 'a'; }
+    .actions-stack > .btn-main { grid-area: a; margin-bottom: 0; }
+    .actions-stack > .btn-row  { grid-area: a; margin-bottom: 0; align-self: stretch; }
+    .btn-main svg { width: 20px; height: 20px; color: #FFF; flex-shrink: 0; }
     .btn-main:hover { opacity: .84; }
     .btn-main:active { transform: scale(.985); }
     .btn-row { width: 100%; display: flex; gap: 12px; opacity: 0; pointer-events: none; transition: opacity .25s ease; }
@@ -307,8 +313,8 @@
     @keyframes flyOutRight { to { transform: translateX( 130%) rotate( 16deg); opacity: 0; } }
     @keyframes comeIn      { from { transform: scale(.92); opacity: .55; } to { transform: scale(1); opacity: 1; } }
 
-    @media (min-width: 400px) { .card-body { height: 340px; } .chord-big { font-size: 100px; } .chord-big.md { font-size: 78px; } .chord-big.sm { font-size: 62px; } .diag-holder svg { width: 215px; } }
-    @media (max-width: 340px) { .card-body { height: 270px; } .chord-big { font-size: 76px; } .chord-big.md { font-size: 60px; } .chord-big.sm { font-size: 48px; } .ref-grid { grid-template-columns: repeat(2, 1fr); } .diag-holder svg { width: 180px; } }
+    @media (min-width: 400px) { .card-body { height: 450px; } .chord-big { font-size: 150px; } .chord-big.md { font-size: 118px; } .chord-big.sm { font-size: 90px; } .diag-holder svg { width: 220px; } }
+    @media (max-width: 340px) { .card-body { height: 360px; } .chord-big { font-size: 116px; } .chord-big.md { font-size: 92px; } .chord-big.sm { font-size: 70px; } .ref-grid { grid-template-columns: repeat(2, 1fr); } .diag-holder svg { width: 170px; } }
   </style>
 </head>
 <body>
@@ -533,7 +539,7 @@ function drawDiagram(chord, size) {
   var fingers = chord.fingers || null;
   var barre   = chord.barre   || null;
   var sm = (size === 'sm');
-  var W = sm?80:120, H = sm?94:140;
+  var W = sm?80:120, H = sm?105:185;
   var pL = sm?12:18, pR = sm?12:18;
   var pTop = sm?18:28, nutH = sm?5:7, pBot = sm?6:8;
   var nutY = pTop + nutH;
@@ -1032,16 +1038,14 @@ function renderSession(root){
 
   var frontHTML, backHTML;
   if(item.side==='name'){
-    frontHTML='<div class="face-tag">Trouve la position</div>'+
+    frontHTML='<div class="face-tag">Joue cet accord<br>sur ton ukulélé</div>'+
       '<div class="chord-big '+sizeClass(chord.name)+'">'+chord.name+'</div>'+
-      (chord.sub ? '<div class="chord-sub">'+chord.sub+'</div>' : '')+
-      '<div class="card-hint">Joue cet accord sur ton ukulélé</div>';
-    backHTML='<div class="face-tag hi">Position correcte</div>'+
+      (chord.sub ? '<div class="chord-sub">'+chord.sub+'</div>' : '');
+    backHTML='<div class="face-tag hi">La réponse !</div>'+
       '<div class="diag-holder">'+drawDiagram(chord,'lg')+'</div>';
   } else {
-    frontHTML='<div class="face-tag">Quel est cet accord ?</div>'+
-      '<div class="diag-holder">'+drawDiagram(chord,'lg')+'</div>'+
-      '<div class="card-hint">Trouve le nom de cet accord</div>';
+    frontHTML='<div class="face-tag">Trouve le nom<br>de cet accord</div>'+
+      '<div class="diag-holder">'+drawDiagram(chord,'lg')+'</div>';
     backHTML='<div class="face-tag hi">La réponse !</div>'+
       '<div class="chord-big '+sizeClass(chord.name)+'">'+chord.name+'</div>'+
       (chord.sub ? '<div class="chord-sub">'+chord.sub+'</div>' : '');
@@ -1055,17 +1059,22 @@ function renderSession(root){
     '</div>';
   root.appendChild(scene);
 
+  var actions=document.createElement('div');
+  actions.className='actions-stack';
+
   var btnReveal=document.createElement('button');
   btnReveal.className='btn-main';
-  btnReveal.textContent='Voir la réponse';
-  root.appendChild(btnReveal);
+  btnReveal.innerHTML='<span>Voir la réponse</span>'+ICON_ARROW_RIGHT;
+  actions.appendChild(btnReveal);
 
   var btnRow=document.createElement('div');
   btnRow.className='btn-row';
   btnRow.id='bRow';
   btnRow.innerHTML='<button class="btn-ko" id="bKo">✗&nbsp;&nbsp;À revoir</button>'+
     '<button class="btn-ok" id="bOk">✓&nbsp;&nbsp;Je savais !</button>';
-  root.appendChild(btnRow);
+  actions.appendChild(btnRow);
+
+  root.appendChild(actions);
 
   var cBody = document.getElementById('cBody');
   var revealed = false;
@@ -1073,7 +1082,7 @@ function renderSession(root){
   function reveal(){
     if (revealed) return;
     cBody.classList.add('flipped');
-    btnReveal.style.display='none';
+    btnReveal.classList.add('hidden');
     revealed = true;
     cBody.style.cursor = 'pointer';
     setTimeout(function(){ document.getElementById('bRow').classList.add('vis'); }, 490);
