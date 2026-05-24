@@ -285,29 +285,6 @@
     .btn-start-preview:hover { opacity: .88; }
     .btn-start-preview:active { transform: scale(.985); }
 
-    /* ── CHORD MODAL ── */
-    .modal-overlay { position: fixed; inset: 0; background: rgba(28,28,28,.65); display: flex; align-items: center; justify-content: center; z-index: 100; opacity: 0; pointer-events: none; transition: opacity .2s; padding: 20px; }
-    .modal-overlay.open { opacity: 1; pointer-events: all; }
-    .modal-card { background: var(--card); border-radius: 22px; padding: 30px 24px 18px; display: flex; flex-direction: column; align-items: center; max-width: 320px; width: 100%; transform: scale(.92); transition: transform .25s cubic-bezier(.34,1.56,.64,1); position: relative; box-shadow: 0 10px 40px rgba(0,0,0,.25); }
-    .modal-overlay.open .modal-card { transform: scale(1); }
-    .modal-close { position: absolute; top: 10px; right: 12px; width: 32px; height: 32px; border-radius: 50%; background: var(--border); border: none; cursor: pointer; font-size: 18px; color: var(--text); display: flex; align-items: center; justify-content: center; line-height: 1; transition: background .12s, color .12s; z-index: 5; }
-    .modal-close:hover { background: var(--muted); color: #FFF; }
-    .modal-counter { font-size: 11px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; margin-bottom: 8px; }
-    .modal-stack { display: grid; grid-template-areas: 'card'; width: 100%; overflow: hidden; }
-    .modal-stack > .modal-card-inner { grid-area: card; align-self: start; display: flex; flex-direction: column; align-items: center; padding: 4px 0 8px; }
-    .modal-card-inner.behind { transform: scale(.92); opacity: .55; z-index: 1; }
-    .modal-card-inner.front-anim { z-index: 2; transform-origin: 50% 110%; }
-    .modal-name { font-family: 'Playfair Display', serif; font-size: 44px; line-height: 1; letter-spacing: -1px; }
-    .modal-sub { font-family: 'Playfair Display', serif; font-style: italic; font-size: 16px; color: var(--muted); margin-top: 4px; }
-    .modal-diag { margin-top: 14px; }
-    .modal-diag svg { width: 200px; height: auto; }
-    .modal-nav { display: flex; gap: 10px; width: 100%; margin-top: 14px; }
-    .modal-nav-btn { flex: 1; padding: 11px 6px; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 500; border: 1.5px solid var(--border); border-radius: 12px; cursor: pointer; background: var(--card); color: var(--text); display: flex; align-items: center; justify-content: center; gap: 6px; transition: border-color .12s, opacity .12s; -webkit-tap-highlight-color: transparent; }
-    .modal-nav-btn:disabled { opacity: .35; cursor: not-allowed; }
-    .modal-nav-btn:not(:disabled):hover { border-color: var(--accent); }
-    .modal-nav-btn svg { width: 16px; height: 16px; color: var(--accent); }
-    .modal-nav-btn:disabled svg { color: var(--muted); }
-
     @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     .fadein { animation: fadeUp .32s ease forwards; }
     @keyframes popIn { from { opacity: 0; transform: scale(.88); } to { opacity: 1; transform: scale(1); } }
@@ -802,7 +779,7 @@ function getModeStats(modeId){
 ══════════════════════════════════════════ */
 var app = { screen:'home', item:null, recentChordIds:[], modeId:null, refSort:'alpha',
             customChordIds: loadCustomSel(),
-            detailIds:[], detailIdx:0,
+            detailIds:[], detailIdx:0, detailContext:'reference',
             session:{ correct:0, total:0, masteryAtStart:0, streak:0 },
   streakResult: null };
 
@@ -924,7 +901,7 @@ function render(){
     var top      = history.state || {};
     var topScreen= top.screen;
     var topDepth = top.depth || 0;
-    var st = { screen:app.screen, detailIds:app.detailIds, detailIdx:app.detailIdx, depth:topDepth };
+    var st = { screen:app.screen, detailIds:app.detailIds, detailIdx:app.detailIdx, detailContext:app.detailContext, depth:topDepth };
 
     if (app.screen === 'home') {
       st.depth = 0;
@@ -962,6 +939,7 @@ window.addEventListener('popstate', function(e) {
   if (e.state) {
     if (e.state.detailIds)         app.detailIds = e.state.detailIds;
     if (e.state.detailIdx != null) app.detailIdx = e.state.detailIdx;
+    if (e.state.detailContext)     app.detailContext = e.state.detailContext;
   }
   var root = document.getElementById('app');
   root.innerHTML = '';
@@ -1092,13 +1070,16 @@ function renderSession(root){
   var cBody = document.getElementById('cBody');
   var revealed = false;
 
-  btnReveal.onclick=function(){
+  function reveal(){
+    if (revealed) return;
     cBody.classList.add('flipped');
     btnReveal.style.display='none';
     revealed = true;
     cBody.style.cursor = 'pointer';
     setTimeout(function(){ document.getElementById('bRow').classList.add('vis'); }, 490);
-  };
+  }
+
+  btnReveal.onclick = reveal;
 
   // Après reveal : tap sur la carte = toggle question/réponse
   // (les boutons OK/KO restent visibles — pas de "triche" possible)
@@ -1106,6 +1087,29 @@ function renderSession(root){
     if (!revealed) return;
     cBody.classList.toggle('flipped');
   });
+
+  // Swipe gestures :
+  // - avant reveal : swipe gauche (ou droite) = révéler la réponse
+  // - après reveal : swipe gauche ou droite = toggle question/réponse
+  var sStartX = 0, sStartY = 0, sActive = false;
+  cBody.addEventListener('touchstart', function(e){
+    var t = e.changedTouches[0];
+    sStartX = t.clientX; sStartY = t.clientY; sActive = true;
+  }, { passive: true });
+  cBody.addEventListener('touchend', function(e){
+    if (!sActive) return;
+    sActive = false;
+    var t = e.changedTouches[0];
+    var dx = t.clientX - sStartX;
+    var dy = t.clientY - sStartY;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      if (!revealed && dx < 0) {
+        reveal();
+      } else if (revealed) {
+        cBody.classList.toggle('flipped');
+      }
+    }
+  }, { passive: true });
 
   function advance(correct){
     var isSandbox = MODES[app.modeId] && MODES[app.modeId].sandboxCorrect;
@@ -1128,7 +1132,7 @@ function renderSession(root){
       if(!isSandbox) app.streakResult = recordStreak();
       app.screen='end';
     } else {
-      app.item=nextItem(app.modeId, item.chordId);
+      app.item=nextItem(app.modeId, app.recentChordIds);
       app.screen='session';
     }
     render();
@@ -1256,7 +1260,14 @@ function renderModePreview(root){
       '<div class="preview-name">'+c.name+
         (c.sub ? '<br><span style="font-size:10px;font-style:italic;color:var(--muted)">'+c.sub+'</span>' : '')+
       '</div>';
-    item.onclick = function(){ openModalAt(idx); };
+    item.onclick = function(){
+      // Réutilise l'écran chord-detail (même animation Tinder, légende, boutons)
+      app.detailIds = chordIds.slice();
+      app.detailIdx = idx;
+      app.detailContext = 'mode-preview';
+      app.screen = 'chord-detail';
+      render();
+    };
     grid.appendChild(item);
   });
   div.appendChild(grid);
@@ -1267,117 +1278,9 @@ function renderModePreview(root){
   btn.innerHTML = '<span>Démarrer la session</span>'+ICON_ARROW_RIGHT;
   div.appendChild(btn);
 
-  // Modale avec navigation par swipe/boutons (même logique que chord-detail)
-  var modal = document.createElement('div');
-  modal.className = 'modal-overlay';
-  modal.id = 'cModal';
-  modal.innerHTML =
-    '<div class="modal-card">'+
-      '<button class="modal-close" id="mClose" aria-label="Fermer">×</button>'+
-      '<div class="modal-counter" id="mCounter"></div>'+
-      '<div class="modal-stack" id="mStack"></div>'+
-      '<div class="modal-nav">'+
-        '<button class="modal-nav-btn" id="mPrev" aria-label="Précédent">'+
-          '<span class="btn-nav-ic prev">'+ICON_BACK+'</span><span>Précédent</span>'+
-        '</button>'+
-        '<button class="modal-nav-btn" id="mNext" aria-label="Suivant">'+
-          '<span>Suivant</span><span class="btn-nav-ic next">'+ICON_ARROW_RIGHT+'</span>'+
-        '</button>'+
-      '</div>'+
-    '</div>';
-  div.appendChild(modal);
-
   root.appendChild(div);
 
-  // ── Modal state & navigation ──
-  var mStack       = document.getElementById('mStack');
-  var mCounter     = document.getElementById('mCounter');
-  var mPrev        = document.getElementById('mPrev');
-  var mNext        = document.getElementById('mNext');
-  var modalIdx     = 0;
-  var modalCurrent = null;
-  var modalAnimating = false;
-
-  function buildModalCardHTML(c){
-    return '<div class="modal-name">'+c.name+'</div>'+
-      (c.sub ? '<div class="modal-sub">'+c.sub+'</div>' : '')+
-      '<div class="modal-diag">'+drawDiagram(c,'lg')+'</div>';
-  }
-  function syncModalUI(){
-    mCounter.textContent = (modalIdx+1)+' / '+chordIds.length;
-    mPrev.disabled = (modalIdx === 0);
-    mNext.disabled = (modalIdx === chordIds.length-1);
-  }
-  function openModalAt(idx){
-    modalIdx = idx;
-    mStack.innerHTML = '';
-    var card = document.createElement('div');
-    card.className = 'modal-card-inner';
-    card.innerHTML = buildModalCardHTML(byId(chordIds[idx]));
-    mStack.appendChild(card);
-    modalCurrent = card;
-    syncModalUI();
-    modal.classList.add('open');
-  }
-  function closeModal(){ modal.classList.remove('open'); }
-
-  function navigateModal(dir){
-    var newIdx = modalIdx + dir;
-    if (modalAnimating || newIdx < 0 || newIdx >= chordIds.length) return;
-    modalAnimating = true;
-    modalIdx = newIdx;
-    var c = byId(chordIds[newIdx]);
-
-    // Nouvelle carte derrière (grid stacking)
-    var newCard = document.createElement('div');
-    newCard.className = 'modal-card-inner behind';
-    newCard.innerHTML = buildModalCardHTML(c);
-    mStack.insertBefore(newCard, modalCurrent);
-
-    // Carte courante part hors-cadre
-    modalCurrent.classList.add('front-anim');
-    void modalCurrent.offsetWidth;
-    modalCurrent.classList.add(dir > 0 ? 'fly-out-left' : 'fly-out-right');
-
-    // Nouvelle carte se met au premier plan
-    newCard.classList.remove('behind');
-    newCard.classList.add('coming-in');
-
-    syncModalUI();
-
-    var oldCard = modalCurrent;
-    modalCurrent = newCard;
-
-    setTimeout(function(){
-      oldCard.remove();
-      modalCurrent.classList.remove('coming-in');
-      modalAnimating = false;
-    }, 460);
-  }
-
-  // Swipe gestures sur le stack
-  var touchStartX = 0, touchStartY = 0, touchActive = false;
-  mStack.addEventListener('touchstart', function(e){
-    if (modalAnimating) return;
-    var t = e.changedTouches[0];
-    touchStartX = t.clientX; touchStartY = t.clientY; touchActive = true;
-  }, { passive: true });
-  mStack.addEventListener('touchend', function(e){
-    if(!touchActive) return;
-    touchActive = false;
-    var t = e.changedTouches[0];
-    var dx = t.clientX - touchStartX;
-    var dy = t.clientY - touchStartY;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-      navigateModal(dx < 0 ? 1 : -1);
-    }
-  }, { passive: true });
-
   document.getElementById('pBack').onclick = function(){ navBack(); };
-  document.getElementById('mClose').onclick = closeModal;
-  modal.onclick = function(e){ if(e.target === modal) closeModal(); };
-  mPrev.onclick = function(){ navigateModal(-1); };
-  mNext.onclick = function(){ navigateModal(1); };
 
   btn.onclick = function(){
     var st0 = getModeStats(app.modeId);
@@ -1387,7 +1290,6 @@ function renderModePreview(root){
     render();
   };
 }
-
 /* ── CUSTOM SELECT ── */
 var MIN_CUSTOM = 5;
 function renderCustomSelect(root){
@@ -1534,6 +1436,7 @@ function renderReference(root){
     card.onclick = function(){
       app.detailIds  = sorted.map(function(x){ return x.id; });
       app.detailIdx  = idx;
+      app.detailContext = 'reference';
       app.screen     = 'chord-detail';
       render();
     };
@@ -1566,9 +1469,14 @@ function renderChordDetail(root){
   top.className='detail-top';
   var counterSpan = document.createElement('span');
   counterSpan.className = 'detail-counter';
+  // Titre : "Dictionnaire" depuis le référentiel, nom du mode depuis une preview
+  var title = 'Dictionnaire';
+  if (app.detailContext === 'mode-preview' && MODES[app.modeId]) {
+    title = MODES[app.modeId].icon + ' ' + MODES[app.modeId].name;
+  }
   top.innerHTML =
     '<button class="btn-nav-back" id="dBack" aria-label="Retour">'+ICON_BACK+'<span class="btn-nav-label">Retour</span></button>'+
-    '<h2 class="ref-h">Dictionnaire</h2>';
+    '<h2 class="ref-h">'+title+'</h2>';
   top.appendChild(counterSpan);
   div.appendChild(top);
 
