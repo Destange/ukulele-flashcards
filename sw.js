@@ -1,4 +1,4 @@
-var CACHE = 'ukulele-v3.19';
+var CACHE = 'ukulele-v3.20';
 var ASSETS = ['./', './manifest.json', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', function(e) {
