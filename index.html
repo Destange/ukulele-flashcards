@@ -23,8 +23,6 @@
       --correct: #2D8C5F;
       --wrong: #C03A2B;
       --border: #E8E0D5;
-      --mode-bases: #D4815C;
-      --mode-bases-bg: #FAE7DC;
       --mode-ess: #2D7D5A;
       --mode-ess-bg: #E3F2EB;
       --mode-comp: #2A5FA8;
@@ -52,6 +50,8 @@
     .header { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
     .header-title { font-family: 'Playfair Display', serif; font-size: 19px; letter-spacing: -0.3px; }
     .header-title b { color: var(--accent); font-weight: 700; }
+    .btn-ghost { font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 500; color: var(--accent); background: var(--accent-light); border: none; padding: 7px 14px; border-radius: 20px; cursor: pointer; transition: opacity .15s; }
+    .btn-ghost:hover { opacity: .72; }
 
     /* SESSION PROGRESS */
     .prog-wrap { width: 100%; margin-bottom: 18px; }
@@ -62,35 +62,21 @@
 
     /* CARD */
     .card-scene { width: 100%; perspective: 900px; margin-bottom: 20px; }
-    .card-body { width: 100%; height: 400px; position: relative; transform-style: preserve-3d; transition: transform 0.52s cubic-bezier(.4,0,.2,1); }
+    .card-body { width: 100%; height: 300px; position: relative; transform-style: preserve-3d; transition: transform 0.52s cubic-bezier(.4,0,.2,1); }
     .card-body.flipped { transform: rotateY(180deg); }
-    .card-face { position: absolute; inset: 0; background: var(--card); border-radius: 22px; box-shadow: 0 2px 10px rgba(0,0,0,.06), 0 8px 28px rgba(0,0,0,.07); backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 18px 24px; overflow: hidden; }
+    .card-face { position: absolute; inset: 0; background: var(--card); border-radius: 22px; box-shadow: 0 2px 10px rgba(0,0,0,.06), 0 8px 28px rgba(0,0,0,.07); backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 18px 24px; }
     .card-face.back { transform: rotateY(180deg); }
-    /* Face réponse avec diagramme : tag (1 ligne) + diagramme centrés en bloc, marge équilibrée */
-    .card-face.has-diag { justify-content: center; padding-top: 30px; padding-bottom: 30px; }
-    .card-face.has-diag .face-tag { margin-bottom: -10px !important; }
-    /* Question avec diagramme : tag (2 lignes) + diagramme, ancrage haut */
-    .card-face.has-diag-q { justify-content: flex-start; padding-top: 32px; padding-bottom: 20px; }
-    .card-face.has-diag-q .face-tag { margin-bottom: -10px !important; }
-    .face-tag { font-size: 20px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; text-align: center; line-height: 1.3; }
+    .face-tag { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
     .face-tag.hi { color: var(--accent); }
-    .chord-big { font-family: 'Playfair Display', serif; font-size: 140px; line-height: 1; letter-spacing: -4px; text-align: center; }
-    .chord-big.md { font-size: 110px; letter-spacing: -3px; }
-    .chord-big.sm { font-size: 84px; letter-spacing: -2px; }
+    .chord-big { font-family: 'Playfair Display', serif; font-size: 92px; line-height: 1; letter-spacing: -3px; text-align: center; }
+    .chord-big.md { font-size: 72px; letter-spacing: -2px; }
+    .chord-big.sm { font-size: 56px; letter-spacing: -1px; }
     .chord-sub { font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; color: var(--muted); margin-top: 6px; letter-spacing: 0; text-align: center; }
+    .card-hint { font-size: 13px; color: var(--muted); margin-top: 10px; text-align: center; font-weight: 300; }
     .diag-holder svg { width: 200px; height: auto; }
 
     /* BUTTONS */
-    .btn-main { width: 100%; padding: 18px; font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 500; background: var(--accent); color: #FFF; border: none; border-radius: 16px; cursor: pointer; transition: opacity .15s ease, visibility 0s .15s, transform .1s; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(184,92,42,.22); visibility: visible; }
-    .btn-main.hidden { opacity: 0; pointer-events: none; visibility: hidden; }
-    /* Stack reveal-btn + ok/ko-row dans la même cellule grid : hauteur stable */
-    .actions-stack { width: 100%; display: grid; grid-template-areas: 'a'; }
-    .actions-stack > .btn-main { grid-area: a; margin-bottom: 0; }
-    .actions-stack > .btn-row  { grid-area: a; margin-bottom: 0; align-self: stretch; }
-    .btn-end-free { width: 100%; padding: 14px; margin-top: 14px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600; color: var(--accent); background: var(--accent-light); border: 1.5px solid var(--accent); border-radius: 14px; cursor: pointer; transition: opacity .12s, transform .1s; box-shadow: 0 2px 8px rgba(184,92,42,.18); -webkit-tap-highlight-color: transparent; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .btn-end-free:hover { opacity: .85; }
-    .btn-end-free:active { transform: scale(.985); }
-    .btn-main svg { width: 20px; height: 20px; color: #FFF; flex-shrink: 0; }
+    .btn-main { width: 100%; padding: 18px; font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 500; background: var(--text); color: #FFF; border: none; border-radius: 16px; cursor: pointer; transition: opacity .12s, transform .1s; margin-bottom: 12px; }
     .btn-main:hover { opacity: .84; }
     .btn-main:active { transform: scale(.985); }
     .btn-row { width: 100%; display: flex; gap: 12px; opacity: 0; pointer-events: none; transition: opacity .25s ease; }
@@ -111,12 +97,10 @@
     .mode-card { background: var(--card); border-radius: 18px; padding: 18px 20px; display: flex; align-items: center; gap: 16px; box-shadow: 0 1px 8px rgba(0,0,0,.06); cursor: pointer; transition: box-shadow .15s, transform .12s; }
     .mode-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.10); transform: translateY(-1px); }
     .mode-card:active { transform: scale(.988); }
-    .mode-card.bases { border-left: 4px solid var(--mode-bases); }
     .mode-card.ess  { border-left: 4px solid var(--mode-ess); }
     .mode-card.comp { border-left: 4px solid var(--mode-comp); }
     .mode-card.all  { border-left: 4px solid var(--mode-all); }
     .mode-icon-box { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-    .mode-icon-box.bases { background: var(--mode-bases-bg); }
     .mode-icon-box.ess  { background: var(--mode-ess-bg); }
     .mode-icon-box.comp { background: var(--mode-comp-bg); }
     .mode-icon-box.all  { background: var(--mode-all-bg); }
@@ -125,31 +109,28 @@
     .mode-desc { font-size: 12px; color: var(--muted); font-weight: 300; line-height: 1.4; }
     .mode-prog-row { width: 100%; height: 3px; background: var(--border); border-radius: 2px; margin-top: 10px; overflow: hidden; }
     .mode-prog-fill { height: 100%; border-radius: 2px; }
-    .mode-prog-fill.bases { background: var(--mode-bases); }
     .mode-prog-fill.ess  { background: var(--mode-ess); }
     .mode-prog-fill.comp { background: var(--mode-comp); }
     .mode-prog-fill.all  { background: var(--mode-all); }
     .mode-stat { text-align: right; flex-shrink: 0; }
     .mode-stat-n { font-family: 'Playfair Display', serif; font-size: 22px; display: block; line-height: 1; margin-bottom: 2px; }
-    .mode-stat-n.bases { color: var(--mode-bases); }
     .mode-stat-n.ess  { color: var(--mode-ess); }
     .mode-stat-n.comp { color: var(--mode-comp); }
     .mode-stat-n.all  { color: var(--mode-all); }
     .mode-stat-l { font-size: 10px; color: var(--muted); }
+    .btn-ref-link { background: none; border: none; font-family: 'Outfit', sans-serif; font-size: 14px; color: var(--muted); cursor: pointer; padding: 8px; text-decoration: underline; text-decoration-color: var(--border); }
+    .btn-ref-link:hover { color: var(--text); }
     .home-links { display: flex; flex-direction: column; gap: 8px; width: 100%; margin-top: 4px; }
     .home-action-btn { width: 100%; display: flex; align-items: center; gap: 12px; background: var(--card); border: 1.5px solid var(--border); border-radius: 14px; padding: 14px 18px; cursor: pointer; font-family: 'Outfit', sans-serif; transition: border-color .15s, box-shadow .15s, transform .1s; text-align: left; }
     .home-action-btn:hover { border-color: var(--accent); box-shadow: 0 3px 14px rgba(184,92,42,.12); transform: translateY(-1px); }
     .home-action-btn:active { transform: scale(.988); }
-    .hab-icon { font-size: 20px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-    .hab-icon svg { width: 22px; height: 22px; color: var(--accent); }
+    .hab-icon { font-size: 20px; flex-shrink: 0; }
     .hab-text { flex: 1; font-size: 14px; font-weight: 500; color: var(--text); }
-    .hab-arrow { flex-shrink: 0; display: flex; align-items: center; transition: transform .15s; color: var(--muted); }
-    .hab-arrow svg { width: 20px; height: 20px; }
+    .hab-arrow { font-size: 16px; color: var(--muted); flex-shrink: 0; transition: transform .15s; }
     .home-action-btn:hover .hab-arrow { transform: translateX(3px); color: var(--accent); }
     .home-data-bar { width: 100%; display: flex; gap: 8px; margin-top: 10px; }
-    .btn-data { flex: 1; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 500; color: var(--text); background: var(--card); border: 1.5px solid var(--border); border-radius: 12px; padding: 11px 10px; cursor: pointer; transition: border-color .15s, color .15s, background .15s; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .btn-data svg { width: 18px; height: 18px; color: var(--accent); flex-shrink: 0; }
-    .btn-data:hover { border-color: var(--accent); background: var(--accent-light); }
+    .btn-data { flex: 1; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 500; color: var(--muted); background: var(--card); border: 1.5px solid var(--border); border-radius: 12px; padding: 11px 10px; cursor: pointer; transition: border-color .15s, color .15s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .btn-data:hover { border-color: var(--accent); color: var(--text); }
     .streak-home { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 13px; font-weight: 500; margin-top: -6px; margin-bottom: 16px; }
     .streak-home.active { color: var(--accent); }
     .streak-home.cold { color: var(--muted); font-weight: 300; }
@@ -174,6 +155,7 @@
     .end-mastery-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .end-m-val { font-family: 'Playfair Display', serif; font-size: 30px; white-space: nowrap; }
     .end-m-val .slash { font-size: 18px; color: var(--muted); }
+    .end-m-arrow { font-size: 18px; color: var(--muted); }
     .end-m-delta { font-size: 13px; font-weight: 500; }
     .end-m-delta.up   { color: var(--correct); }
     .end-m-delta.same { color: var(--muted); }
@@ -182,26 +164,16 @@
     .end-prog-fill { height: 100%; border-radius: 3px; transition: width .8s ease; }
     .end-prog-pct { font-size: 11px; color: var(--muted); margin-top: 4px; text-align: right; }
     .end-btn-row { width: 100%; display: flex; gap: 12px; }
-    .btn-replay { flex: 1; padding: 17px; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 600; border: none; border-radius: 16px; cursor: pointer; transition: opacity .12s; color: #FFF; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .btn-replay svg { width: 18px; height: 18px; color: #FFF; flex-shrink: 0; }
+    .btn-replay { flex: 1; padding: 17px; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 600; border: none; border-radius: 16px; cursor: pointer; transition: opacity .12s; color: #FFF; }
     .btn-replay:hover { opacity: .84; }
-    .btn-home-end { flex: 1; padding: 17px; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 500; border: 1.5px solid var(--border); border-radius: 16px; cursor: pointer; background: var(--card); color: var(--text); transition: background .12s; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .btn-home-end svg { width: 18px; height: 18px; color: var(--accent); flex-shrink: 0; }
+    .btn-home-end { flex: 1; padding: 17px; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 500; border: 1.5px solid var(--border); border-radius: 16px; cursor: pointer; background: var(--card); color: var(--text); transition: background .12s; }
     .btn-home-end:hover { background: var(--border); }
 
     /* REFERENCE */
     .ref-screen { width: 100%; }
     .ref-top { display: flex; align-items: center; gap: 14px; padding: 18px 0 16px; }
-    /* Boutons navigation (retour / accueil) — version visible */
-    .btn-nav-back, .btn-nav-home { display: inline-flex; align-items: center; gap: 7px; height: 44px; padding: 0 16px 0 12px; background: var(--card); border: 1.5px solid var(--border); border-radius: 22px; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; color: var(--text); transition: background .12s, border-color .12s, transform .1s; box-shadow: 0 1px 3px rgba(0,0,0,.04); -webkit-tap-highlight-color: transparent; }
-    .btn-nav-back:hover, .btn-nav-home:hover { border-color: var(--accent); background: var(--accent-light); color: var(--accent); }
-    .btn-nav-back:active, .btn-nav-home:active { transform: scale(.96); }
-    .btn-nav-back svg, .btn-nav-home svg { width: 20px; height: 20px; flex-shrink: 0; }
-    .btn-nav-label { line-height: 1; }
-    @media (max-width: 360px) {
-      .btn-nav-back .btn-nav-label, .btn-nav-home .btn-nav-label { display: none; }
-      .btn-nav-back, .btn-nav-home { width: 44px; padding: 0; justify-content: center; border-radius: 50%; }
-    }
+    .btn-circ { width: 36px; height: 36px; flex-shrink: 0; background: var(--card); border: 1.5px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 15px; transition: background .12s; }
+    .btn-circ:hover { background: var(--border); }
     .ref-h { font-family: 'Playfair Display', serif; font-size: 21px; }
     .sort-bar { width: 100%; display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
     .sort-btn { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 500; padding: 7px 13px; border-radius: 20px; border: 1.5px solid var(--border); background: var(--card); color: var(--muted); cursor: pointer; transition: all .14s; white-space: nowrap; }
@@ -238,8 +210,7 @@
     .sel-item-name { font-family:'Playfair Display',serif; font-size:12px; margin-top:4px; text-align:center; line-height:1.3; }
     .sel-check { position:absolute; top:5px; right:5px; width:17px; height:17px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:9px; color:#fff; opacity:0; transform:scale(.5); transition:opacity .14s, transform .14s; }
     .sel-item.selected .sel-check { opacity:1; transform:scale(1); }
-    .btn-start-custom { width:100%; padding:18px; font-family:'Outfit',sans-serif; font-size:16px; font-weight:600; background:var(--accent); color:#FFF; border:none; border-radius:16px; cursor:pointer; transition:opacity .12s, transform .1s; box-shadow:0 5px 20px rgba(184,92,42,.28); margin-bottom:10px; display:flex; align-items:center; justify-content:center; gap:8px; }
-    .btn-start-custom svg { width:20px; height:20px; color:#FFF; flex-shrink:0; }
+    .btn-start-custom { width:100%; padding:18px; font-family:'Outfit',sans-serif; font-size:16px; font-weight:600; background:var(--accent); color:#FFF; border:none; border-radius:16px; cursor:pointer; transition:opacity .12s, transform .1s; box-shadow:0 5px 20px rgba(184,92,42,.28); margin-bottom:10px; }
     .btn-start-custom:disabled { background:var(--border); color:var(--muted); box-shadow:none; cursor:not-allowed; }
     .btn-start-custom:not([disabled]):hover { opacity:.88; }
     .btn-start-custom:not([disabled]):active { transform:scale(.985); }
@@ -248,11 +219,54 @@
     .end-sandbox-title { font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
     .end-sandbox-body { font-size:13px; color:var(--text); line-height:1.6; font-weight:300; }
 
+    /* ── POPUP MISE À JOUR (bloquante, centrée, overlay) ── */
+    .update-overlay {
+      position: fixed; inset: 0;
+      background: rgba(28, 28, 28, .55);
+      backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 10000;
+      animation: fadeUp .3s ease;
+      padding: 20px;
+    }
+    .update-popup {
+      background: var(--card);
+      border-radius: 22px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, .25);
+      padding: 32px 28px 26px;
+      max-width: 360px; width: 100%;
+      text-align: center;
+      animation: popIn .42s cubic-bezier(.34, 1.56, .64, 1);
+    }
+    .update-popup-icon { font-size: 44px; margin-bottom: 10px; }
+    .update-popup-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px; letter-spacing: -.5px;
+      margin-bottom: 10px;
+    }
+    .update-popup-body {
+      font-size: 14px; color: var(--muted);
+      font-weight: 300; line-height: 1.5;
+      margin-bottom: 22px;
+    }
+    .update-popup-btn {
+      width: 100%; padding: 16px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px; font-weight: 600;
+      background: var(--accent); color: #FFF;
+      border: none; border-radius: 14px;
+      cursor: pointer;
+      transition: opacity .12s, transform .1s;
+      box-shadow: 0 4px 16px rgba(184, 92, 42, .3);
+    }
+    .update-popup-btn:hover  { opacity: .88; }
+    .update-popup-btn:active { transform: scale(.985); }
+
     /* ── CHORD DETAIL ── */
     .detail-screen { width: 100%; display: flex; flex-direction: column; align-items: center; }
     .detail-top { width: 100%; display: flex; align-items: center; gap: 14px; padding: 18px 0 10px; }
     .detail-counter { font-size: 12px; color: var(--muted); margin-left: auto; font-weight: 400; }
-    .detail-card { width: 100%; background: var(--card); border-radius: 22px; box-shadow: 0 2px 10px rgba(0,0,0,.06), 0 8px 28px rgba(0,0,0,.07); display: flex; flex-direction: column; align-items: center; padding: 32px 24px 28px; margin-bottom: 16px; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
+    .detail-card { width: 100%; background: var(--card); border-radius: 22px; box-shadow: 0 2px 10px rgba(0,0,0,.06), 0 8px 28px rgba(0,0,0,.07); display: flex; flex-direction: column; align-items: center; padding: 32px 24px 28px; margin-bottom: 16px; }
     .detail-name { font-family: 'Playfair Display', serif; font-size: 52px; line-height: 1; letter-spacing: -2px; margin-bottom: 6px; }
     .detail-sub { font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px; color: var(--muted); margin-bottom: 20px; }
     .detail-diag svg { width: 220px; height: auto; }
@@ -264,67 +278,23 @@
     .detail-legend span { display: flex; align-items: center; gap: 4px; }
     .det-dot { width: 16px; height: 16px; background: #1C1C1C; border-radius: 50%; color: white; font-size: 9px; font-weight: 700; display: flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; flex-shrink: 0; }
     .detail-nav { width: 100%; display: flex; gap: 10px; }
-    .btn-nav { flex: 1; padding: 15px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; border: 1.5px solid var(--border); border-radius: 14px; cursor: pointer; background: var(--card); color: var(--text); transition: background .12s, border-color .12s, opacity .12s; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .btn-nav-ic { display: flex; align-items: center; flex-shrink: 0; color: var(--accent); transition: transform .15s; }
-    .btn-nav-ic svg { width: 20px; height: 20px; }
-    .btn-nav:hover:not(:disabled) .btn-nav-ic.prev { transform: translateX(-3px); }
-    .btn-nav:hover:not(:disabled) .btn-nav-ic.next { transform: translateX(3px); }
-    .btn-nav:disabled .btn-nav-ic { color: var(--muted); }
+    .btn-nav { flex: 1; padding: 15px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; border: 1.5px solid var(--border); border-radius: 14px; cursor: pointer; background: var(--card); color: var(--text); transition: background .12s, border-color .12s, opacity .12s; }
     .btn-nav:hover { border-color: var(--accent); }
     .btn-nav:disabled { opacity: .3; cursor: not-allowed; }
-
-    /* ── MODE PREVIEW ── */
-    .preview-screen { width: 100%; }
-    .preview-top { display: flex; align-items: center; gap: 14px; padding: 18px 0 12px; }
-    .preview-h { font-family: 'Playfair Display', serif; font-size: 21px; line-height: 1.2; }
-    .preview-sub { font-size: 13px; color: var(--muted); margin-bottom: 16px; font-weight: 300; line-height: 1.5; }
-    .preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 22px; }
-    .preview-item { background: var(--card); border-radius: 14px; padding: 12px 8px 10px; display: flex; flex-direction: column; align-items: center; box-shadow: 0 1px 6px rgba(0,0,0,.05); cursor: pointer; transition: box-shadow .14s, transform .1s; -webkit-tap-highlight-color: transparent; }
-    .preview-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,.10); transform: translateY(-1px); }
-    .preview-item:active { transform: scale(.94); }
-    .preview-item svg { width: 70px; height: auto; }
-    .preview-name { font-family: 'Playfair Display', serif; font-size: 13px; margin-top: 5px; text-align: center; line-height: 1.3; }
-    .btn-start-preview { width: 100%; padding: 18px; font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 600; color: #FFF; border: none; border-radius: 16px; cursor: pointer; transition: opacity .12s, transform .1s; margin-bottom: 10px; box-shadow: 0 5px 20px rgba(0,0,0,.14); display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .btn-start-preview svg { width: 20px; height: 20px; color: #FFF; flex-shrink: 0; }
-    .btn-start-preview:hover { opacity: .88; }
-    .btn-start-preview:active { transform: scale(.985); }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     .fadein { animation: fadeUp .32s ease forwards; }
     @keyframes popIn { from { opacity: 0; transform: scale(.88); } to { opacity: 1; transform: scale(1); } }
     .popin { animation: popIn .4s cubic-bezier(.34,1.56,.64,1) forwards; }
 
-    /* ── Stack chord-detail (effet "deck" type Tinder) ── */
-    /* Grid stacking : les deux cartes restent dans le flow, hauteur stable */
-    .detail-card-stack { display: grid; grid-template-areas: 'card'; width: 100%; margin-bottom: 16px; }
-    .detail-card-stack > .detail-card { grid-area: card; align-self: start; margin-bottom: 0; }
-    .detail-card.behind  { transform: scale(.92); opacity: .55; z-index: 1; }
-    .detail-card.front-anim { z-index: 2; transform-origin: 50% 110%; }
-    .fly-out-left  { animation: flyOutLeft  .45s cubic-bezier(.45,.05,.55,.95) forwards; }
-    .fly-out-right { animation: flyOutRight .45s cubic-bezier(.45,.05,.55,.95) forwards; }
-    .coming-in     { animation: comeIn      .45s cubic-bezier(.4,.1,.4,1)      forwards; }
-    @keyframes flyOutLeft  { to { transform: translateX(-130%) rotate(-16deg); opacity: 0; } }
-    @keyframes flyOutRight { to { transform: translateX( 130%) rotate( 16deg); opacity: 0; } }
-    @keyframes comeIn      { from { transform: scale(.92); opacity: .55; } to { transform: scale(1); opacity: 1; } }
-
-    @media (min-width: 400px) { .card-body { height: 450px; } .chord-big { font-size: 150px; } .chord-big.md { font-size: 118px; } .chord-big.sm { font-size: 90px; } .face-tag { font-size: 23px; margin-bottom: 24px; } .diag-holder svg { width: 220px; } }
-    @media (max-width: 340px) { .card-body { height: 360px; } .chord-big { font-size: 116px; } .chord-big.md { font-size: 92px; } .chord-big.sm { font-size: 70px; } .face-tag { font-size: 17px; margin-bottom: 16px; } .ref-grid { grid-template-columns: repeat(2, 1fr); } .diag-holder svg { width: 170px; } }
+    @media (min-width: 400px) { .card-body { height: 340px; } .chord-big { font-size: 100px; } .chord-big.md { font-size: 78px; } .chord-big.sm { font-size: 62px; } .diag-holder svg { width: 215px; } }
+    @media (max-width: 340px) { .card-body { height: 270px; } .chord-big { font-size: 76px; } .chord-big.md { font-size: 60px; } .chord-big.sm { font-size: 48px; } .ref-grid { grid-template-columns: repeat(2, 1fr); } .diag-holder svg { width: 180px; } }
   </style>
 </head>
 <body>
 <div id="app"></div>
-<footer class="app-footer">Réalisé par <a href="https://www.instagram.com/juliendestange/" target="_blank" rel="noopener" class="footer-link">Julien Destange</a> · v3.23</footer>
+<footer class="app-footer">Réalisé par <a href="https://www.instagram.com/juliendestange/" target="_blank" rel="noopener" class="footer-link">Julien Destange</a> · v3.3</footer>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* ══════════════════════════════════════════
-   SVG ICONS (Lucide-style, trait 2.5px)
-══════════════════════════════════════════ */
-var ICON_BACK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
-var ICON_HOME = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9.5z"/><path d="M9 22V12h6v10"/></svg>';
-var ICON_ARROW_RIGHT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>';
-var ICON_DOWNLOAD = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>';
-var ICON_UPLOAD   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>';
-var ICON_RELOAD  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.3L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.5 6.3L3 16"/><path d="M3 21v-5h5"/></svg>';
-
 /* ══════════════════════════════════════════
    CHORD DATA — GCEA standard tuning
    frets: [G, C, E, A]
@@ -371,21 +341,15 @@ var SESSION_LENGTH = 10;
    MODES
 ══════════════════════════════════════════ */
 var MODES = {
-  bases: {
-    id:'bases', cls:'bases', icon:'🌰', name:'Les Bases',
-    desc:'7 accords fondamentaux pour bien démarrer',
-    chordIds:['C','Am','F','G','G7','Dm','E7'],
-    progColor:'#D4815C'
-  },
   essentials: {
     id:'essentials', cls:'ess', icon:'🌱', name:'Essentiels',
-    desc:'13 accords à maîtriser en priorité',
-    chordIds:['C','C7','D','D7b','Dm','Em','E7','F','G','G7','A','Am','B7'],
+    desc:'14 accords indispensables — à maîtriser en priorité',
+    chordIds:['C','C7','D','D7a','D7b','Dm','Em','E7','F','G','G7','A','Am','B7'],
     progColor:'#2D7D5A'
   },
   complementary: {
     id:'complementary', cls:'comp', icon:'🎯', name:'Complémentaires',
-    desc:'Enrichir le répertoire',
+    desc:'Accords plus avancés pour enrichir le répertoire',
     chordIds:null, // filled below
     progColor:'#2A5FA8'
   },
@@ -403,7 +367,7 @@ MODES.complementary.chordIds = CHORDS.filter(function(c){ return essIds.indexOf(
 // Mode libre — hidden:true = pas affiché dans les cartes de l'accueil
 // sandboxCorrect:true = les bonnes réponses ne modifient pas le SR
 MODES.custom = {
-  id:'custom', cls:'cust', icon:'✏️', name:'Libre',
+  id:'custom', cls:'cust', icon:'✏️', name:'Personnalisé',
   desc:'', chordIds:null, progColor:'#B85C2A',
   hidden:true, sandboxCorrect:true
 };
@@ -533,7 +497,7 @@ function drawDiagram(chord, size) {
   var fingers = chord.fingers || null;
   var barre   = chord.barre   || null;
   var sm = (size === 'sm');
-  var W = sm?80:120, H = sm?105:185;
+  var W = sm?80:120, H = sm?94:140;
   var pL = sm?12:18, pR = sm?12:18;
   var pTop = sm?18:28, nutH = sm?5:7, pBot = sm?6:8;
   var nutY = pTop + nutH;
@@ -686,15 +650,9 @@ function getModeItems(modeId){
   return ALL_ITEMS.filter(function(it){ return ids.indexOf(it.chordId) !== -1; });
 }
 
-function nextItem(modeId, recentIds){
+function nextItem(modeId, lastChordId){
   var now = Date.now();
-  recentIds = recentIds || [];
-  var pool = getModeItems(modeId).filter(function(i){ return recentIds.indexOf(i.chordId) === -1; });
-  // Si le pool est vide (peu d'accords dans le mode), on relâche : on autorise tout sauf le tout dernier
-  if (!pool.length && recentIds.length > 1) {
-    var lastOnly = [recentIds[recentIds.length - 1]];
-    pool = getModeItems(modeId).filter(function(i){ return lastOnly.indexOf(i.chordId) === -1; });
-  }
+  var pool = getModeItems(modeId).filter(function(i){ return i.chordId !== lastChordId; });
   if (!pool.length) pool = getModeItems(modeId);
 
   // Items en retard (ou jamais vus) : on pioche au hasard parmi TOUS — aucun biais d'ordre
@@ -777,35 +735,29 @@ function getModeStats(modeId){
 /* ══════════════════════════════════════════
    APP STATE
 ══════════════════════════════════════════ */
-var app = { screen:'home', item:null, recentChordIds:[], modeId:null, refSort:'alpha',
+var app = { screen:'home', item:null, lastChordId:null, modeId:null, refSort:'alpha',
             customChordIds: loadCustomSel(),
-            detailIds:[], detailIdx:0, detailContext:'reference',
+            detailIds:[], detailIdx:0,
             session:{ correct:0, total:0, masteryAtStart:0, streak:0 },
   streakResult: null };
 
 function byId(id){ return CHORDS.find(function(c){return c.id===id;}); }
 function sizeClass(n){ return n.length>=5?'sm':n.length>=4?'md':''; }
 
-function sessionEmoji(correct, total){
-  total = total || 10;
-  if(total === 0) return '🎯';
-  var pct = correct / total;
-  if(pct === 1 && total >= 5) return '🥇';
-  if(pct >= 0.9)              return '🏆';
-  if(pct >= 0.7)              return '⭐';
-  if(pct >= 0.5)              return '👍';
-  if(pct >= 0.3)              return '💪';
+function sessionEmoji(correct){
+  if(correct===10) return '🥇';
+  if(correct===9)  return '🏆';
+  if(correct>=7)   return '⭐';
+  if(correct>=5)   return '👍';
+  if(correct>=3)   return '💪';
   return '🎯';
 }
-function sessionMsg(correct, total){
-  total = total || 10;
-  if(total === 0) return 'Session vide';
-  var pct = correct / total;
-  if(pct === 1 && total >= 5) return 'Série Parfaite !';
-  if(pct >= 0.9)              return 'Excellent !';
-  if(pct >= 0.7)              return 'Très bien !';
-  if(pct >= 0.5)              return "On s'accroche !";
-  if(pct >= 0.3)              return 'Continue !';
+function sessionMsg(correct){
+  if(correct===10) return 'Série Parfaite !';
+  if(correct>=9)   return 'Excellent !';
+  if(correct>=7)   return 'Très bien !';
+  if(correct>=5)   return "On s'accroche !";
+  if(correct>=3)   return 'Continue !';
   return 'On y retourne !';
 }
 
@@ -845,6 +797,54 @@ function importProgress(file) {
 }
 
 /* ══════════════════════════════════════════
+   AUDIO — WebAudioFont (guitare nylon, lazy load)
+══════════════════════════════════════════ */
+var _WAFP_URL  = 'https://cdn.jsdelivr.net/npm/webaudiofont@2.0.5/npm/dist/WebAudioFontPlayer.js';
+var _TONE_URL  = 'https://cdn.jsdelivr.net/npm/webaudiofont@2.0.5/npm/dist/0240_Acoustic_Nylon_sf2_file.js';
+var _TONE_VAR  = '_tone_0240_Acoustic_Nylon_sf2_file';
+var _OPEN_MIDI = [67, 60, 64, 69]; /* G4 C4 E4 A4 */
+var _STRUM_S   = 0.082;
+var _NOTE_DUR  = 3.5;
+var _NOTE_VOL  = 0.74;
+var _wafReady = false, _wafLoading = false;
+var _wafCtx = null, _wafPlayer = null, _wafTone = null;
+
+function _loadAudio(cb) {
+  if (_wafReady)   { if (cb) cb(); return; }
+  if (_wafLoading) { return; }
+  _wafLoading = true;
+  function _initTone() {
+    _wafCtx    = new (window.AudioContext || window.webkitAudioContext)();
+    _wafPlayer = new WebAudioFontPlayer();
+    _wafPlayer.loader.startLoad(_wafCtx, _TONE_URL, _TONE_VAR);
+    _wafPlayer.loader.waitLoad(function() {
+      _wafTone = window[_TONE_VAR];
+      _wafReady = true; _wafLoading = false;
+      if (cb) cb();
+    });
+  }
+  if (typeof WebAudioFontPlayer === 'undefined') {
+    var s = document.createElement('script');
+    s.src = _WAFP_URL;
+    s.onload = _initTone;
+    document.head.appendChild(s);
+  } else { _initTone(); }
+}
+
+function playChordAudio(chord) {
+  _loadAudio(function() {
+    if (_wafCtx.state === 'suspended') _wafCtx.resume();
+    var now = _wafCtx.currentTime + 0.04, si = 0;
+    chord.frets.forEach(function(fret, i) {
+      if (fret < 0) return;
+      _wafPlayer.queueWaveTable(_wafCtx, _wafCtx.destination, _wafTone,
+        now + si * _STRUM_S, _OPEN_MIDI[i] + fret, _NOTE_DUR, _NOTE_VOL);
+      si++;
+    });
+  });
+}
+
+/* ══════════════════════════════════════════
    RENDER
 ══════════════════════════════════════════ */
 var _historyReady = false;
@@ -852,7 +852,6 @@ var _chordDetailNav = false;
 
 function _doRender(root){
   if     (app.screen==='home')          renderHome(root);
-  else if(app.screen==='mode-preview')  renderModePreview(root);
   else if(app.screen==='custom-select') renderCustomSelect(root);
   else if(app.screen==='session')       renderSession(root);
   else if(app.screen==='end')           renderEnd(root);
@@ -860,123 +859,34 @@ function _doRender(root){
   else if(app.screen==='chord-detail')  renderChordDetail(root);
 }
 
-/* ══════════════════════════════════════════
-   NAVIGATION & HISTORY
-   ──────────────────────────────────────────
-   Chaque écran crée une entrée dans l'historique
-   pour que le bouton retour système (Android, geste iOS,
-   navigateur) revienne à l'écran précédent au lieu de
-   quitter l'app.
-
-   Règles :
-   - home → toujours replaceState (depth = 0)
-   - chord-detail prev/next → replaceState (lateral)
-   - session → end et end → session (Rejouer) → replaceState
-   - même écran rerendu (next question) → replaceState
-   - tout le reste → pushState (forward, depth + 1)
-
-   Boutons in-app :
-   - "Retour" (←) → navBack() : history.back() pour vraie
-     navigation arrière (popstate render l'écran précédent)
-   - "Accueil" (🏠) → navHome() : history.go(-depth) pour
-     remonter d'un coup à la racine
-══════════════════════════════════════════ */
-function isInFreeSession(){
-  return app.screen === 'session'
-      && MODES[app.modeId] && MODES[app.modeId].sandboxCorrect
-      && app.session && app.session.total > 0;
-}
-function navBack(){
-  // Mode libre : sortir = afficher l'écran de fin avec les stats
-  if (isInFreeSession()) {
-    app.screen = 'end';
-    render();
-    return;
-  }
-  if ((history.state && history.state.depth) || history.length > 1) {
-    history.back();
-  } else {
-    app.screen = 'home';
-    render();
-  }
-}
-function navHome(){
-  // Mode libre : afficher l'écran de fin au lieu de quitter brutalement
-  if (isInFreeSession()) {
-    app.screen = 'end';
-    render();
-    return;
-  }
-  var depth = (history.state && history.state.depth) || 0;
-  if (depth > 0) {
-    history.go(-depth);
-  } else {
-    app.screen = 'home';
-    render();
-  }
-}
-
 function render(){
   var root=document.getElementById('app');
   root.innerHTML='';
   if (_historyReady) {
-    var top      = history.state || {};
-    var topScreen= top.screen;
-    var topDepth = top.depth || 0;
-    var st = { screen:app.screen, detailIds:app.detailIds, detailIdx:app.detailIdx, detailContext:app.detailContext, depth:topDepth };
-
-    if (app.screen === 'home') {
-      st.depth = 0;
-      history.replaceState(st, '');
-    } else if (app.screen === 'chord-detail' && _chordDetailNav) {
-      // prev/next au sein du dictionnaire — pas de nouvelle entrée
-      // (_chordDetailNav sera reset par renderChordDetail après lecture)
-      history.replaceState(st, '');
-    } else if (app.screen === topScreen) {
-      // Même écran re-rendu (next question pendant session) — refresh state
-      history.replaceState(st, '');
-    } else if (
-      (app.screen === 'end'     && topScreen === 'session') ||
-      (app.screen === 'session' && topScreen === 'end')
-    ) {
-      // Transition session↔end : on garde une seule entrée pour la "vie" du quiz
-      history.replaceState(st, '');
-    } else {
-      // Forward navigation : nouvelle entrée historique
-      st.depth = topDepth + 1;
-      history.pushState(st, '');
+    var st={ screen:app.screen, detailIds:app.detailIds, detailIdx:app.detailIdx };
+    if (app.screen==='home') {
+      history.replaceState(st,'');
+    } else if (app.screen==='reference') {
+      history.pushState(st,'');
+    } else if (app.screen==='chord-detail') {
+      if (_chordDetailNav){ history.replaceState(st,''); }
+      else                { history.pushState(st,'');    }
+      _chordDetailNav=false;
     }
   }
   _doRender(root);
 }
 
 window.addEventListener('popstate', function(e) {
-  var s = (e.state && e.state.screen) || 'home';
-
-  // Mode libre : si on quitte la session par phone-back / browser-back, montrer l'écran de fin
-  if (isInFreeSession() && s !== 'session') {
-    // Re-pousser une entrée pour conserver une étape navigable
-    history.pushState({ screen: 'end', depth: ((e.state && e.state.depth) || 0) + 1 }, '');
-    app.screen = 'end';
-    var root0 = document.getElementById('app');
-    root0.innerHTML = '';
-    _doRender(root0);
-    return;
+  var s=(e.state && e.state.screen)||'home';
+  if(s==='session'||s==='end'||s==='custom-select') s='home';
+  app.screen=s;
+  if(e.state){
+    if(e.state.detailIds)          app.detailIds=e.state.detailIds;
+    if(e.state.detailIdx!=null)    app.detailIdx=e.state.detailIdx;
   }
-
-  // Sécurité : end ne devrait jamais être une cible de back (remplacé par session/home)
-  if (s === 'end') s = 'home';
-  // Sécurité : session re-poppée sans contexte → retour à home (le quiz est perdu)
-  if (s === 'session' && !app.item) s = 'home';
-
-  app.screen = s;
-  if (e.state) {
-    if (e.state.detailIds)         app.detailIds = e.state.detailIds;
-    if (e.state.detailIdx != null) app.detailIdx = e.state.detailIdx;
-    if (e.state.detailContext)     app.detailContext = e.state.detailContext;
-  }
-  var root = document.getElementById('app');
-  root.innerHTML = '';
+  var root=document.getElementById('app');
+  root.innerHTML='';
   _doRender(root);
 });
 
@@ -986,16 +896,16 @@ function renderHome(root){
   div.className='home fadein';
   div.innerHTML='<div class="home-icon">🎵</div>'+
     '<h1 class="home-h1">Premiers Accords<br><em>Ukulélé</em></h1>'+
-    '<p class="home-sub">Mémorise tes accords avec la répétition espacée<br>'+SESSION_LENGTH+' questions par session — ou choisis le mode Libre</p>'+
+    '<p class="home-sub">Mémorise tes accords avec la répétition espacée<br>Sessions de '+SESSION_LENGTH+' questions</p>'+
     (function(){ var sk=loadStreak(); if(!sk.lastTs) return ''; return sk.count>=2 ? '<div class="streak-home active">🔥 '+sk.count+' jours de suite</div>' : '<div class="streak-home cold">🔥 Lance ta série !</div>'; }())+
     '<div class="mode-cards" id="modeCards"></div>'+
     '<div class="home-links">'+
-      '<button class="home-action-btn" id="bCustom"><span class="hab-icon">✏️</span><span class="hab-text">Session libre</span><span class="hab-arrow">'+ICON_ARROW_RIGHT+'</span></button>'+
-      '<button class="home-action-btn" id="bRef"><span class="hab-icon">📚</span><span class="hab-text">Voir tous les accords</span><span class="hab-arrow">'+ICON_ARROW_RIGHT+'</span></button>'+
+      '<button class="home-action-btn" id="bCustom"><span class="hab-icon">✏️</span><span class="hab-text">Session personnalisée</span><span class="hab-arrow">→</span></button>'+
+      '<button class="home-action-btn" id="bRef"><span class="hab-icon">📚</span><span class="hab-text">Voir tous les accords</span><span class="hab-arrow">→</span></button>'+
     '</div>'+
     '<div class="home-data-bar">'+
-      '<button class="btn-data" id="bExport">'+ICON_DOWNLOAD+'Exporter ma progression</button>'+
-      '<button class="btn-data" id="bImport">'+ICON_UPLOAD+'Importer une sauvegarde</button>'+
+      '<button class="btn-data" id="bExport">⬇ Exporter ma progression</button>'+
+      '<button class="btn-data" id="bImport">⬆ Importer une sauvegarde</button>'+
       '<input type="file" id="importFile" accept=".json" style="display:none">'+
     '</div>';
   root.appendChild(div);
@@ -1020,15 +930,11 @@ function renderHome(root){
         '<span class="mode-stat-l">/ '+totalFaces+'</span>'+
       '</div>';
     card.onclick=function(){
+      var st0=getModeStats(modeId);
       app.modeId=modeId;
-      if(modeId==='all'){
-        var st0=getModeStats(modeId);
-        app.session={ correct:0, total:0, masteryAtStart:st0.mastered, streak:0 };
-        app.item=nextItem(modeId, app.recentChordIds);
-        app.screen='session';
-      } else {
-        app.screen='mode-preview';
-      }
+      app.session={ correct:0, total:0, masteryAtStart:st0.mastered, streak:0 };
+      app.item=nextItem(modeId, app.lastChordId);
+      app.screen='session';
       render();
     };
     modeCards.appendChild(card);
@@ -1038,6 +944,9 @@ function renderHome(root){
   div.querySelector('#bExport').onclick = exportProgress;
   div.querySelector('#bImport').onclick = function() { div.querySelector('#importFile').click(); };
   div.querySelector('#importFile').onchange = function(e) { if (e.target.files[0]) importProgress(e.target.files[0]); };
+
+  // Si une mise à jour était en attente pendant une session, on l'affiche maintenant
+  maybeShowUpdate();
 }
 
 /* ── SESSION ── */
@@ -1050,145 +959,64 @@ function renderSession(root){
   var hdr=document.createElement('div');
   hdr.className='header';
   hdr.innerHTML='<div class="header-title">Accords <b>Ukulélé</b></div>'+
-    '<button class="btn-nav-home" id="bHome" aria-label="Accueil">'+ICON_HOME+'<span class="btn-nav-label">Accueil</span></button>';
+    '<button class="btn-ghost" id="bHome">⌂ Accueil</button>';
   root.appendChild(hdr);
-  document.getElementById('bHome').onclick=function(){ navHome(); };
-
-  var isFree = MODES[app.modeId] && MODES[app.modeId].sandboxCorrect;
-  var progPct, progColor, counterText;
-  if (isFree) {
-    // Mode libre : barre démarre à 100%, diminue à chaque erreur, peut remonter mais plafonne au max relatif (corrects/total)
-    var total   = app.session.total;
-    var correct = app.session.correct;
-    progPct   = total === 0 ? 100 : Math.round((correct / total) * 100);
-    // Couleur évolutive selon la performance
-    progColor = progPct >= 75 ? '#7A9A35' : progPct >= 40 ? '#C49225' : '#C04848';
-    counterText = correct + ' / ' + total;
-  } else {
-    progPct = Math.round((app.session.total / SESSION_LENGTH) * 100);
-    progColor = mode.progColor;
-    counterText = tryNum + ' / ' + SESSION_LENGTH;
-  }
+  document.getElementById('bHome').onclick=function(){ app.screen='home'; render(); };
 
   var pg=document.createElement('div');
   pg.className='prog-wrap';
   pg.innerHTML=
     '<div class="prog-meta">'+
       '<span style="color:'+mode.progColor+';font-weight:500;">'+mode.icon+' '+mode.name+'</span>'+
-      '<span class="tries-count">'+counterText+'</span>'+
+      '<span class="tries-count">'+tryNum+' / '+SESSION_LENGTH+'</span>'+
     '</div>'+
-    '<div class="prog-track"><div class="prog-fill" style="width:'+progPct+'%;background:'+progColor+';transition:width .35s ease, background .35s ease;"></div></div>';
+    '<div class="prog-track"><div class="prog-fill" style="width:'+pct+'%;background:'+mode.progColor+'"></div></div>';
   root.appendChild(pg);
 
-  var frontHTML, backHTML, frontClass='front', backClass='back';
+  var frontHTML, backHTML;
   if(item.side==='name'){
-    frontHTML='<div class="face-tag">Joue cet accord<br>sur ton ukulélé</div>'+
+    frontHTML='<div class="face-tag">Trouve la position</div>'+
       '<div class="chord-big '+sizeClass(chord.name)+'">'+chord.name+'</div>'+
-      (chord.sub ? '<div class="chord-sub">'+chord.sub+'</div>' : '');
-    backHTML='<div class="face-tag hi">La réponse !</div>'+
+      (chord.sub ? '<div class="chord-sub">'+chord.sub+'</div>' : '')+
+      '<div class="card-hint">Joue cet accord sur ton ukulélé</div>';
+    backHTML='<div class="face-tag hi">Position correcte</div>'+
       '<div class="diag-holder">'+drawDiagram(chord,'lg')+'</div>';
-    backClass += ' has-diag';
   } else {
-    frontHTML='<div class="face-tag">Trouve le nom<br>de cet accord</div>'+
-      '<div class="diag-holder">'+drawDiagram(chord,'lg')+'</div>';
+    frontHTML='<div class="face-tag">Quel est cet accord ?</div>'+
+      '<div class="diag-holder">'+drawDiagram(chord,'lg')+'</div>'+
+      '<div class="card-hint">Trouve le nom de cet accord</div>';
     backHTML='<div class="face-tag hi">La réponse !</div>'+
       '<div class="chord-big '+sizeClass(chord.name)+'">'+chord.name+'</div>'+
       (chord.sub ? '<div class="chord-sub">'+chord.sub+'</div>' : '');
-    frontClass += ' has-diag-q';
   }
 
   var scene=document.createElement('div');
   scene.className='card-scene fadein';
   scene.innerHTML='<div class="card-body" id="cBody">'+
-    '<div class="card-face '+frontClass+'">'+frontHTML+'</div>'+
-    '<div class="card-face '+backClass+'">'+backHTML+'</div>'+
+    '<div class="card-face front">'+frontHTML+'</div>'+
+    '<div class="card-face back">'+backHTML+'</div>'+
     '</div>';
   root.appendChild(scene);
-
-  var actions=document.createElement('div');
-  actions.className='actions-stack';
+  if(item.side==='diagram') setTimeout(function(){ playChordAudio(chord); }, 350);
 
   var btnReveal=document.createElement('button');
   btnReveal.className='btn-main';
-  btnReveal.innerHTML='<span>Voir la réponse</span>'+ICON_ARROW_RIGHT;
-  actions.appendChild(btnReveal);
+  btnReveal.textContent='Voir la réponse';
+  root.appendChild(btnReveal);
 
   var btnRow=document.createElement('div');
   btnRow.className='btn-row';
   btnRow.id='bRow';
   btnRow.innerHTML='<button class="btn-ko" id="bKo">✗&nbsp;&nbsp;À revoir</button>'+
     '<button class="btn-ok" id="bOk">✓&nbsp;&nbsp;Je savais !</button>';
-  actions.appendChild(btnRow);
+  root.appendChild(btnRow);
 
-  root.appendChild(actions);
-
-  // Bouton "Fin de la session libre" : visible uniquement en mode libre
-  if (isFree) {
-    var btnEndFree = document.createElement('button');
-    btnEndFree.className = 'btn-end-free';
-    btnEndFree.innerHTML = '🏁 <span>Fin de la session libre</span>';
-    root.appendChild(btnEndFree);
-    btnEndFree.onclick = function(){
-      if (app.session.total === 0) {
-        // Pas d'historique → retour à l'écran de sélection
-        app.screen = 'custom-select';
-        render();
-        return;
-      }
-      // Sinon → écran de fin avec les stats accumulées
-      app.screen = 'end';
-      render();
-    };
-  }
-
-  var cBody = document.getElementById('cBody');
-  var revealed = false;
-
-  function reveal(){
-    if (revealed) return;
-    cBody.classList.add('flipped');
-    btnReveal.classList.add('hidden');
-    revealed = true;
-    cBody.style.cursor = 'pointer';
-    // Retire complètement le bouton du DOM après le fade pour éviter tout
-    // résidu visuel (sur mobile, opacity 0 peut laisser une trace)
-    setTimeout(function(){
-      if (btnReveal && btnReveal.parentNode) btnReveal.parentNode.removeChild(btnReveal);
-    }, 200);
+  btnReveal.onclick=function(){
+    document.getElementById('cBody').classList.add('flipped');
+    btnReveal.style.display='none';
+    if(item.side==='name') playChordAudio(chord);
     setTimeout(function(){ document.getElementById('bRow').classList.add('vis'); }, 490);
-  }
-
-  btnReveal.onclick = reveal;
-
-  // Après reveal : tap sur la carte = toggle question/réponse
-  // (les boutons OK/KO restent visibles — pas de "triche" possible)
-  cBody.addEventListener('click', function(){
-    if (!revealed) return;
-    cBody.classList.toggle('flipped');
-  });
-
-  // Swipe gestures :
-  // - avant reveal : swipe gauche (ou droite) = révéler la réponse
-  // - après reveal : swipe gauche ou droite = toggle question/réponse
-  var sStartX = 0, sStartY = 0, sActive = false;
-  cBody.addEventListener('touchstart', function(e){
-    var t = e.changedTouches[0];
-    sStartX = t.clientX; sStartY = t.clientY; sActive = true;
-  }, { passive: true });
-  cBody.addEventListener('touchend', function(e){
-    if (!sActive) return;
-    sActive = false;
-    var t = e.changedTouches[0];
-    var dx = t.clientX - sStartX;
-    var dy = t.clientY - sStartY;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-      if (!revealed && dx < 0) {
-        reveal();
-      } else if (revealed) {
-        cBody.classList.toggle('flipped');
-      }
-    }
-  }, { passive: true });
+  };
 
   function advance(correct){
     var isSandbox = MODES[app.modeId] && MODES[app.modeId].sandboxCorrect;
@@ -1202,17 +1030,14 @@ function renderSession(root){
       playFail();
       app.session.streak=0;
     }
-    // Buffer anti-doublon : on garde les 2 derniers chordId
-    app.recentChordIds.push(item.chordId);
-    if (app.recentChordIds.length > 2) app.recentChordIds.shift();
+    app.lastChordId=item.chordId;
     app.session.total++;
     if(correct) app.session.correct++;
-    // Mode libre : pas de fin auto, l'utilisateur clique "Fin de la session libre"
-    if(!isSandbox && app.session.total>=SESSION_LENGTH){
-      app.streakResult = recordStreak();
+    if(app.session.total>=SESSION_LENGTH){
+      if(!isSandbox) app.streakResult = recordStreak();
       app.screen='end';
     } else {
-      app.item=nextItem(app.modeId, app.recentChordIds);
+      app.item=nextItem(app.modeId, item.chordId);
       app.screen='session';
     }
     render();
@@ -1232,20 +1057,16 @@ function renderEnd(root){
   div.className='end-screen fadein';
 
   var isSandbox = mode.sandboxCorrect;
-  var sessionTotal = isSandbox ? app.session.total : SESSION_LENGTH;
   var masteryBlock;
   if(isSandbox){
-    var errors = sessionTotal - correct;
-    var pctOk  = sessionTotal === 0 ? 0 : Math.round(correct / sessionTotal * 100);
+    var errors = SESSION_LENGTH - correct;
     masteryBlock =
       '<div class="end-sandbox-card">'+
-        '<div class="end-sandbox-title">✏️ Session libre — '+pctOk+'% de réussite</div>'+
+        '<div class="end-sandbox-title">✏️ Session libre</div>'+
         '<div class="end-sandbox-body">'+
-          (sessionTotal === 0
-            ? 'Tu n\'as répondu à aucune question — rien n\'a été enregistré.'
-            : (errors > 0
-                ? errors+' erreur'+(errors>1?'s':'')+' enregistrée'+(errors>1?'s':'')+' dans ta progression.<br>Les bonnes réponses ne comptent pas en mode libre — elles ne faussent pas ton score réel.'
-                : 'Aucune erreur — rien n\'a changé dans ta progression.<br>Lance un vrai mode pour que tes réussites comptent !'))+
+          (errors > 0
+            ? errors+' erreur'+(errors>1?'s':'')+' enregistrée'+(errors>1?'s':'')+' dans ta progression.<br>Les bonnes réponses ne comptent pas en mode libre — elles ne faussent pas ton score réel.'
+            : 'Aucune erreur — rien n\'a changé dans ta progression.<br>Lance un vrai mode pour que tes réussites comptent !')+
         '</div>'+
       '</div>';
   } else {
@@ -1268,9 +1089,9 @@ function renderEnd(root){
   div.innerHTML=
     '<div class="end-badge" style="'+badgeStyle+'">'+mode.icon+' '+mode.name+'</div>'+
     '<div class="end-score-wrap popin">'+
-      '<span class="end-emoji">'+sessionEmoji(correct, sessionTotal)+'</span>'+
-      '<div class="end-score">'+correct+'<span> / '+sessionTotal+'</span></div>'+
-      '<div class="end-label">'+sessionMsg(correct, sessionTotal)+'</div>'+
+      '<span class="end-emoji">'+sessionEmoji(correct)+'</span>'+
+      '<div class="end-score">'+correct+'<span> / '+SESSION_LENGTH+'</span></div>'+
+      '<div class="end-label">'+sessionMsg(correct)+'</div>'+
     '</div>'+
     masteryBlock+
     (function(){
@@ -1287,8 +1108,8 @@ function renderEnd(root){
       '</div>';
     }())+
     '<div class="end-btn-row">'+
-      '<button class="btn-home-end" id="bEndHome">'+ICON_HOME+'<span>Accueil</span></button>'+
-      '<button class="btn-replay" id="bReplay" style="background:'+mode.progColor+'">'+ICON_RELOAD+'<span>Rejouer</span></button>'+
+      '<button class="btn-home-end" id="bEndHome">⌂ Accueil</button>'+
+      '<button class="btn-replay" id="bReplay" style="background:'+mode.progColor+'">↺ Rejouer</button>'+
     '</div>';
   root.appendChild(div);
 
@@ -1299,184 +1120,110 @@ function renderEnd(root){
     }, 120);
   }
   // fanfare pour série parfaite
-  if(!isSandbox && correct===SESSION_LENGTH) setTimeout(function(){ playVictory(); }, 200);
+  if(correct===SESSION_LENGTH) setTimeout(function(){ playVictory(); }, 200);
 
-  document.getElementById('bEndHome').onclick=function(){ navHome(); };
+  document.getElementById('bEndHome').onclick=function(){ app.screen='home'; render(); };
   document.getElementById('bReplay').onclick=function(){
     if(app.modeId==='custom'){
       app.screen='custom-select'; render(); return;
     }
     var st0=getModeStats(app.modeId);
     app.session={ correct:0, total:0, masteryAtStart:st0.mastered, streak:0 };
-    app.item=nextItem(app.modeId, app.recentChordIds);
+    app.item=nextItem(app.modeId, app.lastChordId);
     app.screen='session';
     render();
   };
 }
 
-/* ── MODE PREVIEW ── */
-function renderModePreview(root){
-  var mode = MODES[app.modeId];
-  var chordIds = mode.chordIds;
-
-  var div = document.createElement('div');
-  div.className = 'preview-screen fadein';
-
-  var top = document.createElement('div');
-  top.className = 'preview-top';
-  top.innerHTML = '<button class="btn-nav-back" id="pBack" aria-label="Retour">'+ICON_BACK+'<span class="btn-nav-label">Retour</span></button>'+
-    '<h2 class="preview-h">'+mode.icon+' '+mode.name+'</h2>';
-  div.appendChild(top);
-
-  var sub = document.createElement('div');
-  sub.className = 'preview-sub';
-  sub.innerHTML = chordIds.length+' accords à réviser — appuie sur un diagramme pour l\'agrandir';
-  div.appendChild(sub);
-
-  var grid = document.createElement('div');
-  grid.className = 'preview-grid';
-  chordIds.forEach(function(id, idx){
-    var c = byId(id);
-    if(!c) return;
-    var item = document.createElement('div');
-    item.className = 'preview-item';
-    item.innerHTML = drawDiagram(c,'sm')+
-      '<div class="preview-name">'+c.name+
-        (c.sub ? '<br><span style="font-size:10px;font-style:italic;color:var(--muted)">'+c.sub+'</span>' : '')+
-      '</div>';
-    item.onclick = function(){
-      // Réutilise l'écran chord-detail (même animation Tinder, légende, boutons)
-      app.detailIds = chordIds.slice();
-      app.detailIdx = idx;
-      app.detailContext = 'mode-preview';
-      app.screen = 'chord-detail';
-      render();
-    };
-    grid.appendChild(item);
-  });
-  div.appendChild(grid);
-
-  var btn = document.createElement('button');
-  btn.className = 'btn-start-preview';
-  btn.style.background = mode.progColor;
-  btn.innerHTML = '<span>Démarrer la session</span>'+ICON_ARROW_RIGHT;
-  div.appendChild(btn);
-
-  root.appendChild(div);
-
-  document.getElementById('pBack').onclick = function(){ navBack(); };
-
-  btn.onclick = function(){
-    var st0 = getModeStats(app.modeId);
-    app.session = { correct:0, total:0, masteryAtStart:st0.mastered, streak:0 };
-    app.item = nextItem(app.modeId, app.recentChordIds);
-    app.screen = 'session';
-    render();
-  };
-}
 /* ── CUSTOM SELECT ── */
-var MIN_CUSTOM = 3;
+var MIN_CUSTOM = 5;
 function renderCustomSelect(root){
-  var sel = app.customChordIds.slice();
+  var sel = app.customChordIds.slice(); // working copy
 
-  var div=document.createElement('div');
-  div.className='sel-screen fadein';
+  function rebuild(){
+    root.innerHTML='';
+    var div=document.createElement('div');
+    div.className='sel-screen fadein';
 
-  // Top bar
-  var top=document.createElement('div');
-  top.className='sel-top';
-  top.innerHTML='<button class="btn-nav-back" id="sBk" aria-label="Retour">'+ICON_BACK+'<span class="btn-nav-label">Retour</span></button>'+
-    '<h2 class="ref-h">Session libre</h2>';
-  div.appendChild(top);
+    // Top bar
+    var top=document.createElement('div');
+    top.className='sel-top';
+    top.innerHTML='<button class="btn-circ" id="sBk">←</button>'+
+      '<h2 class="ref-h">Session personnalisée</h2>';
+    div.appendChild(top);
 
-  // Meta bar (count + actions) — refs gardées pour update in-place
-  var meta=document.createElement('div');
-  meta.className='sel-meta';
-  var countSpan = document.createElement('span');
-  var actions = document.createElement('div');
-  actions.className='sel-actions';
-  actions.innerHTML=
-    '<button class="btn-sel-link" id="sAll">Tout</button>'+
-    '<button class="btn-sel-link" id="sClear">Effacer</button>';
-  meta.appendChild(countSpan);
-  meta.appendChild(actions);
-  div.appendChild(meta);
-
-  // Grid — construite une seule fois, items mémorisés
-  var grid=document.createElement('div');
-  grid.className='sel-grid';
-  var itemEls = {}; // id → element
-  CHORDS.forEach(function(c){
-    var item=document.createElement('div');
-    item.className='sel-item';
-    item.innerHTML=
-      '<div class="sel-check">✓</div>'+
-      drawDiagram(c,'sm')+
-      '<div class="sel-item-name">'+c.name+
-        (c.sub?'<br><span style="font-size:9px;font-style:italic;color:var(--muted)">'+c.sub+'</span>':'')+
-      '</div>';
-    item.onclick=function(){
-      var idx=sel.indexOf(c.id);
-      if(idx===-1){ sel.push(c.id); item.classList.add('selected'); }
-      else        { sel.splice(idx,1); item.classList.remove('selected'); }
-      updateMeta();
-    };
-    itemEls[c.id] = item;
-    grid.appendChild(item);
-  });
-  div.appendChild(grid);
-
-  // Start button
-  var btnStart=document.createElement('button');
-  btnStart.className='btn-start-custom';
-  btnStart.innerHTML='<span>Démarrer</span>'+ICON_ARROW_RIGHT;
-  div.appendChild(btnStart);
-
-  // Sandbox note
-  var note=document.createElement('p');
-  note.className='custom-sandbox-note';
-  note.innerHTML='Session sans fin · Les erreurs affectent ta progression,<br>les bonnes réponses ne la modifient pas';
-  div.appendChild(note);
-
-  root.appendChild(div);
-
-  // Met à jour uniquement le compteur + le bouton (pas de rebuild de la grille)
-  function updateMeta(){
+    // Meta bar
     var n=sel.length;
     var cls = n>=MIN_CUSTOM?'ok':n>0?'warn':'bad';
-    countSpan.className = 'sel-count '+cls;
-    countSpan.textContent = n>=MIN_CUSTOM
+    var label = n>=MIN_CUSTOM
       ? n+' accord'+(n>1?'s':'')+' sélectionné'+(n>1?'s':'')+' ✓'
       : n+' / '+MIN_CUSTOM+' minimum';
-    btnStart.disabled = n < MIN_CUSTOM;
+    var meta=document.createElement('div');
+    meta.className='sel-meta';
+    meta.innerHTML=
+      '<span class="sel-count '+cls+'">'+label+'</span>'+
+      '<div class="sel-actions">'+
+        '<button class="btn-sel-link" id="sAll">Tout</button>'+
+        '<button class="btn-sel-link" id="sClear">Effacer</button>'+
+      '</div>';
+    div.appendChild(meta);
+
+    // Grid
+    var grid=document.createElement('div');
+    grid.className='sel-grid';
+    CHORDS.forEach(function(c){
+      var isSelected = sel.indexOf(c.id) !== -1;
+      var item=document.createElement('div');
+      item.className='sel-item'+(isSelected?' selected':'');
+      item.innerHTML=
+        '<div class="sel-check">✓</div>'+
+        drawDiagram(c,'sm')+
+        '<div class="sel-item-name">'+c.name+
+          (c.sub?'<br><span style="font-size:9px;font-style:italic;color:var(--muted)">'+c.sub+'</span>':'')+
+        '</div>';
+      item.onclick=function(){
+        var idx=sel.indexOf(c.id);
+        if(idx===-1) sel.push(c.id); else sel.splice(idx,1);
+        rebuild();
+      };
+      grid.appendChild(item);
+    });
+    div.appendChild(grid);
+
+    // Start button
+    var btnStart=document.createElement('button');
+    btnStart.className='btn-start-custom';
+    btnStart.textContent='Démarrer →';
+    btnStart.disabled = sel.length < MIN_CUSTOM;
+    div.appendChild(btnStart);
+
+    // Sandbox note
+    var note=document.createElement('p');
+    note.className='custom-sandbox-note';
+    note.innerHTML='Mode libre · Les erreurs affectent ta progression,<br>les bonnes réponses ne la modifient pas';
+    div.appendChild(note);
+
+    root.appendChild(div);
+
+    document.getElementById('sBk').onclick=function(){ app.screen='home'; render(); };
+    document.getElementById('sAll').onclick=function(){
+      sel=CHORDS.map(function(c){return c.id;}); rebuild();
+    };
+    document.getElementById('sClear').onclick=function(){ sel=[]; rebuild(); };
+
+    btnStart.onclick=function(){
+      if(sel.length < MIN_CUSTOM) return;
+      app.customChordIds = sel.slice();
+      saveCustomSel(app.customChordIds);
+      app.modeId='custom';
+      app.session={ correct:0, total:0, masteryAtStart:0, streak:0 };
+      app.item=nextItem('custom', app.lastChordId);
+      app.screen='session';
+      render();
+    };
   }
 
-  // Sync visuel initial depuis sel
-  sel.forEach(function(id){ if(itemEls[id]) itemEls[id].classList.add('selected'); });
-  updateMeta();
-
-  document.getElementById('sBk').onclick=function(){ navBack(); };
-  document.getElementById('sAll').onclick=function(){
-    sel = CHORDS.map(function(c){return c.id;});
-    CHORDS.forEach(function(c){ itemEls[c.id].classList.add('selected'); });
-    updateMeta();
-  };
-  document.getElementById('sClear').onclick=function(){
-    sel = [];
-    CHORDS.forEach(function(c){ itemEls[c.id].classList.remove('selected'); });
-    updateMeta();
-  };
-
-  btnStart.onclick=function(){
-    if(sel.length < MIN_CUSTOM) return;
-    app.customChordIds = sel.slice();
-    saveCustomSel(app.customChordIds);
-    app.modeId='custom';
-    app.session={ correct:0, total:0, masteryAtStart:0, streak:0 };
-    app.item=nextItem('custom', app.recentChordIds);
-    app.screen='session';
-    render();
-  };
+  rebuild();
 }
 
 /* ── REFERENCE ── */
@@ -1486,12 +1233,12 @@ function renderReference(root){
 
   var top=document.createElement('div');
   top.className='ref-top';
-  top.innerHTML='<button class="btn-nav-back" id="bBack" aria-label="Retour">'+ICON_BACK+'<span class="btn-nav-label">Retour</span></button><h2 class="ref-h">Tous les accords</h2>';
+  top.innerHTML='<button class="btn-circ" id="bBack">←</button><h2 class="ref-h">Tous les accords</h2>';
   div.appendChild(top);
 
   var sortBar=document.createElement('div');
   sortBar.className='sort-bar';
-  [['alpha','A–Z'],['best','⭐ Mieux maîtrisés'],['worst','⚠️ À travailler']].forEach(function(s){
+  [['alpha','A–Z'],['best','★ Mieux maîtrisés'],['worst','⚠ À travailler']].forEach(function(s){
     var b=document.createElement('button');
     b.className='sort-btn'+(app.refSort===s[0]?' active':'');
     b.textContent=s[1];
@@ -1520,7 +1267,6 @@ function renderReference(root){
     card.onclick = function(){
       app.detailIds  = sorted.map(function(x){ return x.id; });
       app.detailIdx  = idx;
-      app.detailContext = 'reference';
       app.screen     = 'chord-detail';
       render();
     };
@@ -1535,7 +1281,7 @@ function renderReference(root){
 
   root.innerHTML='';
   root.appendChild(div);
-  document.getElementById('bBack').onclick=function(){ navBack(); };
+  document.getElementById('bBack').onclick=function(){ app.screen='home'; render(); };
   document.getElementById('bReset').onclick=function(){
     if(confirm('Effacer toute la progression ? Cette action est irréversible.')){ resetSR(); render(); }
   };
@@ -1544,36 +1290,36 @@ function renderReference(root){
 /* ── CHORD DETAIL ── */
 function renderChordDetail(root){
   var ids = app.detailIds;
+  var idx = app.detailIdx;
+  var c   = byId(ids[idx]);
+  var m   = chordMastery(c.id);
+  var pct = Math.round(m*100);
+  var col = pct===100 ? '#12B558' : m>=0.75 ? '#7A9A35' : m>=0.4 ? '#C49225' : '#C04848';
+  var pctLabel = pct===100 ? '✔️' : pct+'%';
 
   var div=document.createElement('div');
   div.className='detail-screen fadein';
 
-  // ── Top (statique) ──
   var top=document.createElement('div');
   top.className='detail-top';
-  var counterSpan = document.createElement('span');
-  counterSpan.className = 'detail-counter';
-  // Titre : "Dictionnaire" depuis le référentiel, nom du mode depuis une preview
-  var title = 'Dictionnaire';
-  if (app.detailContext === 'mode-preview' && MODES[app.modeId]) {
-    title = MODES[app.modeId].icon + ' ' + MODES[app.modeId].name;
-  }
-  top.innerHTML =
-    '<button class="btn-nav-back" id="dBack" aria-label="Retour">'+ICON_BACK+'<span class="btn-nav-label">Retour</span></button>'+
-    '<h2 class="ref-h">'+title+'</h2>';
-  top.appendChild(counterSpan);
+  top.innerHTML=
+    '<button class="btn-circ" id="dBack">←</button>'+
+    '<h2 class="ref-h">Dictionnaire</h2>'+
+    '<span class="detail-counter">'+(idx+1)+' / '+ids.length+'</span>';
   div.appendChild(top);
 
-  // ── Card stack (effet deck) ──
-  var stack=document.createElement('div');
-  stack.className='detail-card-stack';
-  var currentCard=document.createElement('div');
-  currentCard.className='detail-card';
-  if (!_chordDetailNav) currentCard.classList.add('popin');
-  stack.appendChild(currentCard);
-  div.appendChild(stack);
+  var card=document.createElement('div');
+  card.className='detail-card popin';
+  card.innerHTML=
+    '<div class="detail-name">'+c.name+'</div>'+
+    (c.sub ? '<div class="detail-sub">'+c.sub+'</div>' : '')+
+    '<div class="detail-diag">'+drawDiagram(c,'lg')+'</div>'+
+    '<div class="detail-prog-row">'+
+      '<div class="detail-bar"><div class="detail-fill" style="width:'+pct+'%;background:'+col+'"></div></div>'+
+      '<div class="detail-pct">'+pctLabel+' maîtrisé</div>'+
+    '</div>';
+  div.appendChild(card);
 
-  // ── Légende (statique) ──
   var leg=document.createElement('div');
   leg.className='detail-legend';
   [['1','index'],['2','majeur'],['3','annulaire'],['4','auriculaire']].forEach(function(p){
@@ -1581,120 +1327,102 @@ function renderChordDetail(root){
   });
   div.appendChild(leg);
 
-  // ── Boutons prev/next (statiques, juste disabled qui change) ──
   var nav=document.createElement('div');
   nav.className='detail-nav';
   var bPrev=document.createElement('button');
   bPrev.className='btn-nav';
-  bPrev.innerHTML='<span class="btn-nav-ic prev">'+ICON_BACK+'</span><span>Précédent</span>';
+  bPrev.innerHTML='← Précédent';
+  bPrev.disabled=(idx===0);
   var bNext=document.createElement('button');
   bNext.className='btn-nav';
-  bNext.innerHTML='<span>Suivant</span><span class="btn-nav-ic next">'+ICON_ARROW_RIGHT+'</span>';
+  bNext.innerHTML='Suivant →';
+  bNext.disabled=(idx===ids.length-1);
   nav.appendChild(bPrev);
   nav.appendChild(bNext);
   div.appendChild(nav);
 
   root.appendChild(div);
 
-  // ── Helpers ──
-  function buildCardHTML(c){
-    var m = chordMastery(c.id);
-    var pct = Math.round(m*100);
-    var col = pct===100 ? '#12B558' : m>=0.75 ? '#7A9A35' : m>=0.4 ? '#C49225' : '#C04848';
-    var pctLabel = pct===100 ? '✔️' : pct+'%';
-    return '<div class="detail-name">'+c.name+'</div>'+
-      (c.sub ? '<div class="detail-sub">'+c.sub+'</div>' : '')+
-      '<div class="detail-diag">'+drawDiagram(c,'lg')+'</div>'+
-      '<div class="detail-prog-row">'+
-        '<div class="detail-bar"><div class="detail-fill" style="width:'+pct+'%;background:'+col+'"></div></div>'+
-        '<div class="detail-pct">'+pctLabel+' maîtrisé</div>'+
-      '</div>';
-  }
-  function syncUI(idx){
-    counterSpan.textContent = (idx+1)+' / '+ids.length;
-    bPrev.disabled = (idx === 0);
-    bNext.disabled = (idx === ids.length - 1);
-    if (_historyReady && history.state && history.state.screen === 'chord-detail') {
-      var st = Object.assign({}, history.state, { detailIdx: idx });
-      history.replaceState(st, '');
-    }
-  }
-
-  // ── Render initial du contenu ──
-  currentCard.innerHTML = buildCardHTML(byId(ids[app.detailIdx]));
-  syncUI(app.detailIdx);
-  _chordDetailNav = false;
-
-  // ── Navigation avec stack animation ──
-  var animating = false;
-  function navigateTo(newIdx, dir){
-    if (animating) return;
-    if (newIdx < 0 || newIdx >= ids.length) return;
-    animating = true;
-
-    app.detailIdx = newIdx;
-    var c = byId(ids[newIdx]);
-
-    // Nouvelle carte insérée derrière (grid stacking — pas d'absolute)
-    var newCard = document.createElement('div');
-    newCard.className = 'detail-card behind';
-    newCard.innerHTML = buildCardHTML(c);
-    stack.insertBefore(newCard, currentCard);
-
-    // Carte courante : monte en couche supérieure et part hors-cadre
-    currentCard.classList.remove('popin');
-    currentCard.classList.add('front-anim');
-    void currentCard.offsetWidth; // reflow
-    currentCard.classList.add(dir > 0 ? 'fly-out-left' : 'fly-out-right');
-
-    // Nouvelle carte : se met au premier plan
-    newCard.classList.remove('behind');
-    newCard.classList.add('coming-in');
-
-    syncUI(newIdx);
-
-    var oldCard = currentCard;
-    currentCard = newCard;
-
-    setTimeout(function(){
-      oldCard.remove();
-      currentCard.classList.remove('coming-in');
-      animating = false;
-    }, 460);
-  }
-
-  function goPrev(){ navigateTo(app.detailIdx - 1, -1); }
-  function goNext(){ navigateTo(app.detailIdx + 1,  1); }
-
-  // Swipe gestures
-  var touchStartX = 0, touchStartY = 0, touchActive = false;
-  stack.addEventListener('touchstart', function(e){
-    if (animating) return;
-    var t = e.changedTouches[0];
-    touchStartX = t.clientX; touchStartY = t.clientY; touchActive = true;
-  }, { passive: true });
-  stack.addEventListener('touchend', function(e){
-    if(!touchActive) return;
-    touchActive = false;
-    var t = e.changedTouches[0];
-    var dx = t.clientX - touchStartX;
-    var dy = t.clientY - touchStartY;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-      if (dx < 0) goNext();
-      else        goPrev();
-    }
-  }, { passive: true });
-
-  document.getElementById('dBack').onclick=function(){ navBack(); };
-  bPrev.onclick = goPrev;
-  bNext.onclick = goNext;
+  document.getElementById('dBack').onclick=function(){ app.screen='reference'; render(); };
+  bPrev.onclick=function(){ app.detailIdx=Math.max(0,idx-1); _chordDetailNav=true; render(); };
+  bNext.onclick=function(){ app.detailIdx=Math.min(ids.length-1,idx+1); _chordDetailNav=true; render(); };
 }
 
 render();
-history.replaceState({ screen: 'home', depth: 0 }, '');
+history.replaceState({ screen: 'home' }, '');
 _historyReady = true;
+
+/* ════════════════════════════════════════════════════════════
+   SERVICE WORKER + DÉTECTION MISE À JOUR
+   - Popup centrée bloquante, sans dismiss
+   - Affichée uniquement sur l'accueil (jamais pendant une session)
+   - Si update détectée pendant une session : attend le retour à l'accueil
+════════════════════════════════════════════════════════════ */
+var _updatePending  = false;  // true quand une nouvelle version est prête mais pas encore montrée
+var _updateShown    = false;  // true quand la popup est affichée → évite doublon
+var _reloading      = false;  // évite double reload si controllerchange + click simultanés
+
+function showUpdatePopup() {
+  if (_updateShown) return;
+  _updateShown = true;
+  var overlay = document.createElement('div');
+  overlay.className = 'update-overlay';
+  overlay.id = 'updateOverlay';
+  overlay.innerHTML =
+    '<div class="update-popup">'+
+      '<div class="update-popup-icon">🪕</div>'+
+      '<div class="update-popup-title">Nouvelle version disponible</div>'+
+      '<div class="update-popup-body">Une mise à jour de l\'app est prête.</div>'+
+      '<button class="update-popup-btn" id="updateBtn">Actualiser maintenant</button>'+
+    '</div>';
+  document.body.appendChild(overlay);
+  document.getElementById('updateBtn').onclick = function() {
+    if (_reloading) return;
+    _reloading = true;
+    // skipWaiting() est déjà dans sw.js → le nouveau SW prend le contrôle dès l'install.
+    // controllerchange déclenchera le reload, mais on force aussi ici en filet de sécurité.
+    window.location.reload();
+  };
+}
+
+// Tente d'afficher la popup si pertinent : update prête + sur l'accueil
+function maybeShowUpdate() {
+  if (_updatePending && !_updateShown && app.screen === 'home') {
+    showUpdatePopup();
+  }
+}
+
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() { navigator.serviceWorker.register('./sw.js'); });
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./sw.js').then(function(reg) {
+      // Détecter qu'un nouveau SW est en cours d'installation
+      reg.addEventListener('updatefound', function() {
+        var newSW = reg.installing;
+        if (!newSW) return;
+        newSW.addEventListener('statechange', function() {
+          // Nouveau SW installé ET un ancien existait → vraie mise à jour (pas premier install)
+          if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
+            _updatePending = true;
+            maybeShowUpdate();
+          }
+        });
+      });
+    });
+
+    // Re-check des updates au focus de la fenêtre (utile pour PWA gardée ouverte plusieurs jours)
+    window.addEventListener('focus', function() {
+      navigator.serviceWorker.getRegistration().then(function(reg) {
+        if (reg) reg.update();
+      });
+    });
+  });
+
+  // Quand le nouveau SW prend le contrôle → reload pour servir les nouveaux assets
+  navigator.serviceWorker.addEventListener('controllerchange', function() {
+    if (_reloading) return;
+    _reloading = true;
+    window.location.reload();
+  });
 }
 </script>
 </body>
