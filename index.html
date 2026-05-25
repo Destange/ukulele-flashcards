@@ -52,8 +52,6 @@
     .header { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
     .header-title { font-family: 'Playfair Display', serif; font-size: 19px; letter-spacing: -0.3px; }
     .header-title b { color: var(--accent); font-weight: 700; }
-    .btn-ghost { font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 500; color: var(--accent); background: var(--accent-light); border: none; padding: 7px 14px; border-radius: 20px; cursor: pointer; transition: opacity .15s; }
-    .btn-ghost:hover { opacity: .72; }
 
     /* SESSION PROGRESS */
     .prog-wrap { width: 100%; margin-bottom: 18px; }
@@ -80,7 +78,6 @@
     .chord-big.md { font-size: 110px; letter-spacing: -3px; }
     .chord-big.sm { font-size: 84px; letter-spacing: -2px; }
     .chord-sub { font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; color: var(--muted); margin-top: 6px; letter-spacing: 0; text-align: center; }
-    .card-hint { font-size: 13px; color: var(--muted); margin-top: 10px; text-align: center; font-weight: 300; }
     .diag-holder svg { width: 200px; height: auto; }
 
     /* BUTTONS */
@@ -139,8 +136,6 @@
     .mode-stat-n.comp { color: var(--mode-comp); }
     .mode-stat-n.all  { color: var(--mode-all); }
     .mode-stat-l { font-size: 10px; color: var(--muted); }
-    .btn-ref-link { background: none; border: none; font-family: 'Outfit', sans-serif; font-size: 14px; color: var(--muted); cursor: pointer; padding: 8px; text-decoration: underline; text-decoration-color: var(--border); }
-    .btn-ref-link:hover { color: var(--text); }
     .home-links { display: flex; flex-direction: column; gap: 8px; width: 100%; margin-top: 4px; }
     .home-action-btn { width: 100%; display: flex; align-items: center; gap: 12px; background: var(--card); border: 1.5px solid var(--border); border-radius: 14px; padding: 14px 18px; cursor: pointer; font-family: 'Outfit', sans-serif; transition: border-color .15s, box-shadow .15s, transform .1s; text-align: left; }
     .home-action-btn:hover { border-color: var(--accent); box-shadow: 0 3px 14px rgba(184,92,42,.12); transform: translateY(-1px); }
@@ -179,7 +174,6 @@
     .end-mastery-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .end-m-val { font-family: 'Playfair Display', serif; font-size: 30px; white-space: nowrap; }
     .end-m-val .slash { font-size: 18px; color: var(--muted); }
-    .end-m-arrow { font-size: 18px; color: var(--muted); }
     .end-m-delta { font-size: 13px; font-weight: 500; }
     .end-m-delta.up   { color: var(--correct); }
     .end-m-delta.same { color: var(--muted); }
@@ -204,11 +198,6 @@
     .btn-nav-back:active, .btn-nav-home:active { transform: scale(.96); }
     .btn-nav-back svg, .btn-nav-home svg { width: 20px; height: 20px; flex-shrink: 0; }
     .btn-nav-label { line-height: 1; }
-    /* Variante compacte (ronde) pour les écrans étroits / sans label */
-    .btn-circ { width: 44px; height: 44px; flex-shrink: 0; background: var(--card); border: 1.5px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .12s, border-color .12s, transform .1s; box-shadow: 0 1px 3px rgba(0,0,0,.04); -webkit-tap-highlight-color: transparent; }
-    .btn-circ:hover { background: var(--accent-light); border-color: var(--accent); }
-    .btn-circ:active { transform: scale(.94); }
-    .btn-circ svg { width: 20px; height: 20px; }
     @media (max-width: 360px) {
       .btn-nav-back .btn-nav-label, .btn-nav-home .btn-nav-label { display: none; }
       .btn-nav-back, .btn-nav-home { width: 44px; padding: 0; justify-content: center; border-radius: 50%; }
@@ -304,10 +293,6 @@
     .fadein { animation: fadeUp .32s ease forwards; }
     @keyframes popIn { from { opacity: 0; transform: scale(.88); } to { opacity: 1; transform: scale(1); } }
     .popin { animation: popIn .4s cubic-bezier(.34,1.56,.64,1) forwards; }
-    @keyframes slideInLeft  { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes slideInRight { from { opacity: 0; transform: translateX( 24px); } to { opacity: 1; transform: translateX(0); } }
-    .slide-in-left  { animation: slideInLeft  .22s ease-out forwards; }
-    .slide-in-right { animation: slideInRight .22s ease-out forwards; }
 
     /* ── Stack chord-detail (effet "deck" type Tinder) ── */
     /* Grid stacking : les deux cartes restent dans le flow, hauteur stable */
@@ -328,7 +313,7 @@
 </head>
 <body>
 <div id="app"></div>
-<footer class="app-footer">Réalisé par <a href="https://www.instagram.com/juliendestange/" target="_blank" rel="noopener" class="footer-link">Julien Destange</a> · v3.22</footer>
+<footer class="app-footer">Réalisé par <a href="https://www.instagram.com/juliendestange/" target="_blank" rel="noopener" class="footer-link">Julien Destange</a> · v3.23</footer>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ══════════════════════════════════════════
    SVG ICONS (Lucide-style, trait 2.5px)
@@ -864,7 +849,6 @@ function importProgress(file) {
 ══════════════════════════════════════════ */
 var _historyReady = false;
 var _chordDetailNav = false;
-var _chordDetailDir = 0; // -1 = prev, +1 = next, 0 = entry
 
 function _doRender(root){
   if     (app.screen==='home')          renderHome(root);
@@ -1002,7 +986,7 @@ function renderHome(root){
   div.className='home fadein';
   div.innerHTML='<div class="home-icon">🎵</div>'+
     '<h1 class="home-h1">Premiers Accords<br><em>Ukulélé</em></h1>'+
-    '<p class="home-sub">Mémorise tes accords avec la répétition espacée<br>Sessions de '+SESSION_LENGTH+' questions</p>'+
+    '<p class="home-sub">Mémorise tes accords avec la répétition espacée<br>'+SESSION_LENGTH+' questions par session — ou choisis le mode Libre</p>'+
     (function(){ var sk=loadStreak(); if(!sk.lastTs) return ''; return sk.count>=2 ? '<div class="streak-home active">🔥 '+sk.count+' jours de suite</div>' : '<div class="streak-home cold">🔥 Lance ta série !</div>'; }())+
     '<div class="mode-cards" id="modeCards"></div>'+
     '<div class="home-links">'+
@@ -1640,7 +1624,6 @@ function renderChordDetail(root){
   currentCard.innerHTML = buildCardHTML(byId(ids[app.detailIdx]));
   syncUI(app.detailIdx);
   _chordDetailNav = false;
-  _chordDetailDir = 0;
 
   // ── Navigation avec stack animation ──
   var animating = false;
@@ -1659,7 +1642,7 @@ function renderChordDetail(root){
     stack.insertBefore(newCard, currentCard);
 
     // Carte courante : monte en couche supérieure et part hors-cadre
-    currentCard.classList.remove('popin','slide-in-left','slide-in-right');
+    currentCard.classList.remove('popin');
     currentCard.classList.add('front-anim');
     void currentCard.offsetWidth; // reflow
     currentCard.classList.add(dir > 0 ? 'fly-out-left' : 'fly-out-right');
