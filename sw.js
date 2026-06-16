@@ -1,9 +1,10 @@
-var CACHE = 'ukulele-v3.24';
+// CACHE_NAME : compteur INDEPENDANT, +1 a chaque deploiement (ne suit PAS VERSION)
+var CACHE_NAME = 'ukulele-v1';
 var ASSETS = ['./', './manifest.json', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', function(e) {
   e.waitUntil(
-    caches.open(CACHE).then(function(c) { return c.addAll(ASSETS); })
+    caches.open(CACHE_NAME).then(function(c) { return c.addAll(ASSETS); })
   );
   self.skipWaiting();
 });
@@ -11,7 +12,7 @@ self.addEventListener('install', function(e) {
 self.addEventListener('activate', function(e) {
   e.waitUntil(
     caches.keys().then(function(keys) {
-      return Promise.all(keys.filter(function(k) { return k !== CACHE; }).map(function(k) { return caches.delete(k); }));
+      return Promise.all(keys.filter(function(k) { return k !== CACHE_NAME; }).map(function(k) { return caches.delete(k); }));
     })
   );
   self.clients.claim();
@@ -24,7 +25,7 @@ self.addEventListener('fetch', function(e) {
     caches.match(e.request).then(function(cached) {
       return cached || fetch(e.request).then(function(resp) {
         var clone = resp.clone();
-        caches.open(CACHE).then(function(c) { c.put(e.request, clone); });
+        caches.open(CACHE_NAME).then(function(c) { c.put(e.request, clone); });
         return resp;
       });
     })
