@@ -426,6 +426,28 @@
     #appSplash .splash-title em{color:var(--accent);font-style:italic;}
     #appSplash.splash-hide{opacity:0;pointer-events:none;}
     @keyframes splashPop{from{opacity:0;transform:scale(.86)}to{opacity:1;transform:scale(1)}}
+
+    /* ════════ ACCORDEUR v2 (cadran) ════════ */
+    .tuner-strings{display:flex;justify-content:center;gap:8px;margin-bottom:10px;}
+    .tuner-chip{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:52px;height:52px;border-radius:14px;border:1.5px solid var(--border);background:var(--card);color:var(--muted);transition:border-color .15s,background .15s,color .15s,transform .15s;}
+    .tuner-chip .chip-l{font-family:'Playfair Display',serif;font-size:18px;line-height:1;}
+    .tuner-chip .chip-fr{font-family:'Outfit',sans-serif;font-size:9px;text-transform:uppercase;letter-spacing:.5px;margin-top:2px;opacity:.85;}
+    .tuner-chip.active{border-color:var(--accent);color:var(--accent);background:var(--accent-light);transform:translateY(-2px);}
+    .tuner-chip.done{border-color:var(--correct);background:var(--correct);color:#fff;}
+    .tuner-chip.done .chip-fr::before{content:'✓ ';}
+    .tuner-dial{width:100%;max-width:280px;margin:2px auto 0;}
+    .tuner-svg{width:100%;height:auto;display:block;overflow:visible;}
+    .tuner-arc{fill:none;stroke:var(--border);stroke-width:7;stroke-linecap:round;}
+    .tuner-arc-ok{fill:none;stroke:var(--correct);stroke-width:7;stroke-linecap:round;opacity:.5;}
+    .tuner-tick{stroke:var(--muted);stroke-width:2;stroke-linecap:round;opacity:.45;}
+    .tuner-needle{stroke:var(--accent);stroke-width:3.5;stroke-linecap:round;}
+    .tuner-needle.ok{stroke:var(--correct);}
+    .tuner-hub{fill:var(--accent);}
+    .tuner-note{font-family:'Playfair Display',serif;font-size:48px;line-height:1;text-align:center;margin-top:-4px;color:var(--text);transition:color .15s;min-height:48px;}
+    .tuner-note.ok{color:var(--correct);}
+    .tuner-cents{font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;text-align:center;color:var(--muted);min-height:20px;margin-top:6px;}
+    .tuner-cents.ok{color:var(--correct);font-weight:600;}
+    .tuner-freq{font-size:12px;color:var(--muted);font-weight:300;text-align:center;margin-top:2px;min-height:16px;}
   </style>
 </head>
 <body>
@@ -434,7 +456,7 @@
 <div id="obQrSrc" style="display:none"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 202 202"  preserveAspectRatio="xMinYMin meet"><rect width="100%" height="100%" fill="white" cx="0" cy="0"/><path d="M2,2l6,0 0,6 -6,0 0,-6z M8,2l6,0 0,6 -6,0 0,-6z M14,2l6,0 0,6 -6,0 0,-6z M20,2l6,0 0,6 -6,0 0,-6z M26,2l6,0 0,6 -6,0 0,-6z M32,2l6,0 0,6 -6,0 0,-6z M38,2l6,0 0,6 -6,0 0,-6z M56,2l6,0 0,6 -6,0 0,-6z M68,2l6,0 0,6 -6,0 0,-6z M80,2l6,0 0,6 -6,0 0,-6z M86,2l6,0 0,6 -6,0 0,-6z M98,2l6,0 0,6 -6,0 0,-6z M104,2l6,0 0,6 -6,0 0,-6z M116,2l6,0 0,6 -6,0 0,-6z M122,2l6,0 0,6 -6,0 0,-6z M128,2l6,0 0,6 -6,0 0,-6z M140,2l6,0 0,6 -6,0 0,-6z M158,2l6,0 0,6 -6,0 0,-6z M164,2l6,0 0,6 -6,0 0,-6z M170,2l6,0 0,6 -6,0 0,-6z M176,2l6,0 0,6 -6,0 0,-6z M182,2l6,0 0,6 -6,0 0,-6z M188,2l6,0 0,6 -6,0 0,-6z M194,2l6,0 0,6 -6,0 0,-6z M2,8l6,0 0,6 -6,0 0,-6z M38,8l6,0 0,6 -6,0 0,-6z M62,8l6,0 0,6 -6,0 0,-6z M80,8l6,0 0,6 -6,0 0,-6z M86,8l6,0 0,6 -6,0 0,-6z M92,8l6,0 0,6 -6,0 0,-6z M98,8l6,0 0,6 -6,0 0,-6z M104,8l6,0 0,6 -6,0 0,-6z M158,8l6,0 0,6 -6,0 0,-6z M194,8l6,0 0,6 -6,0 0,-6z M2,14l6,0 0,6 -6,0 0,-6z M14,14l6,0 0,6 -6,0 0,-6z M20,14l6,0 0,6 -6,0 0,-6z M26,14l6,0 0,6 -6,0 0,-6z M38,14l6,0 0,6 -6,0 0,-6z M50,14l6,0 0,6 -6,0 0,-6z M80,14l6,0 0,6 -6,0 0,-6z M104,14l6,0 0,6 -6,0 0,-6z M110,14l6,0 0,6 -6,0 0,-6z M128,14l6,0 0,6 -6,0 0,-6z M134,14l6,0 0,6 -6,0 0,-6z M146,14l6,0 0,6 -6,0 0,-6z M158,14l6,0 0,6 -6,0 0,-6z M170,14l6,0 0,6 -6,0 0,-6z M176,14l6,0 0,6 -6,0 0,-6z M182,14l6,0 0,6 -6,0 0,-6z M194,14l6,0 0,6 -6,0 0,-6z M2,20l6,0 0,6 -6,0 0,-6z M14,20l6,0 0,6 -6,0 0,-6z M20,20l6,0 0,6 -6,0 0,-6z M26,20l6,0 0,6 -6,0 0,-6z M38,20l6,0 0,6 -6,0 0,-6z M50,20l6,0 0,6 -6,0 0,-6z M62,20l6,0 0,6 -6,0 0,-6z M68,20l6,0 0,6 -6,0 0,-6z M74,20l6,0 0,6 -6,0 0,-6z M86,20l6,0 0,6 -6,0 0,-6z M98,20l6,0 0,6 -6,0 0,-6z M116,20l6,0 0,6 -6,0 0,-6z M122,20l6,0 0,6 -6,0 0,-6z M158,20l6,0 0,6 -6,0 0,-6z M170,20l6,0 0,6 -6,0 0,-6z M176,20l6,0 0,6 -6,0 0,-6z M182,20l6,0 0,6 -6,0 0,-6z M194,20l6,0 0,6 -6,0 0,-6z M2,26l6,0 0,6 -6,0 0,-6z M14,26l6,0 0,6 -6,0 0,-6z M20,26l6,0 0,6 -6,0 0,-6z M26,26l6,0 0,6 -6,0 0,-6z M38,26l6,0 0,6 -6,0 0,-6z M50,26l6,0 0,6 -6,0 0,-6z M56,26l6,0 0,6 -6,0 0,-6z M62,26l6,0 0,6 -6,0 0,-6z M68,26l6,0 0,6 -6,0 0,-6z M92,26l6,0 0,6 -6,0 0,-6z M110,26l6,0 0,6 -6,0 0,-6z M140,26l6,0 0,6 -6,0 0,-6z M158,26l6,0 0,6 -6,0 0,-6z M170,26l6,0 0,6 -6,0 0,-6z M176,26l6,0 0,6 -6,0 0,-6z M182,26l6,0 0,6 -6,0 0,-6z M194,26l6,0 0,6 -6,0 0,-6z M2,32l6,0 0,6 -6,0 0,-6z M38,32l6,0 0,6 -6,0 0,-6z M50,32l6,0 0,6 -6,0 0,-6z M62,32l6,0 0,6 -6,0 0,-6z M68,32l6,0 0,6 -6,0 0,-6z M74,32l6,0 0,6 -6,0 0,-6z M86,32l6,0 0,6 -6,0 0,-6z M92,32l6,0 0,6 -6,0 0,-6z M98,32l6,0 0,6 -6,0 0,-6z M122,32l6,0 0,6 -6,0 0,-6z M134,32l6,0 0,6 -6,0 0,-6z M146,32l6,0 0,6 -6,0 0,-6z M158,32l6,0 0,6 -6,0 0,-6z M194,32l6,0 0,6 -6,0 0,-6z M2,38l6,0 0,6 -6,0 0,-6z M8,38l6,0 0,6 -6,0 0,-6z M14,38l6,0 0,6 -6,0 0,-6z M20,38l6,0 0,6 -6,0 0,-6z M26,38l6,0 0,6 -6,0 0,-6z M32,38l6,0 0,6 -6,0 0,-6z M38,38l6,0 0,6 -6,0 0,-6z M50,38l6,0 0,6 -6,0 0,-6z M62,38l6,0 0,6 -6,0 0,-6z M74,38l6,0 0,6 -6,0 0,-6z M86,38l6,0 0,6 -6,0 0,-6z M98,38l6,0 0,6 -6,0 0,-6z M110,38l6,0 0,6 -6,0 0,-6z M122,38l6,0 0,6 -6,0 0,-6z M134,38l6,0 0,6 -6,0 0,-6z M146,38l6,0 0,6 -6,0 0,-6z M158,38l6,0 0,6 -6,0 0,-6z M164,38l6,0 0,6 -6,0 0,-6z M170,38l6,0 0,6 -6,0 0,-6z M176,38l6,0 0,6 -6,0 0,-6z M182,38l6,0 0,6 -6,0 0,-6z M188,38l6,0 0,6 -6,0 0,-6z M194,38l6,0 0,6 -6,0 0,-6z M50,44l6,0 0,6 -6,0 0,-6z M56,44l6,0 0,6 -6,0 0,-6z M62,44l6,0 0,6 -6,0 0,-6z M74,44l6,0 0,6 -6,0 0,-6z M86,44l6,0 0,6 -6,0 0,-6z M92,44l6,0 0,6 -6,0 0,-6z M128,44l6,0 0,6 -6,0 0,-6z M2,50l6,0 0,6 -6,0 0,-6z M14,50l6,0 0,6 -6,0 0,-6z M20,50l6,0 0,6 -6,0 0,-6z M26,50l6,0 0,6 -6,0 0,-6z M32,50l6,0 0,6 -6,0 0,-6z M38,50l6,0 0,6 -6,0 0,-6z M56,50l6,0 0,6 -6,0 0,-6z M74,50l6,0 0,6 -6,0 0,-6z M80,50l6,0 0,6 -6,0 0,-6z M86,50l6,0 0,6 -6,0 0,-6z M92,50l6,0 0,6 -6,0 0,-6z M104,50l6,0 0,6 -6,0 0,-6z M134,50l6,0 0,6 -6,0 0,-6z M146,50l6,0 0,6 -6,0 0,-6z M158,50l6,0 0,6 -6,0 0,-6z M164,50l6,0 0,6 -6,0 0,-6z M170,50l6,0 0,6 -6,0 0,-6z M176,50l6,0 0,6 -6,0 0,-6z M182,50l6,0 0,6 -6,0 0,-6z M2,56l6,0 0,6 -6,0 0,-6z M20,56l6,0 0,6 -6,0 0,-6z M26,56l6,0 0,6 -6,0 0,-6z M50,56l6,0 0,6 -6,0 0,-6z M62,56l6,0 0,6 -6,0 0,-6z M74,56l6,0 0,6 -6,0 0,-6z M98,56l6,0 0,6 -6,0 0,-6z M110,56l6,0 0,6 -6,0 0,-6z M116,56l6,0 0,6 -6,0 0,-6z M122,56l6,0 0,6 -6,0 0,-6z M140,56l6,0 0,6 -6,0 0,-6z M158,56l6,0 0,6 -6,0 0,-6z M164,56l6,0 0,6 -6,0 0,-6z M176,56l6,0 0,6 -6,0 0,-6z M182,56l6,0 0,6 -6,0 0,-6z M194,56l6,0 0,6 -6,0 0,-6z M2,62l6,0 0,6 -6,0 0,-6z M8,62l6,0 0,6 -6,0 0,-6z M26,62l6,0 0,6 -6,0 0,-6z M32,62l6,0 0,6 -6,0 0,-6z M38,62l6,0 0,6 -6,0 0,-6z M56,62l6,0 0,6 -6,0 0,-6z M92,62l6,0 0,6 -6,0 0,-6z M98,62l6,0 0,6 -6,0 0,-6z M110,62l6,0 0,6 -6,0 0,-6z M134,62l6,0 0,6 -6,0 0,-6z M146,62l6,0 0,6 -6,0 0,-6z M170,62l6,0 0,6 -6,0 0,-6z M182,62l6,0 0,6 -6,0 0,-6z M188,62l6,0 0,6 -6,0 0,-6z M14,68l6,0 0,6 -6,0 0,-6z M50,68l6,0 0,6 -6,0 0,-6z M56,68l6,0 0,6 -6,0 0,-6z M62,68l6,0 0,6 -6,0 0,-6z M68,68l6,0 0,6 -6,0 0,-6z M74,68l6,0 0,6 -6,0 0,-6z M86,68l6,0 0,6 -6,0 0,-6z M92,68l6,0 0,6 -6,0 0,-6z M98,68l6,0 0,6 -6,0 0,-6z M122,68l6,0 0,6 -6,0 0,-6z M128,68l6,0 0,6 -6,0 0,-6z M134,68l6,0 0,6 -6,0 0,-6z M152,68l6,0 0,6 -6,0 0,-6z M158,68l6,0 0,6 -6,0 0,-6z M170,68l6,0 0,6 -6,0 0,-6z M176,68l6,0 0,6 -6,0 0,-6z M182,68l6,0 0,6 -6,0 0,-6z M20,74l6,0 0,6 -6,0 0,-6z M32,74l6,0 0,6 -6,0 0,-6z M38,74l6,0 0,6 -6,0 0,-6z M62,74l6,0 0,6 -6,0 0,-6z M92,74l6,0 0,6 -6,0 0,-6z M110,74l6,0 0,6 -6,0 0,-6z M128,74l6,0 0,6 -6,0 0,-6z M146,74l6,0 0,6 -6,0 0,-6z M152,74l6,0 0,6 -6,0 0,-6z M170,74l6,0 0,6 -6,0 0,-6z M176,74l6,0 0,6 -6,0 0,-6z M188,74l6,0 0,6 -6,0 0,-6z M194,74l6,0 0,6 -6,0 0,-6z M14,80l6,0 0,6 -6,0 0,-6z M20,80l6,0 0,6 -6,0 0,-6z M44,80l6,0 0,6 -6,0 0,-6z M68,80l6,0 0,6 -6,0 0,-6z M80,80l6,0 0,6 -6,0 0,-6z M86,80l6,0 0,6 -6,0 0,-6z M92,80l6,0 0,6 -6,0 0,-6z M98,80l6,0 0,6 -6,0 0,-6z M122,80l6,0 0,6 -6,0 0,-6z M128,80l6,0 0,6 -6,0 0,-6z M140,80l6,0 0,6 -6,0 0,-6z M158,80l6,0 0,6 -6,0 0,-6z M176,80l6,0 0,6 -6,0 0,-6z M182,80l6,0 0,6 -6,0 0,-6z M188,80l6,0 0,6 -6,0 0,-6z M194,80l6,0 0,6 -6,0 0,-6z M2,86l6,0 0,6 -6,0 0,-6z M14,86l6,0 0,6 -6,0 0,-6z M26,86l6,0 0,6 -6,0 0,-6z M32,86l6,0 0,6 -6,0 0,-6z M38,86l6,0 0,6 -6,0 0,-6z M44,86l6,0 0,6 -6,0 0,-6z M80,86l6,0 0,6 -6,0 0,-6z M104,86l6,0 0,6 -6,0 0,-6z M110,86l6,0 0,6 -6,0 0,-6z M116,86l6,0 0,6 -6,0 0,-6z M134,86l6,0 0,6 -6,0 0,-6z M146,86l6,0 0,6 -6,0 0,-6z M152,86l6,0 0,6 -6,0 0,-6z M158,86l6,0 0,6 -6,0 0,-6z M176,86l6,0 0,6 -6,0 0,-6z M182,86l6,0 0,6 -6,0 0,-6z M188,86l6,0 0,6 -6,0 0,-6z M8,92l6,0 0,6 -6,0 0,-6z M32,92l6,0 0,6 -6,0 0,-6z M56,92l6,0 0,6 -6,0 0,-6z M68,92l6,0 0,6 -6,0 0,-6z M86,92l6,0 0,6 -6,0 0,-6z M98,92l6,0 0,6 -6,0 0,-6z M110,92l6,0 0,6 -6,0 0,-6z M116,92l6,0 0,6 -6,0 0,-6z M122,92l6,0 0,6 -6,0 0,-6z M128,92l6,0 0,6 -6,0 0,-6z M134,92l6,0 0,6 -6,0 0,-6z M140,92l6,0 0,6 -6,0 0,-6z M146,92l6,0 0,6 -6,0 0,-6z M152,92l6,0 0,6 -6,0 0,-6z M158,92l6,0 0,6 -6,0 0,-6z M164,92l6,0 0,6 -6,0 0,-6z M182,92l6,0 0,6 -6,0 0,-6z M2,98l6,0 0,6 -6,0 0,-6z M8,98l6,0 0,6 -6,0 0,-6z M14,98l6,0 0,6 -6,0 0,-6z M32,98l6,0 0,6 -6,0 0,-6z M38,98l6,0 0,6 -6,0 0,-6z M44,98l6,0 0,6 -6,0 0,-6z M50,98l6,0 0,6 -6,0 0,-6z M62,98l6,0 0,6 -6,0 0,-6z M98,98l6,0 0,6 -6,0 0,-6z M104,98l6,0 0,6 -6,0 0,-6z M110,98l6,0 0,6 -6,0 0,-6z M116,98l6,0 0,6 -6,0 0,-6z M122,98l6,0 0,6 -6,0 0,-6z M134,98l6,0 0,6 -6,0 0,-6z M152,98l6,0 0,6 -6,0 0,-6z M164,98l6,0 0,6 -6,0 0,-6z M170,98l6,0 0,6 -6,0 0,-6z M194,98l6,0 0,6 -6,0 0,-6z M2,104l6,0 0,6 -6,0 0,-6z M8,104l6,0 0,6 -6,0 0,-6z M20,104l6,0 0,6 -6,0 0,-6z M56,104l6,0 0,6 -6,0 0,-6z M68,104l6,0 0,6 -6,0 0,-6z M86,104l6,0 0,6 -6,0 0,-6z M98,104l6,0 0,6 -6,0 0,-6z M104,104l6,0 0,6 -6,0 0,-6z M110,104l6,0 0,6 -6,0 0,-6z M116,104l6,0 0,6 -6,0 0,-6z M122,104l6,0 0,6 -6,0 0,-6z M140,104l6,0 0,6 -6,0 0,-6z M158,104l6,0 0,6 -6,0 0,-6z M164,104l6,0 0,6 -6,0 0,-6z M176,104l6,0 0,6 -6,0 0,-6z M182,104l6,0 0,6 -6,0 0,-6z M194,104l6,0 0,6 -6,0 0,-6z M8,110l6,0 0,6 -6,0 0,-6z M14,110l6,0 0,6 -6,0 0,-6z M20,110l6,0 0,6 -6,0 0,-6z M26,110l6,0 0,6 -6,0 0,-6z M38,110l6,0 0,6 -6,0 0,-6z M44,110l6,0 0,6 -6,0 0,-6z M50,110l6,0 0,6 -6,0 0,-6z M56,110l6,0 0,6 -6,0 0,-6z M62,110l6,0 0,6 -6,0 0,-6z M80,110l6,0 0,6 -6,0 0,-6z M86,110l6,0 0,6 -6,0 0,-6z M92,110l6,0 0,6 -6,0 0,-6z M98,110l6,0 0,6 -6,0 0,-6z M104,110l6,0 0,6 -6,0 0,-6z M122,110l6,0 0,6 -6,0 0,-6z M134,110l6,0 0,6 -6,0 0,-6z M158,110l6,0 0,6 -6,0 0,-6z M164,110l6,0 0,6 -6,0 0,-6z M170,110l6,0 0,6 -6,0 0,-6z M182,110l6,0 0,6 -6,0 0,-6z M188,110l6,0 0,6 -6,0 0,-6z M2,116l6,0 0,6 -6,0 0,-6z M20,116l6,0 0,6 -6,0 0,-6z M26,116l6,0 0,6 -6,0 0,-6z M44,116l6,0 0,6 -6,0 0,-6z M56,116l6,0 0,6 -6,0 0,-6z M80,116l6,0 0,6 -6,0 0,-6z M86,116l6,0 0,6 -6,0 0,-6z M98,116l6,0 0,6 -6,0 0,-6z M104,116l6,0 0,6 -6,0 0,-6z M110,116l6,0 0,6 -6,0 0,-6z M140,116l6,0 0,6 -6,0 0,-6z M146,116l6,0 0,6 -6,0 0,-6z M164,116l6,0 0,6 -6,0 0,-6z M170,116l6,0 0,6 -6,0 0,-6z M176,116l6,0 0,6 -6,0 0,-6z M182,116l6,0 0,6 -6,0 0,-6z M188,116l6,0 0,6 -6,0 0,-6z M14,122l6,0 0,6 -6,0 0,-6z M26,122l6,0 0,6 -6,0 0,-6z M32,122l6,0 0,6 -6,0 0,-6z M38,122l6,0 0,6 -6,0 0,-6z M44,122l6,0 0,6 -6,0 0,-6z M62,122l6,0 0,6 -6,0 0,-6z M74,122l6,0 0,6 -6,0 0,-6z M86,122l6,0 0,6 -6,0 0,-6z M98,122l6,0 0,6 -6,0 0,-6z M116,122l6,0 0,6 -6,0 0,-6z M122,122l6,0 0,6 -6,0 0,-6z M128,122l6,0 0,6 -6,0 0,-6z M134,122l6,0 0,6 -6,0 0,-6z M152,122l6,0 0,6 -6,0 0,-6z M164,122l6,0 0,6 -6,0 0,-6z M170,122l6,0 0,6 -6,0 0,-6z M176,122l6,0 0,6 -6,0 0,-6z M188,122l6,0 0,6 -6,0 0,-6z M2,128l6,0 0,6 -6,0 0,-6z M8,128l6,0 0,6 -6,0 0,-6z M20,128l6,0 0,6 -6,0 0,-6z M44,128l6,0 0,6 -6,0 0,-6z M56,128l6,0 0,6 -6,0 0,-6z M68,128l6,0 0,6 -6,0 0,-6z M74,128l6,0 0,6 -6,0 0,-6z M92,128l6,0 0,6 -6,0 0,-6z M104,128l6,0 0,6 -6,0 0,-6z M110,128l6,0 0,6 -6,0 0,-6z M128,128l6,0 0,6 -6,0 0,-6z M140,128l6,0 0,6 -6,0 0,-6z M158,128l6,0 0,6 -6,0 0,-6z M176,128l6,0 0,6 -6,0 0,-6z M194,128l6,0 0,6 -6,0 0,-6z M2,134l6,0 0,6 -6,0 0,-6z M26,134l6,0 0,6 -6,0 0,-6z M38,134l6,0 0,6 -6,0 0,-6z M56,134l6,0 0,6 -6,0 0,-6z M86,134l6,0 0,6 -6,0 0,-6z M92,134l6,0 0,6 -6,0 0,-6z M98,134l6,0 0,6 -6,0 0,-6z M104,134l6,0 0,6 -6,0 0,-6z M122,134l6,0 0,6 -6,0 0,-6z M128,134l6,0 0,6 -6,0 0,-6z M134,134l6,0 0,6 -6,0 0,-6z M152,134l6,0 0,6 -6,0 0,-6z M164,134l6,0 0,6 -6,0 0,-6z M176,134l6,0 0,6 -6,0 0,-6z M182,134l6,0 0,6 -6,0 0,-6z M188,134l6,0 0,6 -6,0 0,-6z M2,140l6,0 0,6 -6,0 0,-6z M14,140l6,0 0,6 -6,0 0,-6z M20,140l6,0 0,6 -6,0 0,-6z M26,140l6,0 0,6 -6,0 0,-6z M50,140l6,0 0,6 -6,0 0,-6z M56,140l6,0 0,6 -6,0 0,-6z M62,140l6,0 0,6 -6,0 0,-6z M92,140l6,0 0,6 -6,0 0,-6z M110,140l6,0 0,6 -6,0 0,-6z M128,140l6,0 0,6 -6,0 0,-6z M134,140l6,0 0,6 -6,0 0,-6z M146,140l6,0 0,6 -6,0 0,-6z M170,140l6,0 0,6 -6,0 0,-6z M176,140l6,0 0,6 -6,0 0,-6z M182,140l6,0 0,6 -6,0 0,-6z M194,140l6,0 0,6 -6,0 0,-6z M2,146l6,0 0,6 -6,0 0,-6z M14,146l6,0 0,6 -6,0 0,-6z M32,146l6,0 0,6 -6,0 0,-6z M38,146l6,0 0,6 -6,0 0,-6z M44,146l6,0 0,6 -6,0 0,-6z M50,146l6,0 0,6 -6,0 0,-6z M56,146l6,0 0,6 -6,0 0,-6z M68,146l6,0 0,6 -6,0 0,-6z M74,146l6,0 0,6 -6,0 0,-6z M80,146l6,0 0,6 -6,0 0,-6z M86,146l6,0 0,6 -6,0 0,-6z M92,146l6,0 0,6 -6,0 0,-6z M104,146l6,0 0,6 -6,0 0,-6z M146,146l6,0 0,6 -6,0 0,-6z M152,146l6,0 0,6 -6,0 0,-6z M158,146l6,0 0,6 -6,0 0,-6z M164,146l6,0 0,6 -6,0 0,-6z M170,146l6,0 0,6 -6,0 0,-6z M188,146l6,0 0,6 -6,0 0,-6z M194,146l6,0 0,6 -6,0 0,-6z M50,152l6,0 0,6 -6,0 0,-6z M62,152l6,0 0,6 -6,0 0,-6z M110,152l6,0 0,6 -6,0 0,-6z M116,152l6,0 0,6 -6,0 0,-6z M122,152l6,0 0,6 -6,0 0,-6z M128,152l6,0 0,6 -6,0 0,-6z M140,152l6,0 0,6 -6,0 0,-6z M146,152l6,0 0,6 -6,0 0,-6z M170,152l6,0 0,6 -6,0 0,-6z M182,152l6,0 0,6 -6,0 0,-6z M194,152l6,0 0,6 -6,0 0,-6z M2,158l6,0 0,6 -6,0 0,-6z M8,158l6,0 0,6 -6,0 0,-6z M14,158l6,0 0,6 -6,0 0,-6z M20,158l6,0 0,6 -6,0 0,-6z M26,158l6,0 0,6 -6,0 0,-6z M32,158l6,0 0,6 -6,0 0,-6z M38,158l6,0 0,6 -6,0 0,-6z M62,158l6,0 0,6 -6,0 0,-6z M68,158l6,0 0,6 -6,0 0,-6z M80,158l6,0 0,6 -6,0 0,-6z M86,158l6,0 0,6 -6,0 0,-6z M92,158l6,0 0,6 -6,0 0,-6z M98,158l6,0 0,6 -6,0 0,-6z M110,158l6,0 0,6 -6,0 0,-6z M122,158l6,0 0,6 -6,0 0,-6z M128,158l6,0 0,6 -6,0 0,-6z M140,158l6,0 0,6 -6,0 0,-6z M146,158l6,0 0,6 -6,0 0,-6z M158,158l6,0 0,6 -6,0 0,-6z M170,158l6,0 0,6 -6,0 0,-6z M182,158l6,0 0,6 -6,0 0,-6z M188,158l6,0 0,6 -6,0 0,-6z M2,164l6,0 0,6 -6,0 0,-6z M38,164l6,0 0,6 -6,0 0,-6z M50,164l6,0 0,6 -6,0 0,-6z M56,164l6,0 0,6 -6,0 0,-6z M62,164l6,0 0,6 -6,0 0,-6z M80,164l6,0 0,6 -6,0 0,-6z M98,164l6,0 0,6 -6,0 0,-6z M116,164l6,0 0,6 -6,0 0,-6z M122,164l6,0 0,6 -6,0 0,-6z M128,164l6,0 0,6 -6,0 0,-6z M134,164l6,0 0,6 -6,0 0,-6z M140,164l6,0 0,6 -6,0 0,-6z M146,164l6,0 0,6 -6,0 0,-6z M170,164l6,0 0,6 -6,0 0,-6z M176,164l6,0 0,6 -6,0 0,-6z M182,164l6,0 0,6 -6,0 0,-6z M2,170l6,0 0,6 -6,0 0,-6z M14,170l6,0 0,6 -6,0 0,-6z M20,170l6,0 0,6 -6,0 0,-6z M26,170l6,0 0,6 -6,0 0,-6z M38,170l6,0 0,6 -6,0 0,-6z M50,170l6,0 0,6 -6,0 0,-6z M56,170l6,0 0,6 -6,0 0,-6z M110,170l6,0 0,6 -6,0 0,-6z M128,170l6,0 0,6 -6,0 0,-6z M146,170l6,0 0,6 -6,0 0,-6z M152,170l6,0 0,6 -6,0 0,-6z M158,170l6,0 0,6 -6,0 0,-6z M164,170l6,0 0,6 -6,0 0,-6z M170,170l6,0 0,6 -6,0 0,-6z M176,170l6,0 0,6 -6,0 0,-6z M188,170l6,0 0,6 -6,0 0,-6z M194,170l6,0 0,6 -6,0 0,-6z M2,176l6,0 0,6 -6,0 0,-6z M14,176l6,0 0,6 -6,0 0,-6z M20,176l6,0 0,6 -6,0 0,-6z M26,176l6,0 0,6 -6,0 0,-6z M38,176l6,0 0,6 -6,0 0,-6z M50,176l6,0 0,6 -6,0 0,-6z M56,176l6,0 0,6 -6,0 0,-6z M62,176l6,0 0,6 -6,0 0,-6z M68,176l6,0 0,6 -6,0 0,-6z M86,176l6,0 0,6 -6,0 0,-6z M92,176l6,0 0,6 -6,0 0,-6z M98,176l6,0 0,6 -6,0 0,-6z M104,176l6,0 0,6 -6,0 0,-6z M122,176l6,0 0,6 -6,0 0,-6z M134,176l6,0 0,6 -6,0 0,-6z M140,176l6,0 0,6 -6,0 0,-6z M146,176l6,0 0,6 -6,0 0,-6z M152,176l6,0 0,6 -6,0 0,-6z M170,176l6,0 0,6 -6,0 0,-6z M176,176l6,0 0,6 -6,0 0,-6z M182,176l6,0 0,6 -6,0 0,-6z M194,176l6,0 0,6 -6,0 0,-6z M2,182l6,0 0,6 -6,0 0,-6z M14,182l6,0 0,6 -6,0 0,-6z M20,182l6,0 0,6 -6,0 0,-6z M26,182l6,0 0,6 -6,0 0,-6z M38,182l6,0 0,6 -6,0 0,-6z M50,182l6,0 0,6 -6,0 0,-6z M74,182l6,0 0,6 -6,0 0,-6z M86,182l6,0 0,6 -6,0 0,-6z M110,182l6,0 0,6 -6,0 0,-6z M116,182l6,0 0,6 -6,0 0,-6z M134,182l6,0 0,6 -6,0 0,-6z M140,182l6,0 0,6 -6,0 0,-6z M146,182l6,0 0,6 -6,0 0,-6z M158,182l6,0 0,6 -6,0 0,-6z M164,182l6,0 0,6 -6,0 0,-6z M2,188l6,0 0,6 -6,0 0,-6z M38,188l6,0 0,6 -6,0 0,-6z M68,188l6,0 0,6 -6,0 0,-6z M98,188l6,0 0,6 -6,0 0,-6z M116,188l6,0 0,6 -6,0 0,-6z M122,188l6,0 0,6 -6,0 0,-6z M128,188l6,0 0,6 -6,0 0,-6z M170,188l6,0 0,6 -6,0 0,-6z M176,188l6,0 0,6 -6,0 0,-6z M182,188l6,0 0,6 -6,0 0,-6z M2,194l6,0 0,6 -6,0 0,-6z M8,194l6,0 0,6 -6,0 0,-6z M14,194l6,0 0,6 -6,0 0,-6z M20,194l6,0 0,6 -6,0 0,-6z M26,194l6,0 0,6 -6,0 0,-6z M32,194l6,0 0,6 -6,0 0,-6z M38,194l6,0 0,6 -6,0 0,-6z M50,194l6,0 0,6 -6,0 0,-6z M74,194l6,0 0,6 -6,0 0,-6z M80,194l6,0 0,6 -6,0 0,-6z M104,194l6,0 0,6 -6,0 0,-6z M116,194l6,0 0,6 -6,0 0,-6z M134,194l6,0 0,6 -6,0 0,-6z M140,194l6,0 0,6 -6,0 0,-6z M146,194l6,0 0,6 -6,0 0,-6z M152,194l6,0 0,6 -6,0 0,-6z M158,194l6,0 0,6 -6,0 0,-6z M164,194l6,0 0,6 -6,0 0,-6z M188,194l6,0 0,6 -6,0 0,-6z " stroke="transparent" fill="black"/></svg></div>
 <footer class="app-footer">Réalisé par <a href="https://www.instagram.com/juliendestange/" target="_blank" rel="noopener" class="footer-link">Julien Destange</a> · <span id="appVersion"></span></footer>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-var VERSION = '3.38';  // SOURCE UNIQUE de version - le footer affiche 'v'+VERSION (NE JAMAIS coder le footer en dur)
+var VERSION = '3.39';  // SOURCE UNIQUE de version - le footer affiche 'v'+VERSION (NE JAMAIS coder le footer en dur)
 (function(){var f=document.getElementById('appVersion'); if(f) f.textContent='v'+VERSION;})();
 /* ══════════════════════════════════════════
    SVG ICONS (Lucide-style, trait 2.5px)
@@ -1948,7 +1970,7 @@ window.addEventListener('scroll', obPlaceTip, true);
 window.addEventListener('resize', obPlaceTip);
 
 /* ════════════════ ACCORDEUR (tuner) ════════════════ */
-var _tCtx=null,_tStream=null,_tAnalyser=null,_tRAF=null,_tBuf=null,_tRun=false;
+var _tCtx=null,_tStream=null,_tAnalyser=null,_tRAF=null,_tBuf=null,_tRun=false,_tHist=[],_tValidated={},_tInTuneSince=0,_tLastName='';
 var TUNER_STRINGS=[{name:'G',midi:67},{name:'C',midi:60},{name:'E',midi:64},{name:'A',midi:69}];
 var TUNER_NOTES=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
 function tNoteFreq(m){ return 440*Math.pow(2,(m-69)/12); }
@@ -2070,15 +2092,48 @@ function tunerShowPermHelp(){
   if(hint) hint.textContent='';
   document.getElementById('tunerRetryBtn').onclick=function(){ var h=document.getElementById('tunerHelp'); if(h&&h.parentNode) h.parentNode.removeChild(h); if(hint) hint.textContent='Autorisation micro en attente…'; tunerStart(); };
 }
+function tStringLabel(n){ return {G:'Sol',C:'Do',E:'Mi',A:'La'}[n]||n; }
+function tMedian(arr){ if(!arr.length) return -1; var a=arr.slice().sort(function(x,y){return x-y;}); var m=Math.floor(a.length/2); return a.length%2?a[m]:(a[m-1]+a[m])/2; }
+function tNeedleAngle(c){ c=Math.max(-50,Math.min(50,c)); return c/50*72; }
+function tVibrate(pat){ try{ if(navigator.vibrate) navigator.vibrate(pat); }catch(e){} }
+function tChime(){ if(!_tCtx) return; try{
+  var t=_tCtx.currentTime;
+  [[0,880],[0.12,1318.51]].forEach(function(p){
+    var o=_tCtx.createOscillator(), g=_tCtx.createGain();
+    o.type='sine'; o.frequency.value=p[1];
+    g.gain.setValueAtTime(0.0001,t+p[0]);
+    g.gain.exponentialRampToValueAtTime(0.22,t+p[0]+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+p[0]+0.20);
+    o.connect(g); g.connect(_tCtx.destination); o.start(t+p[0]); o.stop(t+p[0]+0.22);
+  });
+}catch(e){} }
+function tValidate(name){
+  if(_tValidated[name]) return;
+  _tValidated[name]=true;
+  var chip=document.getElementById('tchip-'+name); if(chip) chip.className='tuner-chip done';
+  tVibrate([40,30,40]); tChime();
+  var st=document.getElementById('tunerCents'); if(st){ st.textContent='✓ '+tStringLabel(name)+' accordé !'; st.className='tuner-cents ok'; }
+  var all=TUNER_STRINGS.every(function(x){ return _tValidated[x.name]; });
+  if(all){ var h=document.getElementById('tunerHint'); if(h) h.innerHTML='🎉 <b>Ukulélé accordé !</b> Rejoue une corde pour revérifier.'; tVibrate([60,40,60,40,120]); }
+}
 function tunerOpen(){
   tunerClose();
+  _tValidated={}; _tHist=[]; _tInTuneSince=0; _tLastName='';
   var ov=document.createElement('div'); ov.className='tuner-overlay'; ov.id='tunerOverlay';
   ov.innerHTML='<div class="tuner-panel">'+
     '<button class="tuner-close" id="tunerCloseBtn" aria-label="Fermer">✕</button>'+
     '<div class="tuner-kicker">Accordeur</div>'+
     '<div class="tuner-strings" id="tunerStrings"></div>'+
+    '<div class="tuner-dial"><svg viewBox="0 0 200 124" class="tuner-svg">'+
+      '<path class="tuner-arc" d="M12,108 A88,88 0 0 1 188,108"/>'+
+      '<path class="tuner-arc-ok" d="M86.2,21.1 A88,88 0 0 1 113.8,21.1"/>'+
+      '<line class="tuner-tick" x1="100" y1="20" x2="100" y2="31"/>'+
+      '<line class="tuner-tick" x1="22" y1="74" x2="32" y2="69"/>'+
+      '<line class="tuner-tick" x1="178" y1="74" x2="168" y2="69"/>'+
+      '<line id="tunerNeedle" class="tuner-needle" x1="100" y1="108" x2="100" y2="26" transform="rotate(0 100 108)"/>'+
+      '<circle class="tuner-hub" cx="100" cy="108" r="6"/>'+
+    '</svg></div>'+
     '<div class="tuner-note" id="tunerNote">–</div>'+
-    '<div class="tuner-gauge"><div class="tuner-center-line"></div><div class="tuner-needle" id="tunerNeedle"></div></div>'+
     '<div class="tuner-cents" id="tunerCents">Appuie sur Démarrer</div>'+
     '<div class="tuner-freq" id="tunerFreq"></div>'+
     '<button class="tuner-start" id="tunerStartBtn">▶ Démarrer l\'accordeur</button>'+
@@ -2086,13 +2141,13 @@ function tunerOpen(){
   '</div>';
   document.body.appendChild(ov);
   var sc=document.getElementById('tunerStrings');
-  TUNER_STRINGS.forEach(function(st){ var c=document.createElement('div'); c.className='tuner-chip'; c.id='tchip-'+st.name; c.textContent=st.name; sc.appendChild(c); });
+  TUNER_STRINGS.forEach(function(st){ var c=document.createElement('div'); c.className='tuner-chip'; c.id='tchip-'+st.name; c.innerHTML='<span class="chip-l">'+st.name+'</span><span class="chip-fr">'+tStringLabel(st.name)+'</span>'; sc.appendChild(c); });
   document.getElementById('tunerCloseBtn').onclick=tunerClose;
   document.getElementById('tunerStartBtn').onclick=tunerStart;
   if(navigator.permissions && navigator.permissions.query){
-    try{ navigator.permissions.query({name:'microphone'}).then(function(st){
-      if(st && st.state==='denied') tunerShowPermHelp();
-      if(st) st.onchange=function(){ if(st.state==='granted' && !_tRun && document.getElementById('tunerOverlay')){ var h=document.getElementById('tunerHelp'); if(h&&h.parentNode) h.parentNode.removeChild(h); tunerStart(); } };
+    try{ navigator.permissions.query({name:'microphone'}).then(function(stt){
+      if(stt && stt.state==='denied') tunerShowPermHelp();
+      if(stt) stt.onchange=function(){ if(stt.state==='granted' && !_tRun && document.getElementById('tunerOverlay')){ var h=document.getElementById('tunerHelp'); if(h&&h.parentNode) h.parentNode.removeChild(h); tunerStart(); } };
     }).catch(function(){}); }catch(e){}
   }
 }
@@ -2143,19 +2198,26 @@ function tunerLoop(){
   var f=tAutoCorrelate(_tBuf,_tCtx.sampleRate);
   var noteEl=document.getElementById('tunerNote'), centsEl=document.getElementById('tunerCents'),
       freqEl=document.getElementById('tunerFreq'), needle=document.getElementById('tunerNeedle');
-  if(f>0 && f<2000){
-    var midi=tFreqToMidi(f), name=TUNER_NOTES[((midi%12)+12)%12], cents=tCents(f,midi);
-    var near=tNearestString(f), nearCents=Math.round(near.cents), tuned=Math.abs(cents)<=5;
+  if(f>120 && f<700){
+    _tHist.push(f); if(_tHist.length>6) _tHist.shift();
+    var mf=tMedian(_tHist);
+    var near=tNearestString(mf), cents=Math.round(near.cents), name=near.s.name, tuned=Math.abs(cents)<=5;
     if(noteEl){ noteEl.textContent=name; noteEl.className='tuner-note'+(tuned?' ok':''); }
-    TUNER_STRINGS.forEach(function(st){ var ch=document.getElementById('tchip-'+st.name); if(ch) ch.className='tuner-chip'; });
-    var chip=document.getElementById('tchip-'+near.s.name);
-    if(chip){ chip.className='tuner-chip active'+(Math.abs(nearCents)<=5?' ok':''); }
-    if(needle){ var deg=Math.max(-50,Math.min(50,cents))*0.9; needle.style.transform='translateX(-50%) rotate('+deg+'deg)'; needle.className='tuner-needle'+(tuned?' ok':''); }
-    if(centsEl){ centsEl.textContent=tuned?'✓ Accordé':(cents>0?'+'+cents+' ¢ — trop haut':cents+' ¢ — trop bas'); centsEl.className='tuner-cents'+(tuned?' ok':''); }
-    if(freqEl) freqEl.textContent=f.toFixed(1)+' Hz';
+    TUNER_STRINGS.forEach(function(x){ var ch=document.getElementById('tchip-'+x.name); if(!ch) return; if(_tValidated[x.name]) ch.className='tuner-chip done'; else ch.className='tuner-chip'+(x.name===name?' active':''); });
+    if(needle){ needle.setAttribute('transform','rotate('+tNeedleAngle(cents)+' 100 108)'); needle.setAttribute('class','tuner-needle'+(tuned?' ok':'')); }
+    if(!_tValidated[name] && centsEl){ centsEl.textContent=tuned?'✓ juste, maintiens…':(cents>0?'+'+cents+' ¢ — trop haut':cents+' ¢ — trop bas'); centsEl.className='tuner-cents'+(tuned?' ok':''); }
+    if(freqEl) freqEl.textContent=mf.toFixed(1)+' Hz';
+    if(tuned && name===_tLastName){
+      if(!_tInTuneSince) _tInTuneSince=performance.now();
+      else if(performance.now()-_tInTuneSince>=600) tValidate(name);
+    } else { _tInTuneSince=0; }
+    _tLastName=name;
   } else {
-    if(centsEl){ centsEl.textContent='Joue une corde…'; centsEl.className='tuner-cents'; }
-    if(noteEl){ noteEl.className='tuner-note'; }
+    _tHist.length=0; _tInTuneSince=0; _tLastName='';
+    if(noteEl){ noteEl.textContent='–'; noteEl.className='tuner-note'; }
+    if(needle){ needle.setAttribute('transform','rotate(0 100 108)'); needle.setAttribute('class','tuner-needle'); }
+    var anyDone=TUNER_STRINGS.some(function(x){return _tValidated[x.name];});
+    if(centsEl && !anyDone){ centsEl.textContent='Joue une corde…'; centsEl.className='tuner-cents'; }
   }
   _tRAF=requestAnimationFrame(tunerLoop);
 }
@@ -2164,7 +2226,7 @@ function tunerClose(){
   if(_tRAF){ cancelAnimationFrame(_tRAF); _tRAF=null; }
   if(_tStream){ _tStream.getTracks().forEach(function(t){ t.stop(); }); _tStream=null; }
   if(_tCtx){ try{ _tCtx.close(); }catch(e){} _tCtx=null; }
-  _tAnalyser=null; _tBuf=null;
+  _tAnalyser=null; _tBuf=null; _tHist=[]; _tInTuneSince=0; _tLastName='';
   var ov=document.getElementById('tunerOverlay'); if(ov&&ov.parentNode) ov.parentNode.removeChild(ov);
 }
 
