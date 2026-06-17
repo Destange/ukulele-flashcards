@@ -1,5 +1,5 @@
 // CACHE_NAME : compteur INDEPENDANT, +1 a chaque deploiement (ne suit PAS VERSION)
-var CACHE_NAME = 'ukulele-v8';
+var CACHE_NAME = 'ukulele-v9';
 var ASSETS = ['./', './manifest.json', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', function(e) {
