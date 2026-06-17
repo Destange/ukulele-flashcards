@@ -1,6 +1,6 @@
 // CACHE_NAME : compteur INDEPENDANT, +1 a chaque deploiement (ne suit PAS VERSION)
-var CACHE_NAME = 'ukulele-v10';
-var ASSETS = ['./', './manifest.json', './icon-192.png', './icon-512.png'];
+var CACHE_NAME = 'ukulele-v11';
+var ASSETS = ['./', './manifest.json', './icon-192.png', './icon-512.png', './icon-192-maskable.png', './icon-512-maskable.png', './apple-touch-icon.png', './favicon-32.png'];
 
 self.addEventListener('install', function(e) {
   e.waitUntil(
