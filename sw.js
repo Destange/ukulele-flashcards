@@ -1,5 +1,5 @@
 // CACHE_NAME : compteur INDEPENDANT, +1 a chaque deploiement (ne suit PAS VERSION)
-var CACHE_NAME = 'ukulele-v44';
+var CACHE_NAME = 'ukulele-v45';
 var ASSETS = ['./', './manifest.json', './icon-192.png', './icon-512.png', './icon-192-maskable.png', './icon-512-maskable.png', './apple-touch-icon.png', './favicon-32.png'];
 
 self.addEventListener('install', function(e) {
@@ -19,14 +19,19 @@ self.addEventListener('activate', function(e) {
 });
 
 self.addEventListener('fetch', function(e) {
-  // Ne pas intercepter les requêtes CDN externes (audio, polices)
+  // Ne pas intercepter les requêtes externes (CDN, audio, polices) ni les non-GET
+  if (e.request.method !== 'GET') return;
   if (!e.request.url.startsWith(self.location.origin)) return;
+  // Stale-while-revalidate : sert le cache tout de suite (rapide + hors-ligne),
+  // ET re-télécharge en arrière-plan pour rafraîchir le cache à la prochaine ouverture.
   e.respondWith(
-    caches.match(e.request).then(function(cached) {
-      return cached || fetch(e.request).then(function(resp) {
-        var clone = resp.clone();
-        caches.open(CACHE_NAME).then(function(c) { c.put(e.request, clone); });
-        return resp;
+    caches.open(CACHE_NAME).then(function(c) {
+      return c.match(e.request).then(function(cached) {
+        var net = fetch(e.request).then(function(resp) {
+          if (resp && resp.status === 200) c.put(e.request, resp.clone());
+          return resp;
+        }).catch(function() { return cached; });
+        return cached || net;
       });
     })
   );
