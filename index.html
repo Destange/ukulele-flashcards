@@ -429,6 +429,16 @@
     #appSplash.splash-hide{opacity:0;pointer-events:none;}
     @keyframes splashPop{from{opacity:0;transform:scale(.86)}to{opacity:1;transform:scale(1)}}
 
+    /* ════════ RECO ACCORDS — toggle exercice ════════ */
+    .recog-row{display:flex;align-items:center;justify-content:center;gap:10px;margin:2px 0 8px;}
+    .recog-label{font-family:'Outfit',sans-serif;font-size:13px;font-weight:500;color:var(--muted);display:flex;align-items:center;gap:6px;}
+    .recog-beta{font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#fff;background:var(--accent);border-radius:6px;padding:2px 5px;}
+    .recog-switch{position:relative;width:44px;height:24px;border-radius:13px;border:none;background:var(--border);cursor:pointer;transition:background .15s;-webkit-tap-highlight-color:transparent;padding:0;flex:none;}
+    .recog-switch.on{background:var(--accent);}
+    .recog-knob{position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .15s;box-shadow:0 1px 3px rgba(0,0,0,.3);}
+    .recog-switch.on .recog-knob{left:22px;}
+    .recog-hint{text-align:center;font-family:'Outfit',sans-serif;font-size:13px;font-weight:500;color:var(--muted);min-height:18px;margin:-2px 0 8px;}
+    .recog-hint.ok{color:var(--correct);font-weight:600;}
     /* ════════ TEST RECO ACCORDS (beta, temporaire) ════════ */
     .cr-screen{width:100%;text-align:center;}
     .cr-top{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
@@ -483,7 +493,7 @@
 <div id="obQrSrc" style="display:none"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 202 202"  preserveAspectRatio="xMinYMin meet"><rect width="100%" height="100%" fill="white" cx="0" cy="0"/><path d="M2,2l6,0 0,6 -6,0 0,-6z M8,2l6,0 0,6 -6,0 0,-6z M14,2l6,0 0,6 -6,0 0,-6z M20,2l6,0 0,6 -6,0 0,-6z M26,2l6,0 0,6 -6,0 0,-6z M32,2l6,0 0,6 -6,0 0,-6z M38,2l6,0 0,6 -6,0 0,-6z M56,2l6,0 0,6 -6,0 0,-6z M68,2l6,0 0,6 -6,0 0,-6z M80,2l6,0 0,6 -6,0 0,-6z M86,2l6,0 0,6 -6,0 0,-6z M98,2l6,0 0,6 -6,0 0,-6z M104,2l6,0 0,6 -6,0 0,-6z M116,2l6,0 0,6 -6,0 0,-6z M122,2l6,0 0,6 -6,0 0,-6z M128,2l6,0 0,6 -6,0 0,-6z M140,2l6,0 0,6 -6,0 0,-6z M158,2l6,0 0,6 -6,0 0,-6z M164,2l6,0 0,6 -6,0 0,-6z M170,2l6,0 0,6 -6,0 0,-6z M176,2l6,0 0,6 -6,0 0,-6z M182,2l6,0 0,6 -6,0 0,-6z M188,2l6,0 0,6 -6,0 0,-6z M194,2l6,0 0,6 -6,0 0,-6z M2,8l6,0 0,6 -6,0 0,-6z M38,8l6,0 0,6 -6,0 0,-6z M62,8l6,0 0,6 -6,0 0,-6z M80,8l6,0 0,6 -6,0 0,-6z M86,8l6,0 0,6 -6,0 0,-6z M92,8l6,0 0,6 -6,0 0,-6z M98,8l6,0 0,6 -6,0 0,-6z M104,8l6,0 0,6 -6,0 0,-6z M158,8l6,0 0,6 -6,0 0,-6z M194,8l6,0 0,6 -6,0 0,-6z M2,14l6,0 0,6 -6,0 0,-6z M14,14l6,0 0,6 -6,0 0,-6z M20,14l6,0 0,6 -6,0 0,-6z M26,14l6,0 0,6 -6,0 0,-6z M38,14l6,0 0,6 -6,0 0,-6z M50,14l6,0 0,6 -6,0 0,-6z M80,14l6,0 0,6 -6,0 0,-6z M104,14l6,0 0,6 -6,0 0,-6z M110,14l6,0 0,6 -6,0 0,-6z M128,14l6,0 0,6 -6,0 0,-6z M134,14l6,0 0,6 -6,0 0,-6z M146,14l6,0 0,6 -6,0 0,-6z M158,14l6,0 0,6 -6,0 0,-6z M170,14l6,0 0,6 -6,0 0,-6z M176,14l6,0 0,6 -6,0 0,-6z M182,14l6,0 0,6 -6,0 0,-6z M194,14l6,0 0,6 -6,0 0,-6z M2,20l6,0 0,6 -6,0 0,-6z M14,20l6,0 0,6 -6,0 0,-6z M20,20l6,0 0,6 -6,0 0,-6z M26,20l6,0 0,6 -6,0 0,-6z M38,20l6,0 0,6 -6,0 0,-6z M50,20l6,0 0,6 -6,0 0,-6z M62,20l6,0 0,6 -6,0 0,-6z M68,20l6,0 0,6 -6,0 0,-6z M74,20l6,0 0,6 -6,0 0,-6z M86,20l6,0 0,6 -6,0 0,-6z M98,20l6,0 0,6 -6,0 0,-6z M116,20l6,0 0,6 -6,0 0,-6z M122,20l6,0 0,6 -6,0 0,-6z M158,20l6,0 0,6 -6,0 0,-6z M170,20l6,0 0,6 -6,0 0,-6z M176,20l6,0 0,6 -6,0 0,-6z M182,20l6,0 0,6 -6,0 0,-6z M194,20l6,0 0,6 -6,0 0,-6z M2,26l6,0 0,6 -6,0 0,-6z M14,26l6,0 0,6 -6,0 0,-6z M20,26l6,0 0,6 -6,0 0,-6z M26,26l6,0 0,6 -6,0 0,-6z M38,26l6,0 0,6 -6,0 0,-6z M50,26l6,0 0,6 -6,0 0,-6z M56,26l6,0 0,6 -6,0 0,-6z M62,26l6,0 0,6 -6,0 0,-6z M68,26l6,0 0,6 -6,0 0,-6z M92,26l6,0 0,6 -6,0 0,-6z M110,26l6,0 0,6 -6,0 0,-6z M140,26l6,0 0,6 -6,0 0,-6z M158,26l6,0 0,6 -6,0 0,-6z M170,26l6,0 0,6 -6,0 0,-6z M176,26l6,0 0,6 -6,0 0,-6z M182,26l6,0 0,6 -6,0 0,-6z M194,26l6,0 0,6 -6,0 0,-6z M2,32l6,0 0,6 -6,0 0,-6z M38,32l6,0 0,6 -6,0 0,-6z M50,32l6,0 0,6 -6,0 0,-6z M62,32l6,0 0,6 -6,0 0,-6z M68,32l6,0 0,6 -6,0 0,-6z M74,32l6,0 0,6 -6,0 0,-6z M86,32l6,0 0,6 -6,0 0,-6z M92,32l6,0 0,6 -6,0 0,-6z M98,32l6,0 0,6 -6,0 0,-6z M122,32l6,0 0,6 -6,0 0,-6z M134,32l6,0 0,6 -6,0 0,-6z M146,32l6,0 0,6 -6,0 0,-6z M158,32l6,0 0,6 -6,0 0,-6z M194,32l6,0 0,6 -6,0 0,-6z M2,38l6,0 0,6 -6,0 0,-6z M8,38l6,0 0,6 -6,0 0,-6z M14,38l6,0 0,6 -6,0 0,-6z M20,38l6,0 0,6 -6,0 0,-6z M26,38l6,0 0,6 -6,0 0,-6z M32,38l6,0 0,6 -6,0 0,-6z M38,38l6,0 0,6 -6,0 0,-6z M50,38l6,0 0,6 -6,0 0,-6z M62,38l6,0 0,6 -6,0 0,-6z M74,38l6,0 0,6 -6,0 0,-6z M86,38l6,0 0,6 -6,0 0,-6z M98,38l6,0 0,6 -6,0 0,-6z M110,38l6,0 0,6 -6,0 0,-6z M122,38l6,0 0,6 -6,0 0,-6z M134,38l6,0 0,6 -6,0 0,-6z M146,38l6,0 0,6 -6,0 0,-6z M158,38l6,0 0,6 -6,0 0,-6z M164,38l6,0 0,6 -6,0 0,-6z M170,38l6,0 0,6 -6,0 0,-6z M176,38l6,0 0,6 -6,0 0,-6z M182,38l6,0 0,6 -6,0 0,-6z M188,38l6,0 0,6 -6,0 0,-6z M194,38l6,0 0,6 -6,0 0,-6z M50,44l6,0 0,6 -6,0 0,-6z M56,44l6,0 0,6 -6,0 0,-6z M62,44l6,0 0,6 -6,0 0,-6z M74,44l6,0 0,6 -6,0 0,-6z M86,44l6,0 0,6 -6,0 0,-6z M92,44l6,0 0,6 -6,0 0,-6z M128,44l6,0 0,6 -6,0 0,-6z M2,50l6,0 0,6 -6,0 0,-6z M14,50l6,0 0,6 -6,0 0,-6z M20,50l6,0 0,6 -6,0 0,-6z M26,50l6,0 0,6 -6,0 0,-6z M32,50l6,0 0,6 -6,0 0,-6z M38,50l6,0 0,6 -6,0 0,-6z M56,50l6,0 0,6 -6,0 0,-6z M74,50l6,0 0,6 -6,0 0,-6z M80,50l6,0 0,6 -6,0 0,-6z M86,50l6,0 0,6 -6,0 0,-6z M92,50l6,0 0,6 -6,0 0,-6z M104,50l6,0 0,6 -6,0 0,-6z M134,50l6,0 0,6 -6,0 0,-6z M146,50l6,0 0,6 -6,0 0,-6z M158,50l6,0 0,6 -6,0 0,-6z M164,50l6,0 0,6 -6,0 0,-6z M170,50l6,0 0,6 -6,0 0,-6z M176,50l6,0 0,6 -6,0 0,-6z M182,50l6,0 0,6 -6,0 0,-6z M2,56l6,0 0,6 -6,0 0,-6z M20,56l6,0 0,6 -6,0 0,-6z M26,56l6,0 0,6 -6,0 0,-6z M50,56l6,0 0,6 -6,0 0,-6z M62,56l6,0 0,6 -6,0 0,-6z M74,56l6,0 0,6 -6,0 0,-6z M98,56l6,0 0,6 -6,0 0,-6z M110,56l6,0 0,6 -6,0 0,-6z M116,56l6,0 0,6 -6,0 0,-6z M122,56l6,0 0,6 -6,0 0,-6z M140,56l6,0 0,6 -6,0 0,-6z M158,56l6,0 0,6 -6,0 0,-6z M164,56l6,0 0,6 -6,0 0,-6z M176,56l6,0 0,6 -6,0 0,-6z M182,56l6,0 0,6 -6,0 0,-6z M194,56l6,0 0,6 -6,0 0,-6z M2,62l6,0 0,6 -6,0 0,-6z M8,62l6,0 0,6 -6,0 0,-6z M26,62l6,0 0,6 -6,0 0,-6z M32,62l6,0 0,6 -6,0 0,-6z M38,62l6,0 0,6 -6,0 0,-6z M56,62l6,0 0,6 -6,0 0,-6z M92,62l6,0 0,6 -6,0 0,-6z M98,62l6,0 0,6 -6,0 0,-6z M110,62l6,0 0,6 -6,0 0,-6z M134,62l6,0 0,6 -6,0 0,-6z M146,62l6,0 0,6 -6,0 0,-6z M170,62l6,0 0,6 -6,0 0,-6z M182,62l6,0 0,6 -6,0 0,-6z M188,62l6,0 0,6 -6,0 0,-6z M14,68l6,0 0,6 -6,0 0,-6z M50,68l6,0 0,6 -6,0 0,-6z M56,68l6,0 0,6 -6,0 0,-6z M62,68l6,0 0,6 -6,0 0,-6z M68,68l6,0 0,6 -6,0 0,-6z M74,68l6,0 0,6 -6,0 0,-6z M86,68l6,0 0,6 -6,0 0,-6z M92,68l6,0 0,6 -6,0 0,-6z M98,68l6,0 0,6 -6,0 0,-6z M122,68l6,0 0,6 -6,0 0,-6z M128,68l6,0 0,6 -6,0 0,-6z M134,68l6,0 0,6 -6,0 0,-6z M152,68l6,0 0,6 -6,0 0,-6z M158,68l6,0 0,6 -6,0 0,-6z M170,68l6,0 0,6 -6,0 0,-6z M176,68l6,0 0,6 -6,0 0,-6z M182,68l6,0 0,6 -6,0 0,-6z M20,74l6,0 0,6 -6,0 0,-6z M32,74l6,0 0,6 -6,0 0,-6z M38,74l6,0 0,6 -6,0 0,-6z M62,74l6,0 0,6 -6,0 0,-6z M92,74l6,0 0,6 -6,0 0,-6z M110,74l6,0 0,6 -6,0 0,-6z M128,74l6,0 0,6 -6,0 0,-6z M146,74l6,0 0,6 -6,0 0,-6z M152,74l6,0 0,6 -6,0 0,-6z M170,74l6,0 0,6 -6,0 0,-6z M176,74l6,0 0,6 -6,0 0,-6z M188,74l6,0 0,6 -6,0 0,-6z M194,74l6,0 0,6 -6,0 0,-6z M14,80l6,0 0,6 -6,0 0,-6z M20,80l6,0 0,6 -6,0 0,-6z M44,80l6,0 0,6 -6,0 0,-6z M68,80l6,0 0,6 -6,0 0,-6z M80,80l6,0 0,6 -6,0 0,-6z M86,80l6,0 0,6 -6,0 0,-6z M92,80l6,0 0,6 -6,0 0,-6z M98,80l6,0 0,6 -6,0 0,-6z M122,80l6,0 0,6 -6,0 0,-6z M128,80l6,0 0,6 -6,0 0,-6z M140,80l6,0 0,6 -6,0 0,-6z M158,80l6,0 0,6 -6,0 0,-6z M176,80l6,0 0,6 -6,0 0,-6z M182,80l6,0 0,6 -6,0 0,-6z M188,80l6,0 0,6 -6,0 0,-6z M194,80l6,0 0,6 -6,0 0,-6z M2,86l6,0 0,6 -6,0 0,-6z M14,86l6,0 0,6 -6,0 0,-6z M26,86l6,0 0,6 -6,0 0,-6z M32,86l6,0 0,6 -6,0 0,-6z M38,86l6,0 0,6 -6,0 0,-6z M44,86l6,0 0,6 -6,0 0,-6z M80,86l6,0 0,6 -6,0 0,-6z M104,86l6,0 0,6 -6,0 0,-6z M110,86l6,0 0,6 -6,0 0,-6z M116,86l6,0 0,6 -6,0 0,-6z M134,86l6,0 0,6 -6,0 0,-6z M146,86l6,0 0,6 -6,0 0,-6z M152,86l6,0 0,6 -6,0 0,-6z M158,86l6,0 0,6 -6,0 0,-6z M176,86l6,0 0,6 -6,0 0,-6z M182,86l6,0 0,6 -6,0 0,-6z M188,86l6,0 0,6 -6,0 0,-6z M8,92l6,0 0,6 -6,0 0,-6z M32,92l6,0 0,6 -6,0 0,-6z M56,92l6,0 0,6 -6,0 0,-6z M68,92l6,0 0,6 -6,0 0,-6z M86,92l6,0 0,6 -6,0 0,-6z M98,92l6,0 0,6 -6,0 0,-6z M110,92l6,0 0,6 -6,0 0,-6z M116,92l6,0 0,6 -6,0 0,-6z M122,92l6,0 0,6 -6,0 0,-6z M128,92l6,0 0,6 -6,0 0,-6z M134,92l6,0 0,6 -6,0 0,-6z M140,92l6,0 0,6 -6,0 0,-6z M146,92l6,0 0,6 -6,0 0,-6z M152,92l6,0 0,6 -6,0 0,-6z M158,92l6,0 0,6 -6,0 0,-6z M164,92l6,0 0,6 -6,0 0,-6z M182,92l6,0 0,6 -6,0 0,-6z M2,98l6,0 0,6 -6,0 0,-6z M8,98l6,0 0,6 -6,0 0,-6z M14,98l6,0 0,6 -6,0 0,-6z M32,98l6,0 0,6 -6,0 0,-6z M38,98l6,0 0,6 -6,0 0,-6z M44,98l6,0 0,6 -6,0 0,-6z M50,98l6,0 0,6 -6,0 0,-6z M62,98l6,0 0,6 -6,0 0,-6z M98,98l6,0 0,6 -6,0 0,-6z M104,98l6,0 0,6 -6,0 0,-6z M110,98l6,0 0,6 -6,0 0,-6z M116,98l6,0 0,6 -6,0 0,-6z M122,98l6,0 0,6 -6,0 0,-6z M134,98l6,0 0,6 -6,0 0,-6z M152,98l6,0 0,6 -6,0 0,-6z M164,98l6,0 0,6 -6,0 0,-6z M170,98l6,0 0,6 -6,0 0,-6z M194,98l6,0 0,6 -6,0 0,-6z M2,104l6,0 0,6 -6,0 0,-6z M8,104l6,0 0,6 -6,0 0,-6z M20,104l6,0 0,6 -6,0 0,-6z M56,104l6,0 0,6 -6,0 0,-6z M68,104l6,0 0,6 -6,0 0,-6z M86,104l6,0 0,6 -6,0 0,-6z M98,104l6,0 0,6 -6,0 0,-6z M104,104l6,0 0,6 -6,0 0,-6z M110,104l6,0 0,6 -6,0 0,-6z M116,104l6,0 0,6 -6,0 0,-6z M122,104l6,0 0,6 -6,0 0,-6z M140,104l6,0 0,6 -6,0 0,-6z M158,104l6,0 0,6 -6,0 0,-6z M164,104l6,0 0,6 -6,0 0,-6z M176,104l6,0 0,6 -6,0 0,-6z M182,104l6,0 0,6 -6,0 0,-6z M194,104l6,0 0,6 -6,0 0,-6z M8,110l6,0 0,6 -6,0 0,-6z M14,110l6,0 0,6 -6,0 0,-6z M20,110l6,0 0,6 -6,0 0,-6z M26,110l6,0 0,6 -6,0 0,-6z M38,110l6,0 0,6 -6,0 0,-6z M44,110l6,0 0,6 -6,0 0,-6z M50,110l6,0 0,6 -6,0 0,-6z M56,110l6,0 0,6 -6,0 0,-6z M62,110l6,0 0,6 -6,0 0,-6z M80,110l6,0 0,6 -6,0 0,-6z M86,110l6,0 0,6 -6,0 0,-6z M92,110l6,0 0,6 -6,0 0,-6z M98,110l6,0 0,6 -6,0 0,-6z M104,110l6,0 0,6 -6,0 0,-6z M122,110l6,0 0,6 -6,0 0,-6z M134,110l6,0 0,6 -6,0 0,-6z M158,110l6,0 0,6 -6,0 0,-6z M164,110l6,0 0,6 -6,0 0,-6z M170,110l6,0 0,6 -6,0 0,-6z M182,110l6,0 0,6 -6,0 0,-6z M188,110l6,0 0,6 -6,0 0,-6z M2,116l6,0 0,6 -6,0 0,-6z M20,116l6,0 0,6 -6,0 0,-6z M26,116l6,0 0,6 -6,0 0,-6z M44,116l6,0 0,6 -6,0 0,-6z M56,116l6,0 0,6 -6,0 0,-6z M80,116l6,0 0,6 -6,0 0,-6z M86,116l6,0 0,6 -6,0 0,-6z M98,116l6,0 0,6 -6,0 0,-6z M104,116l6,0 0,6 -6,0 0,-6z M110,116l6,0 0,6 -6,0 0,-6z M140,116l6,0 0,6 -6,0 0,-6z M146,116l6,0 0,6 -6,0 0,-6z M164,116l6,0 0,6 -6,0 0,-6z M170,116l6,0 0,6 -6,0 0,-6z M176,116l6,0 0,6 -6,0 0,-6z M182,116l6,0 0,6 -6,0 0,-6z M188,116l6,0 0,6 -6,0 0,-6z M14,122l6,0 0,6 -6,0 0,-6z M26,122l6,0 0,6 -6,0 0,-6z M32,122l6,0 0,6 -6,0 0,-6z M38,122l6,0 0,6 -6,0 0,-6z M44,122l6,0 0,6 -6,0 0,-6z M62,122l6,0 0,6 -6,0 0,-6z M74,122l6,0 0,6 -6,0 0,-6z M86,122l6,0 0,6 -6,0 0,-6z M98,122l6,0 0,6 -6,0 0,-6z M116,122l6,0 0,6 -6,0 0,-6z M122,122l6,0 0,6 -6,0 0,-6z M128,122l6,0 0,6 -6,0 0,-6z M134,122l6,0 0,6 -6,0 0,-6z M152,122l6,0 0,6 -6,0 0,-6z M164,122l6,0 0,6 -6,0 0,-6z M170,122l6,0 0,6 -6,0 0,-6z M176,122l6,0 0,6 -6,0 0,-6z M188,122l6,0 0,6 -6,0 0,-6z M2,128l6,0 0,6 -6,0 0,-6z M8,128l6,0 0,6 -6,0 0,-6z M20,128l6,0 0,6 -6,0 0,-6z M44,128l6,0 0,6 -6,0 0,-6z M56,128l6,0 0,6 -6,0 0,-6z M68,128l6,0 0,6 -6,0 0,-6z M74,128l6,0 0,6 -6,0 0,-6z M92,128l6,0 0,6 -6,0 0,-6z M104,128l6,0 0,6 -6,0 0,-6z M110,128l6,0 0,6 -6,0 0,-6z M128,128l6,0 0,6 -6,0 0,-6z M140,128l6,0 0,6 -6,0 0,-6z M158,128l6,0 0,6 -6,0 0,-6z M176,128l6,0 0,6 -6,0 0,-6z M194,128l6,0 0,6 -6,0 0,-6z M2,134l6,0 0,6 -6,0 0,-6z M26,134l6,0 0,6 -6,0 0,-6z M38,134l6,0 0,6 -6,0 0,-6z M56,134l6,0 0,6 -6,0 0,-6z M86,134l6,0 0,6 -6,0 0,-6z M92,134l6,0 0,6 -6,0 0,-6z M98,134l6,0 0,6 -6,0 0,-6z M104,134l6,0 0,6 -6,0 0,-6z M122,134l6,0 0,6 -6,0 0,-6z M128,134l6,0 0,6 -6,0 0,-6z M134,134l6,0 0,6 -6,0 0,-6z M152,134l6,0 0,6 -6,0 0,-6z M164,134l6,0 0,6 -6,0 0,-6z M176,134l6,0 0,6 -6,0 0,-6z M182,134l6,0 0,6 -6,0 0,-6z M188,134l6,0 0,6 -6,0 0,-6z M2,140l6,0 0,6 -6,0 0,-6z M14,140l6,0 0,6 -6,0 0,-6z M20,140l6,0 0,6 -6,0 0,-6z M26,140l6,0 0,6 -6,0 0,-6z M50,140l6,0 0,6 -6,0 0,-6z M56,140l6,0 0,6 -6,0 0,-6z M62,140l6,0 0,6 -6,0 0,-6z M92,140l6,0 0,6 -6,0 0,-6z M110,140l6,0 0,6 -6,0 0,-6z M128,140l6,0 0,6 -6,0 0,-6z M134,140l6,0 0,6 -6,0 0,-6z M146,140l6,0 0,6 -6,0 0,-6z M170,140l6,0 0,6 -6,0 0,-6z M176,140l6,0 0,6 -6,0 0,-6z M182,140l6,0 0,6 -6,0 0,-6z M194,140l6,0 0,6 -6,0 0,-6z M2,146l6,0 0,6 -6,0 0,-6z M14,146l6,0 0,6 -6,0 0,-6z M32,146l6,0 0,6 -6,0 0,-6z M38,146l6,0 0,6 -6,0 0,-6z M44,146l6,0 0,6 -6,0 0,-6z M50,146l6,0 0,6 -6,0 0,-6z M56,146l6,0 0,6 -6,0 0,-6z M68,146l6,0 0,6 -6,0 0,-6z M74,146l6,0 0,6 -6,0 0,-6z M80,146l6,0 0,6 -6,0 0,-6z M86,146l6,0 0,6 -6,0 0,-6z M92,146l6,0 0,6 -6,0 0,-6z M104,146l6,0 0,6 -6,0 0,-6z M146,146l6,0 0,6 -6,0 0,-6z M152,146l6,0 0,6 -6,0 0,-6z M158,146l6,0 0,6 -6,0 0,-6z M164,146l6,0 0,6 -6,0 0,-6z M170,146l6,0 0,6 -6,0 0,-6z M188,146l6,0 0,6 -6,0 0,-6z M194,146l6,0 0,6 -6,0 0,-6z M50,152l6,0 0,6 -6,0 0,-6z M62,152l6,0 0,6 -6,0 0,-6z M110,152l6,0 0,6 -6,0 0,-6z M116,152l6,0 0,6 -6,0 0,-6z M122,152l6,0 0,6 -6,0 0,-6z M128,152l6,0 0,6 -6,0 0,-6z M140,152l6,0 0,6 -6,0 0,-6z M146,152l6,0 0,6 -6,0 0,-6z M170,152l6,0 0,6 -6,0 0,-6z M182,152l6,0 0,6 -6,0 0,-6z M194,152l6,0 0,6 -6,0 0,-6z M2,158l6,0 0,6 -6,0 0,-6z M8,158l6,0 0,6 -6,0 0,-6z M14,158l6,0 0,6 -6,0 0,-6z M20,158l6,0 0,6 -6,0 0,-6z M26,158l6,0 0,6 -6,0 0,-6z M32,158l6,0 0,6 -6,0 0,-6z M38,158l6,0 0,6 -6,0 0,-6z M62,158l6,0 0,6 -6,0 0,-6z M68,158l6,0 0,6 -6,0 0,-6z M80,158l6,0 0,6 -6,0 0,-6z M86,158l6,0 0,6 -6,0 0,-6z M92,158l6,0 0,6 -6,0 0,-6z M98,158l6,0 0,6 -6,0 0,-6z M110,158l6,0 0,6 -6,0 0,-6z M122,158l6,0 0,6 -6,0 0,-6z M128,158l6,0 0,6 -6,0 0,-6z M140,158l6,0 0,6 -6,0 0,-6z M146,158l6,0 0,6 -6,0 0,-6z M158,158l6,0 0,6 -6,0 0,-6z M170,158l6,0 0,6 -6,0 0,-6z M182,158l6,0 0,6 -6,0 0,-6z M188,158l6,0 0,6 -6,0 0,-6z M2,164l6,0 0,6 -6,0 0,-6z M38,164l6,0 0,6 -6,0 0,-6z M50,164l6,0 0,6 -6,0 0,-6z M56,164l6,0 0,6 -6,0 0,-6z M62,164l6,0 0,6 -6,0 0,-6z M80,164l6,0 0,6 -6,0 0,-6z M98,164l6,0 0,6 -6,0 0,-6z M116,164l6,0 0,6 -6,0 0,-6z M122,164l6,0 0,6 -6,0 0,-6z M128,164l6,0 0,6 -6,0 0,-6z M134,164l6,0 0,6 -6,0 0,-6z M140,164l6,0 0,6 -6,0 0,-6z M146,164l6,0 0,6 -6,0 0,-6z M170,164l6,0 0,6 -6,0 0,-6z M176,164l6,0 0,6 -6,0 0,-6z M182,164l6,0 0,6 -6,0 0,-6z M2,170l6,0 0,6 -6,0 0,-6z M14,170l6,0 0,6 -6,0 0,-6z M20,170l6,0 0,6 -6,0 0,-6z M26,170l6,0 0,6 -6,0 0,-6z M38,170l6,0 0,6 -6,0 0,-6z M50,170l6,0 0,6 -6,0 0,-6z M56,170l6,0 0,6 -6,0 0,-6z M110,170l6,0 0,6 -6,0 0,-6z M128,170l6,0 0,6 -6,0 0,-6z M146,170l6,0 0,6 -6,0 0,-6z M152,170l6,0 0,6 -6,0 0,-6z M158,170l6,0 0,6 -6,0 0,-6z M164,170l6,0 0,6 -6,0 0,-6z M170,170l6,0 0,6 -6,0 0,-6z M176,170l6,0 0,6 -6,0 0,-6z M188,170l6,0 0,6 -6,0 0,-6z M194,170l6,0 0,6 -6,0 0,-6z M2,176l6,0 0,6 -6,0 0,-6z M14,176l6,0 0,6 -6,0 0,-6z M20,176l6,0 0,6 -6,0 0,-6z M26,176l6,0 0,6 -6,0 0,-6z M38,176l6,0 0,6 -6,0 0,-6z M50,176l6,0 0,6 -6,0 0,-6z M56,176l6,0 0,6 -6,0 0,-6z M62,176l6,0 0,6 -6,0 0,-6z M68,176l6,0 0,6 -6,0 0,-6z M86,176l6,0 0,6 -6,0 0,-6z M92,176l6,0 0,6 -6,0 0,-6z M98,176l6,0 0,6 -6,0 0,-6z M104,176l6,0 0,6 -6,0 0,-6z M122,176l6,0 0,6 -6,0 0,-6z M134,176l6,0 0,6 -6,0 0,-6z M140,176l6,0 0,6 -6,0 0,-6z M146,176l6,0 0,6 -6,0 0,-6z M152,176l6,0 0,6 -6,0 0,-6z M170,176l6,0 0,6 -6,0 0,-6z M176,176l6,0 0,6 -6,0 0,-6z M182,176l6,0 0,6 -6,0 0,-6z M194,176l6,0 0,6 -6,0 0,-6z M2,182l6,0 0,6 -6,0 0,-6z M14,182l6,0 0,6 -6,0 0,-6z M20,182l6,0 0,6 -6,0 0,-6z M26,182l6,0 0,6 -6,0 0,-6z M38,182l6,0 0,6 -6,0 0,-6z M50,182l6,0 0,6 -6,0 0,-6z M74,182l6,0 0,6 -6,0 0,-6z M86,182l6,0 0,6 -6,0 0,-6z M110,182l6,0 0,6 -6,0 0,-6z M116,182l6,0 0,6 -6,0 0,-6z M134,182l6,0 0,6 -6,0 0,-6z M140,182l6,0 0,6 -6,0 0,-6z M146,182l6,0 0,6 -6,0 0,-6z M158,182l6,0 0,6 -6,0 0,-6z M164,182l6,0 0,6 -6,0 0,-6z M2,188l6,0 0,6 -6,0 0,-6z M38,188l6,0 0,6 -6,0 0,-6z M68,188l6,0 0,6 -6,0 0,-6z M98,188l6,0 0,6 -6,0 0,-6z M116,188l6,0 0,6 -6,0 0,-6z M122,188l6,0 0,6 -6,0 0,-6z M128,188l6,0 0,6 -6,0 0,-6z M170,188l6,0 0,6 -6,0 0,-6z M176,188l6,0 0,6 -6,0 0,-6z M182,188l6,0 0,6 -6,0 0,-6z M2,194l6,0 0,6 -6,0 0,-6z M8,194l6,0 0,6 -6,0 0,-6z M14,194l6,0 0,6 -6,0 0,-6z M20,194l6,0 0,6 -6,0 0,-6z M26,194l6,0 0,6 -6,0 0,-6z M32,194l6,0 0,6 -6,0 0,-6z M38,194l6,0 0,6 -6,0 0,-6z M50,194l6,0 0,6 -6,0 0,-6z M74,194l6,0 0,6 -6,0 0,-6z M80,194l6,0 0,6 -6,0 0,-6z M104,194l6,0 0,6 -6,0 0,-6z M116,194l6,0 0,6 -6,0 0,-6z M134,194l6,0 0,6 -6,0 0,-6z M140,194l6,0 0,6 -6,0 0,-6z M146,194l6,0 0,6 -6,0 0,-6z M152,194l6,0 0,6 -6,0 0,-6z M158,194l6,0 0,6 -6,0 0,-6z M164,194l6,0 0,6 -6,0 0,-6z M188,194l6,0 0,6 -6,0 0,-6z " stroke="transparent" fill="black"/></svg></div>
 <footer class="app-footer">Réalisé par <a href="https://www.instagram.com/juliendestange/" target="_blank" rel="noopener" class="footer-link">Julien Destange</a> · <span id="appVersion"></span></footer>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-var VERSION = '3.65';  // SOURCE UNIQUE de version - le footer affiche 'v'+VERSION (NE JAMAIS coder le footer en dur)
+var VERSION = '3.66';  // SOURCE UNIQUE de version - le footer affiche 'v'+VERSION (NE JAMAIS coder le footer en dur)
 (function(){var f=document.getElementById('appVersion'); if(f) f.textContent='v'+VERSION;})();
 /* ══════════════════════════════════════════
    SVG ICONS (Lucide-style, trait 2.5px)
@@ -1022,7 +1032,7 @@ var _historyReady = false;
 var _chordDetailNav = false;
 
 function _doRender(root){
-  if(app.screen!=='cr-test') crStop();
+  if(app.screen!=='cr-test' && app.screen!=='session') crStop();
   if     (app.screen==='home')          renderHome(root);
   else if(app.screen==='cr-test')       renderCRTest(root);
   else if(app.screen==='mode-preview')  renderModePreview(root);
@@ -1261,6 +1271,13 @@ function renderSession(root){
     '<div class="prog-track"><div class="prog-fill" style="width:'+progPct+'%;background:'+progColor+';transition:width .35s ease, background .35s ease;"></div></div>';
   root.appendChild(pg);
 
+  var recogRow=document.createElement('div');
+  recogRow.className='recog-row';
+  recogRow.innerHTML='<span class="recog-label">🎤 Reconnaissance d\'accord <span class="recog-beta">beta</span></span>'+
+    '<button class="recog-switch'+(_recogOn?' on':'')+'" id="recogToggle" role="switch" aria-checked="'+(_recogOn?'true':'false')+'"><span class="recog-knob"></span></button>';
+  root.appendChild(recogRow);
+  if(item.side==='name'){ var rhEl=document.createElement('div'); rhEl.className='recog-hint'; rhEl.id='recogHint'; root.appendChild(rhEl); }
+
   var frontHTML, backHTML, frontClass='front', backClass='back';
   if(item.side==='name'){
     frontHTML='<div class="face-tag">Joue cet accord<br>sur ton ukulélé</div>'+
@@ -1327,6 +1344,7 @@ function renderSession(root){
 
   function reveal(){
     if (revealed) return;
+    _crOnMatch=null; _crDinged=true;
     cBody.classList.add('flipped');
     btnReveal.classList.add('hidden');
     revealed = true;
@@ -1400,6 +1418,13 @@ function renderSession(root){
   }
   document.getElementById('bOk').onclick=function(){ advance(true);  };
   document.getElementById('bKo').onclick=function(){ advance(false); };
+  document.getElementById('recogToggle').onclick=function(){
+    _recogOn=!_recogOn; recogSave();
+    if(_recogOn){ recogIntro(function(){ render(); }); }
+    else { crStop(); render(); }
+  };
+  if(_recogOn && item.side==='name'){ recogArm(chord, reveal); }
+  else { crStop(); }
 }
 
 /* ── END ── */
@@ -2020,6 +2045,9 @@ window.addEventListener('resize', obPlaceTip);
 var _crCtx=null,_crStream=null,_crAnalyser=null,_crRAF=null,_crFreq=null,_crTime=null,_crRun=false;
 var _crChroma=new Float32Array(12),_crIdx=0,_crHoldSince=0,_crAdvancing=false,_crLog=[],_crRms=0;
 var _crDinged=false,_crMuteUntil=0,_crPeak=new Float32Array(12);
+var _crTarget=null,_crOnMatch=null,_crOnError=null;
+var _recogOn=false; try{ _recogOn=localStorage.getItem('uke_recog')==='1'; }catch(e){}
+function recogSave(){ try{ localStorage.setItem('uke_recog', _recogOn?'1':'0'); }catch(e){} }
 var CR_THRESH=0.70, CR_HOLD=350, CR_PRES=0.12, CR_INTR=0.12, CR_GATE=0.008, CR_HOLDMS=150, CR_DECAY=0.90, CR_NOTES=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
 function crSolfege(pc){ return ['Do','Do#','Ré','Ré#','Mi','Fa','Fa#','Sol','Sol#','La','La#','Si'][pc]; }
 function crChordPCs(chord){ var open=[7,0,4,9], set={}; chord.frets.forEach(function(fr,i){ if(fr>=0) set[(open[i]+fr)%12]=true; }); return set; }
@@ -2038,7 +2066,6 @@ function renderCRTest(root){
     '<div class="cr-target" id="crTarget">'+chord.name+'</div>'+
     (chord.sub?'<div class="chord-sub">'+chord.sub+'</div>':'')+
     '<div class="cr-notes">Notes attendues : '+notesTxt+'</div>'+
-    '<button class="cr-btn" id="crExample" style="width:100%;margin:2px 0 6px">🔊 Écouter l\'exemple (vitesse attendue)</button>'+
     '<div class="cr-verdict no" id="crVerdict">En attente du son…</div>'+
     '<div class="cr-score" id="crScore">—</div>'+
     '<div class="cr-bars">'+bars+'</div>'+
@@ -2052,7 +2079,6 @@ function renderCRTest(root){
   document.getElementById('crBack').onclick=function(){ navHome(); };
   document.getElementById('crNext').onclick=function(){ crGo(1); };
   document.getElementById('crPrev').onclick=function(){ crGo(-1); };
-  document.getElementById('crExample').onclick=crPlayExample;
   document.getElementById('crCapture').onclick=crCapture;
   document.getElementById('crExport').onclick=crExport;
   document.getElementById('crClear').onclick=crClearLog;
@@ -2076,13 +2102,45 @@ function crStart(){
     _crFreq=new Float32Array(_crAnalyser.frequencyBinCount);
     _crTime=new Float32Array(_crAnalyser.fftSize);
     _crRun=true; crLoop();
-  }).catch(function(){ var v2=document.getElementById('crVerdict'); if(v2) v2.textContent='Micro refusé. Autorise-le dans le navigateur puis reviens.'; });
+  }).catch(function(){ if(_crOnError){ _crOnError(); } else { var v2=document.getElementById('crVerdict'); if(v2) v2.textContent='Micro refusé. Autorise-le dans le navigateur puis reviens.'; } });
 }
 function crStop(){
   _crRun=false; if(_crRAF){ cancelAnimationFrame(_crRAF); _crRAF=null; }
   if(_crStream){ _crStream.getTracks().forEach(function(t){ t.stop(); }); _crStream=null; }
   if(_crCtx){ try{ _crCtx.close(); }catch(e){} _crCtx=null; }
-  _crAnalyser=null;
+  _crAnalyser=null; _crTarget=null; _crOnMatch=null; _crOnError=null; _crHoldSince=0; _crDinged=false;
+}
+function recogArm(chord, onMatch){
+  _crTarget=chord; _crOnMatch=onMatch; _crOnError=recogPermHelp;
+  _crDinged=false; _crHoldSince=0; _crChroma=new Float32Array(12); _crPeak=new Float32Array(12);
+  crStart();
+}
+function recogIntro(cb){
+  if(document.getElementById('recogOverlay')) return;
+  var ov=document.createElement('div'); ov.className='tuner-overlay'; ov.id='recogOverlay';
+  ov.innerHTML='<div class="tuner-panel">'+
+    '<div class="tuner-kicker">Reconnaissance d\'accord · beta</div>'+
+    '<p style="font-family:Outfit,sans-serif;font-size:14px;line-height:1.5;color:var(--text);margin:6px 0 4px;">Fonctionnalité <b>expérimentale</b>. Quand tu joues, l\'app écoute au micro et <b>retourne la carte</b> si elle reconnaît l\'accord — à toi de valider ensuite.</p>'+
+    '<p style="font-family:Outfit,sans-serif;font-size:13px;line-height:1.5;color:var(--muted);margin:0 0 6px;">Pour que ça marche : <b>gratte toutes les cordes d\'un seul coup</b>, à <b>volume normal</b>, téléphone près du ukulélé.</p>'+
+    '<button class="tuner-start" id="recogIntroOk">Compris — autoriser le micro</button>'+
+  '</div>';
+  document.body.appendChild(ov);
+  document.getElementById('recogIntroOk').onclick=function(){ var o=document.getElementById('recogOverlay'); if(o&&o.parentNode) o.parentNode.removeChild(o); if(cb) cb(); };
+}
+function recogPermHelp(){
+  if(document.getElementById('recogPermOverlay')) return;
+  var b=tBrowser();
+  var ov=document.createElement('div'); ov.className='tuner-overlay'; ov.id='recogPermOverlay';
+  ov.innerHTML='<div class="tuner-panel">'+
+    '<div class="tuner-help-title">🎤 Le micro est bloqué</div>'+
+    '<div class="tuner-help-sub">Détecté : <b>'+b.name+'</b>'+(b.os==='android'?' · Android':(b.os==='ios'?' · iPhone':''))+(b.standalone?' · app installée':'')+'</div>'+
+    tPermSteps(b)+
+    '<button class="tuner-start" id="recogPermRetry">↻ J\'ai autorisé — Réessayer</button>'+
+    '<button class="tuner-start" id="recogPermClose" style="background:transparent;color:var(--muted);box-shadow:none;margin-top:6px;">Fermer</button>'+
+  '</div>';
+  document.body.appendChild(ov);
+  document.getElementById('recogPermRetry').onclick=function(){ var o=document.getElementById('recogPermOverlay'); if(o&&o.parentNode) o.parentNode.removeChild(o); crStart(); };
+  document.getElementById('recogPermClose').onclick=function(){ var o=document.getElementById('recogPermOverlay'); if(o&&o.parentNode) o.parentNode.removeChild(o); };
 }
 function crCapture(){
   var chord=CHORDS[_crIdx], pcs=crChordPCs(chord), i;
@@ -2123,7 +2181,7 @@ function crLoop(){
   if(mx>0) for(i=0;i<12;i++) ch[i]/=mx;
   for(i=0;i<12;i++) _crChroma[i]+=((quiet?0:ch[i])-_crChroma[i])*0.4;
   for(i=0;i<12;i++){ var pk=_crPeak[i]*CR_DECAY; _crPeak[i]= _crChroma[i]>pk?_crChroma[i]:pk; }
-  var chord=CHORDS[_crIdx], pcs=crChordPCs(chord);
+  var chord=_crTarget||CHORDS[_crIdx], pcs=crChordPCs(chord);
   var minT=1, minPc=-1, maxI=0, maxIn=-1;
   for(i=0;i<12;i++){ if(pcs[i]){ if(_crPeak[i]<minT){ minT=_crPeak[i]; minPc=i; } } else if(_crPeak[i]>maxI){ maxI=_crPeak[i]; maxIn=i; } }
   var present=minT>=CR_PRES, clean=maxI<CR_INTR, okNow=present&&clean;
@@ -2132,8 +2190,18 @@ function crLoop(){
   for(i=0;i<12;i++){ var fe=document.getElementById('crFill'+i); if(fe) fe.style.height=Math.max(2,Math.round(_crPeak[i]*100))+'%'; var be=document.getElementById('crBar'+i); if(be) be.className='cr-bar'+(pcs[i]?' tgt':'')+((pcs[i]&&_crPeak[i]>=CR_PRES)?' ok':((!pcs[i]&&_crPeak[i]>=CR_INTR)?' bad':'')); }
   var sc=document.getElementById('crScore'); if(sc) sc.textContent= quiet?'(silence)':'cible mini '+Math.round(minT*100)+'% (≥'+Math.round(CR_PRES*100)+') · intrus '+(maxIn>=0?CR_NOTES[maxIn]:'—')+' '+Math.round(maxI*100)+'% (<'+Math.round(CR_INTR*100)+')';
   var vEl=document.getElementById('crVerdict'), tEl=document.getElementById('crTarget');
-  if(validated){ if(vEl){ vEl.textContent='✓ reconnu : '+chord.name; vEl.className='cr-verdict ok'; } if(tEl) tEl.className='cr-target ok'; if(!_crDinged){ _crDinged=true; crDing(); } }
-  else { if(tEl) tEl.className='cr-target'; if(vEl){ if(quiet) vEl.textContent='Gratte l\'accord (toutes les cordes) et tiens'; else if(!present) vEl.textContent='✗ il manque '+(minPc>=0?CR_NOTES[minPc]+' ('+crSolfege(minPc)+')':'une note'); else if(!clean) vEl.textContent='✗ note en trop : '+(maxIn>=0?CR_NOTES[maxIn]+' ('+crSolfege(maxIn)+')':'?'); else vEl.textContent='✓ tiens la position…'; vEl.className='cr-verdict'+(okNow?'':' no'); } }
+  var rh=document.getElementById('recogHint');
+  if(validated){
+    if(vEl){ vEl.textContent='✓ reconnu : '+chord.name; vEl.className='cr-verdict ok'; }
+    if(tEl) tEl.className='cr-target ok';
+    if(rh){ rh.textContent='✓ Accord reconnu — vérifie et valide'; rh.className='recog-hint ok'; }
+    if(!_crDinged){ _crDinged=true; crDing(); if(_crOnMatch){ var cb=_crOnMatch; _crOnMatch=null; cb(); } }
+  } else {
+    if(tEl) tEl.className='cr-target';
+    var msg = quiet?'Gratte l\'accord (toutes les cordes) et tiens' : (!present?'✗ il manque '+(minPc>=0?CR_NOTES[minPc]+' ('+crSolfege(minPc)+')':'une note') : (!clean?'✗ note en trop : '+(maxIn>=0?CR_NOTES[maxIn]+' ('+crSolfege(maxIn)+')':'?') : '✓ tiens la position…'));
+    if(vEl){ vEl.textContent=msg; vEl.className='cr-verdict'+(okNow?'':' no'); }
+    if(rh){ rh.textContent= quiet?'🎤 Joue l\'accord d\'un coup…' : msg; rh.className='recog-hint'; }
+  }
   _crRAF=requestAnimationFrame(crLoop);
 }
 function crPlayExample(){
