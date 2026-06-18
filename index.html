@@ -477,6 +477,8 @@
     .tuner-chip.active{border-color:var(--accent);color:var(--accent);background:var(--accent-light);transform:translateY(-2px);}
     .tuner-chip.done{border-color:var(--correct);background:var(--correct);color:#fff;}
     .tuner-chip.done .chip-fr::before{content:'✓ ';}
+    .tuner-chip.selected{border-color:var(--accent);background:var(--accent);color:#fff;box-shadow:0 0 0 3px var(--accent-light);animation:tchipPulse 1.1s ease-in-out infinite;}
+    @keyframes tchipPulse{0%,100%{transform:translateY(-2px) scale(1);}50%{transform:translateY(-2px) scale(1.09);}}
     .tuner-dial{width:100%;max-width:280px;margin:2px auto 0;}
     .tuner-svg{width:100%;height:auto;display:block;overflow:visible;}
     .tuner-arc{fill:none;stroke:var(--border);stroke-width:7;stroke-linecap:round;}
@@ -500,7 +502,7 @@
 <div id="obQrSrc" style="display:none"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 202 202"  preserveAspectRatio="xMinYMin meet"><rect width="100%" height="100%" fill="white" cx="0" cy="0"/><path d="M2,2l6,0 0,6 -6,0 0,-6z M8,2l6,0 0,6 -6,0 0,-6z M14,2l6,0 0,6 -6,0 0,-6z M20,2l6,0 0,6 -6,0 0,-6z M26,2l6,0 0,6 -6,0 0,-6z M32,2l6,0 0,6 -6,0 0,-6z M38,2l6,0 0,6 -6,0 0,-6z M56,2l6,0 0,6 -6,0 0,-6z M68,2l6,0 0,6 -6,0 0,-6z M80,2l6,0 0,6 -6,0 0,-6z M86,2l6,0 0,6 -6,0 0,-6z M98,2l6,0 0,6 -6,0 0,-6z M104,2l6,0 0,6 -6,0 0,-6z M116,2l6,0 0,6 -6,0 0,-6z M122,2l6,0 0,6 -6,0 0,-6z M128,2l6,0 0,6 -6,0 0,-6z M140,2l6,0 0,6 -6,0 0,-6z M158,2l6,0 0,6 -6,0 0,-6z M164,2l6,0 0,6 -6,0 0,-6z M170,2l6,0 0,6 -6,0 0,-6z M176,2l6,0 0,6 -6,0 0,-6z M182,2l6,0 0,6 -6,0 0,-6z M188,2l6,0 0,6 -6,0 0,-6z M194,2l6,0 0,6 -6,0 0,-6z M2,8l6,0 0,6 -6,0 0,-6z M38,8l6,0 0,6 -6,0 0,-6z M62,8l6,0 0,6 -6,0 0,-6z M80,8l6,0 0,6 -6,0 0,-6z M86,8l6,0 0,6 -6,0 0,-6z M92,8l6,0 0,6 -6,0 0,-6z M98,8l6,0 0,6 -6,0 0,-6z M104,8l6,0 0,6 -6,0 0,-6z M158,8l6,0 0,6 -6,0 0,-6z M194,8l6,0 0,6 -6,0 0,-6z M2,14l6,0 0,6 -6,0 0,-6z M14,14l6,0 0,6 -6,0 0,-6z M20,14l6,0 0,6 -6,0 0,-6z M26,14l6,0 0,6 -6,0 0,-6z M38,14l6,0 0,6 -6,0 0,-6z M50,14l6,0 0,6 -6,0 0,-6z M80,14l6,0 0,6 -6,0 0,-6z M104,14l6,0 0,6 -6,0 0,-6z M110,14l6,0 0,6 -6,0 0,-6z M128,14l6,0 0,6 -6,0 0,-6z M134,14l6,0 0,6 -6,0 0,-6z M146,14l6,0 0,6 -6,0 0,-6z M158,14l6,0 0,6 -6,0 0,-6z M170,14l6,0 0,6 -6,0 0,-6z M176,14l6,0 0,6 -6,0 0,-6z M182,14l6,0 0,6 -6,0 0,-6z M194,14l6,0 0,6 -6,0 0,-6z M2,20l6,0 0,6 -6,0 0,-6z M14,20l6,0 0,6 -6,0 0,-6z M20,20l6,0 0,6 -6,0 0,-6z M26,20l6,0 0,6 -6,0 0,-6z M38,20l6,0 0,6 -6,0 0,-6z M50,20l6,0 0,6 -6,0 0,-6z M62,20l6,0 0,6 -6,0 0,-6z M68,20l6,0 0,6 -6,0 0,-6z M74,20l6,0 0,6 -6,0 0,-6z M86,20l6,0 0,6 -6,0 0,-6z M98,20l6,0 0,6 -6,0 0,-6z M116,20l6,0 0,6 -6,0 0,-6z M122,20l6,0 0,6 -6,0 0,-6z M158,20l6,0 0,6 -6,0 0,-6z M170,20l6,0 0,6 -6,0 0,-6z M176,20l6,0 0,6 -6,0 0,-6z M182,20l6,0 0,6 -6,0 0,-6z M194,20l6,0 0,6 -6,0 0,-6z M2,26l6,0 0,6 -6,0 0,-6z M14,26l6,0 0,6 -6,0 0,-6z M20,26l6,0 0,6 -6,0 0,-6z M26,26l6,0 0,6 -6,0 0,-6z M38,26l6,0 0,6 -6,0 0,-6z M50,26l6,0 0,6 -6,0 0,-6z M56,26l6,0 0,6 -6,0 0,-6z M62,26l6,0 0,6 -6,0 0,-6z M68,26l6,0 0,6 -6,0 0,-6z M92,26l6,0 0,6 -6,0 0,-6z M110,26l6,0 0,6 -6,0 0,-6z M140,26l6,0 0,6 -6,0 0,-6z M158,26l6,0 0,6 -6,0 0,-6z M170,26l6,0 0,6 -6,0 0,-6z M176,26l6,0 0,6 -6,0 0,-6z M182,26l6,0 0,6 -6,0 0,-6z M194,26l6,0 0,6 -6,0 0,-6z M2,32l6,0 0,6 -6,0 0,-6z M38,32l6,0 0,6 -6,0 0,-6z M50,32l6,0 0,6 -6,0 0,-6z M62,32l6,0 0,6 -6,0 0,-6z M68,32l6,0 0,6 -6,0 0,-6z M74,32l6,0 0,6 -6,0 0,-6z M86,32l6,0 0,6 -6,0 0,-6z M92,32l6,0 0,6 -6,0 0,-6z M98,32l6,0 0,6 -6,0 0,-6z M122,32l6,0 0,6 -6,0 0,-6z M134,32l6,0 0,6 -6,0 0,-6z M146,32l6,0 0,6 -6,0 0,-6z M158,32l6,0 0,6 -6,0 0,-6z M194,32l6,0 0,6 -6,0 0,-6z M2,38l6,0 0,6 -6,0 0,-6z M8,38l6,0 0,6 -6,0 0,-6z M14,38l6,0 0,6 -6,0 0,-6z M20,38l6,0 0,6 -6,0 0,-6z M26,38l6,0 0,6 -6,0 0,-6z M32,38l6,0 0,6 -6,0 0,-6z M38,38l6,0 0,6 -6,0 0,-6z M50,38l6,0 0,6 -6,0 0,-6z M62,38l6,0 0,6 -6,0 0,-6z M74,38l6,0 0,6 -6,0 0,-6z M86,38l6,0 0,6 -6,0 0,-6z M98,38l6,0 0,6 -6,0 0,-6z M110,38l6,0 0,6 -6,0 0,-6z M122,38l6,0 0,6 -6,0 0,-6z M134,38l6,0 0,6 -6,0 0,-6z M146,38l6,0 0,6 -6,0 0,-6z M158,38l6,0 0,6 -6,0 0,-6z M164,38l6,0 0,6 -6,0 0,-6z M170,38l6,0 0,6 -6,0 0,-6z M176,38l6,0 0,6 -6,0 0,-6z M182,38l6,0 0,6 -6,0 0,-6z M188,38l6,0 0,6 -6,0 0,-6z M194,38l6,0 0,6 -6,0 0,-6z M50,44l6,0 0,6 -6,0 0,-6z M56,44l6,0 0,6 -6,0 0,-6z M62,44l6,0 0,6 -6,0 0,-6z M74,44l6,0 0,6 -6,0 0,-6z M86,44l6,0 0,6 -6,0 0,-6z M92,44l6,0 0,6 -6,0 0,-6z M128,44l6,0 0,6 -6,0 0,-6z M2,50l6,0 0,6 -6,0 0,-6z M14,50l6,0 0,6 -6,0 0,-6z M20,50l6,0 0,6 -6,0 0,-6z M26,50l6,0 0,6 -6,0 0,-6z M32,50l6,0 0,6 -6,0 0,-6z M38,50l6,0 0,6 -6,0 0,-6z M56,50l6,0 0,6 -6,0 0,-6z M74,50l6,0 0,6 -6,0 0,-6z M80,50l6,0 0,6 -6,0 0,-6z M86,50l6,0 0,6 -6,0 0,-6z M92,50l6,0 0,6 -6,0 0,-6z M104,50l6,0 0,6 -6,0 0,-6z M134,50l6,0 0,6 -6,0 0,-6z M146,50l6,0 0,6 -6,0 0,-6z M158,50l6,0 0,6 -6,0 0,-6z M164,50l6,0 0,6 -6,0 0,-6z M170,50l6,0 0,6 -6,0 0,-6z M176,50l6,0 0,6 -6,0 0,-6z M182,50l6,0 0,6 -6,0 0,-6z M2,56l6,0 0,6 -6,0 0,-6z M20,56l6,0 0,6 -6,0 0,-6z M26,56l6,0 0,6 -6,0 0,-6z M50,56l6,0 0,6 -6,0 0,-6z M62,56l6,0 0,6 -6,0 0,-6z M74,56l6,0 0,6 -6,0 0,-6z M98,56l6,0 0,6 -6,0 0,-6z M110,56l6,0 0,6 -6,0 0,-6z M116,56l6,0 0,6 -6,0 0,-6z M122,56l6,0 0,6 -6,0 0,-6z M140,56l6,0 0,6 -6,0 0,-6z M158,56l6,0 0,6 -6,0 0,-6z M164,56l6,0 0,6 -6,0 0,-6z M176,56l6,0 0,6 -6,0 0,-6z M182,56l6,0 0,6 -6,0 0,-6z M194,56l6,0 0,6 -6,0 0,-6z M2,62l6,0 0,6 -6,0 0,-6z M8,62l6,0 0,6 -6,0 0,-6z M26,62l6,0 0,6 -6,0 0,-6z M32,62l6,0 0,6 -6,0 0,-6z M38,62l6,0 0,6 -6,0 0,-6z M56,62l6,0 0,6 -6,0 0,-6z M92,62l6,0 0,6 -6,0 0,-6z M98,62l6,0 0,6 -6,0 0,-6z M110,62l6,0 0,6 -6,0 0,-6z M134,62l6,0 0,6 -6,0 0,-6z M146,62l6,0 0,6 -6,0 0,-6z M170,62l6,0 0,6 -6,0 0,-6z M182,62l6,0 0,6 -6,0 0,-6z M188,62l6,0 0,6 -6,0 0,-6z M14,68l6,0 0,6 -6,0 0,-6z M50,68l6,0 0,6 -6,0 0,-6z M56,68l6,0 0,6 -6,0 0,-6z M62,68l6,0 0,6 -6,0 0,-6z M68,68l6,0 0,6 -6,0 0,-6z M74,68l6,0 0,6 -6,0 0,-6z M86,68l6,0 0,6 -6,0 0,-6z M92,68l6,0 0,6 -6,0 0,-6z M98,68l6,0 0,6 -6,0 0,-6z M122,68l6,0 0,6 -6,0 0,-6z M128,68l6,0 0,6 -6,0 0,-6z M134,68l6,0 0,6 -6,0 0,-6z M152,68l6,0 0,6 -6,0 0,-6z M158,68l6,0 0,6 -6,0 0,-6z M170,68l6,0 0,6 -6,0 0,-6z M176,68l6,0 0,6 -6,0 0,-6z M182,68l6,0 0,6 -6,0 0,-6z M20,74l6,0 0,6 -6,0 0,-6z M32,74l6,0 0,6 -6,0 0,-6z M38,74l6,0 0,6 -6,0 0,-6z M62,74l6,0 0,6 -6,0 0,-6z M92,74l6,0 0,6 -6,0 0,-6z M110,74l6,0 0,6 -6,0 0,-6z M128,74l6,0 0,6 -6,0 0,-6z M146,74l6,0 0,6 -6,0 0,-6z M152,74l6,0 0,6 -6,0 0,-6z M170,74l6,0 0,6 -6,0 0,-6z M176,74l6,0 0,6 -6,0 0,-6z M188,74l6,0 0,6 -6,0 0,-6z M194,74l6,0 0,6 -6,0 0,-6z M14,80l6,0 0,6 -6,0 0,-6z M20,80l6,0 0,6 -6,0 0,-6z M44,80l6,0 0,6 -6,0 0,-6z M68,80l6,0 0,6 -6,0 0,-6z M80,80l6,0 0,6 -6,0 0,-6z M86,80l6,0 0,6 -6,0 0,-6z M92,80l6,0 0,6 -6,0 0,-6z M98,80l6,0 0,6 -6,0 0,-6z M122,80l6,0 0,6 -6,0 0,-6z M128,80l6,0 0,6 -6,0 0,-6z M140,80l6,0 0,6 -6,0 0,-6z M158,80l6,0 0,6 -6,0 0,-6z M176,80l6,0 0,6 -6,0 0,-6z M182,80l6,0 0,6 -6,0 0,-6z M188,80l6,0 0,6 -6,0 0,-6z M194,80l6,0 0,6 -6,0 0,-6z M2,86l6,0 0,6 -6,0 0,-6z M14,86l6,0 0,6 -6,0 0,-6z M26,86l6,0 0,6 -6,0 0,-6z M32,86l6,0 0,6 -6,0 0,-6z M38,86l6,0 0,6 -6,0 0,-6z M44,86l6,0 0,6 -6,0 0,-6z M80,86l6,0 0,6 -6,0 0,-6z M104,86l6,0 0,6 -6,0 0,-6z M110,86l6,0 0,6 -6,0 0,-6z M116,86l6,0 0,6 -6,0 0,-6z M134,86l6,0 0,6 -6,0 0,-6z M146,86l6,0 0,6 -6,0 0,-6z M152,86l6,0 0,6 -6,0 0,-6z M158,86l6,0 0,6 -6,0 0,-6z M176,86l6,0 0,6 -6,0 0,-6z M182,86l6,0 0,6 -6,0 0,-6z M188,86l6,0 0,6 -6,0 0,-6z M8,92l6,0 0,6 -6,0 0,-6z M32,92l6,0 0,6 -6,0 0,-6z M56,92l6,0 0,6 -6,0 0,-6z M68,92l6,0 0,6 -6,0 0,-6z M86,92l6,0 0,6 -6,0 0,-6z M98,92l6,0 0,6 -6,0 0,-6z M110,92l6,0 0,6 -6,0 0,-6z M116,92l6,0 0,6 -6,0 0,-6z M122,92l6,0 0,6 -6,0 0,-6z M128,92l6,0 0,6 -6,0 0,-6z M134,92l6,0 0,6 -6,0 0,-6z M140,92l6,0 0,6 -6,0 0,-6z M146,92l6,0 0,6 -6,0 0,-6z M152,92l6,0 0,6 -6,0 0,-6z M158,92l6,0 0,6 -6,0 0,-6z M164,92l6,0 0,6 -6,0 0,-6z M182,92l6,0 0,6 -6,0 0,-6z M2,98l6,0 0,6 -6,0 0,-6z M8,98l6,0 0,6 -6,0 0,-6z M14,98l6,0 0,6 -6,0 0,-6z M32,98l6,0 0,6 -6,0 0,-6z M38,98l6,0 0,6 -6,0 0,-6z M44,98l6,0 0,6 -6,0 0,-6z M50,98l6,0 0,6 -6,0 0,-6z M62,98l6,0 0,6 -6,0 0,-6z M98,98l6,0 0,6 -6,0 0,-6z M104,98l6,0 0,6 -6,0 0,-6z M110,98l6,0 0,6 -6,0 0,-6z M116,98l6,0 0,6 -6,0 0,-6z M122,98l6,0 0,6 -6,0 0,-6z M134,98l6,0 0,6 -6,0 0,-6z M152,98l6,0 0,6 -6,0 0,-6z M164,98l6,0 0,6 -6,0 0,-6z M170,98l6,0 0,6 -6,0 0,-6z M194,98l6,0 0,6 -6,0 0,-6z M2,104l6,0 0,6 -6,0 0,-6z M8,104l6,0 0,6 -6,0 0,-6z M20,104l6,0 0,6 -6,0 0,-6z M56,104l6,0 0,6 -6,0 0,-6z M68,104l6,0 0,6 -6,0 0,-6z M86,104l6,0 0,6 -6,0 0,-6z M98,104l6,0 0,6 -6,0 0,-6z M104,104l6,0 0,6 -6,0 0,-6z M110,104l6,0 0,6 -6,0 0,-6z M116,104l6,0 0,6 -6,0 0,-6z M122,104l6,0 0,6 -6,0 0,-6z M140,104l6,0 0,6 -6,0 0,-6z M158,104l6,0 0,6 -6,0 0,-6z M164,104l6,0 0,6 -6,0 0,-6z M176,104l6,0 0,6 -6,0 0,-6z M182,104l6,0 0,6 -6,0 0,-6z M194,104l6,0 0,6 -6,0 0,-6z M8,110l6,0 0,6 -6,0 0,-6z M14,110l6,0 0,6 -6,0 0,-6z M20,110l6,0 0,6 -6,0 0,-6z M26,110l6,0 0,6 -6,0 0,-6z M38,110l6,0 0,6 -6,0 0,-6z M44,110l6,0 0,6 -6,0 0,-6z M50,110l6,0 0,6 -6,0 0,-6z M56,110l6,0 0,6 -6,0 0,-6z M62,110l6,0 0,6 -6,0 0,-6z M80,110l6,0 0,6 -6,0 0,-6z M86,110l6,0 0,6 -6,0 0,-6z M92,110l6,0 0,6 -6,0 0,-6z M98,110l6,0 0,6 -6,0 0,-6z M104,110l6,0 0,6 -6,0 0,-6z M122,110l6,0 0,6 -6,0 0,-6z M134,110l6,0 0,6 -6,0 0,-6z M158,110l6,0 0,6 -6,0 0,-6z M164,110l6,0 0,6 -6,0 0,-6z M170,110l6,0 0,6 -6,0 0,-6z M182,110l6,0 0,6 -6,0 0,-6z M188,110l6,0 0,6 -6,0 0,-6z M2,116l6,0 0,6 -6,0 0,-6z M20,116l6,0 0,6 -6,0 0,-6z M26,116l6,0 0,6 -6,0 0,-6z M44,116l6,0 0,6 -6,0 0,-6z M56,116l6,0 0,6 -6,0 0,-6z M80,116l6,0 0,6 -6,0 0,-6z M86,116l6,0 0,6 -6,0 0,-6z M98,116l6,0 0,6 -6,0 0,-6z M104,116l6,0 0,6 -6,0 0,-6z M110,116l6,0 0,6 -6,0 0,-6z M140,116l6,0 0,6 -6,0 0,-6z M146,116l6,0 0,6 -6,0 0,-6z M164,116l6,0 0,6 -6,0 0,-6z M170,116l6,0 0,6 -6,0 0,-6z M176,116l6,0 0,6 -6,0 0,-6z M182,116l6,0 0,6 -6,0 0,-6z M188,116l6,0 0,6 -6,0 0,-6z M14,122l6,0 0,6 -6,0 0,-6z M26,122l6,0 0,6 -6,0 0,-6z M32,122l6,0 0,6 -6,0 0,-6z M38,122l6,0 0,6 -6,0 0,-6z M44,122l6,0 0,6 -6,0 0,-6z M62,122l6,0 0,6 -6,0 0,-6z M74,122l6,0 0,6 -6,0 0,-6z M86,122l6,0 0,6 -6,0 0,-6z M98,122l6,0 0,6 -6,0 0,-6z M116,122l6,0 0,6 -6,0 0,-6z M122,122l6,0 0,6 -6,0 0,-6z M128,122l6,0 0,6 -6,0 0,-6z M134,122l6,0 0,6 -6,0 0,-6z M152,122l6,0 0,6 -6,0 0,-6z M164,122l6,0 0,6 -6,0 0,-6z M170,122l6,0 0,6 -6,0 0,-6z M176,122l6,0 0,6 -6,0 0,-6z M188,122l6,0 0,6 -6,0 0,-6z M2,128l6,0 0,6 -6,0 0,-6z M8,128l6,0 0,6 -6,0 0,-6z M20,128l6,0 0,6 -6,0 0,-6z M44,128l6,0 0,6 -6,0 0,-6z M56,128l6,0 0,6 -6,0 0,-6z M68,128l6,0 0,6 -6,0 0,-6z M74,128l6,0 0,6 -6,0 0,-6z M92,128l6,0 0,6 -6,0 0,-6z M104,128l6,0 0,6 -6,0 0,-6z M110,128l6,0 0,6 -6,0 0,-6z M128,128l6,0 0,6 -6,0 0,-6z M140,128l6,0 0,6 -6,0 0,-6z M158,128l6,0 0,6 -6,0 0,-6z M176,128l6,0 0,6 -6,0 0,-6z M194,128l6,0 0,6 -6,0 0,-6z M2,134l6,0 0,6 -6,0 0,-6z M26,134l6,0 0,6 -6,0 0,-6z M38,134l6,0 0,6 -6,0 0,-6z M56,134l6,0 0,6 -6,0 0,-6z M86,134l6,0 0,6 -6,0 0,-6z M92,134l6,0 0,6 -6,0 0,-6z M98,134l6,0 0,6 -6,0 0,-6z M104,134l6,0 0,6 -6,0 0,-6z M122,134l6,0 0,6 -6,0 0,-6z M128,134l6,0 0,6 -6,0 0,-6z M134,134l6,0 0,6 -6,0 0,-6z M152,134l6,0 0,6 -6,0 0,-6z M164,134l6,0 0,6 -6,0 0,-6z M176,134l6,0 0,6 -6,0 0,-6z M182,134l6,0 0,6 -6,0 0,-6z M188,134l6,0 0,6 -6,0 0,-6z M2,140l6,0 0,6 -6,0 0,-6z M14,140l6,0 0,6 -6,0 0,-6z M20,140l6,0 0,6 -6,0 0,-6z M26,140l6,0 0,6 -6,0 0,-6z M50,140l6,0 0,6 -6,0 0,-6z M56,140l6,0 0,6 -6,0 0,-6z M62,140l6,0 0,6 -6,0 0,-6z M92,140l6,0 0,6 -6,0 0,-6z M110,140l6,0 0,6 -6,0 0,-6z M128,140l6,0 0,6 -6,0 0,-6z M134,140l6,0 0,6 -6,0 0,-6z M146,140l6,0 0,6 -6,0 0,-6z M170,140l6,0 0,6 -6,0 0,-6z M176,140l6,0 0,6 -6,0 0,-6z M182,140l6,0 0,6 -6,0 0,-6z M194,140l6,0 0,6 -6,0 0,-6z M2,146l6,0 0,6 -6,0 0,-6z M14,146l6,0 0,6 -6,0 0,-6z M32,146l6,0 0,6 -6,0 0,-6z M38,146l6,0 0,6 -6,0 0,-6z M44,146l6,0 0,6 -6,0 0,-6z M50,146l6,0 0,6 -6,0 0,-6z M56,146l6,0 0,6 -6,0 0,-6z M68,146l6,0 0,6 -6,0 0,-6z M74,146l6,0 0,6 -6,0 0,-6z M80,146l6,0 0,6 -6,0 0,-6z M86,146l6,0 0,6 -6,0 0,-6z M92,146l6,0 0,6 -6,0 0,-6z M104,146l6,0 0,6 -6,0 0,-6z M146,146l6,0 0,6 -6,0 0,-6z M152,146l6,0 0,6 -6,0 0,-6z M158,146l6,0 0,6 -6,0 0,-6z M164,146l6,0 0,6 -6,0 0,-6z M170,146l6,0 0,6 -6,0 0,-6z M188,146l6,0 0,6 -6,0 0,-6z M194,146l6,0 0,6 -6,0 0,-6z M50,152l6,0 0,6 -6,0 0,-6z M62,152l6,0 0,6 -6,0 0,-6z M110,152l6,0 0,6 -6,0 0,-6z M116,152l6,0 0,6 -6,0 0,-6z M122,152l6,0 0,6 -6,0 0,-6z M128,152l6,0 0,6 -6,0 0,-6z M140,152l6,0 0,6 -6,0 0,-6z M146,152l6,0 0,6 -6,0 0,-6z M170,152l6,0 0,6 -6,0 0,-6z M182,152l6,0 0,6 -6,0 0,-6z M194,152l6,0 0,6 -6,0 0,-6z M2,158l6,0 0,6 -6,0 0,-6z M8,158l6,0 0,6 -6,0 0,-6z M14,158l6,0 0,6 -6,0 0,-6z M20,158l6,0 0,6 -6,0 0,-6z M26,158l6,0 0,6 -6,0 0,-6z M32,158l6,0 0,6 -6,0 0,-6z M38,158l6,0 0,6 -6,0 0,-6z M62,158l6,0 0,6 -6,0 0,-6z M68,158l6,0 0,6 -6,0 0,-6z M80,158l6,0 0,6 -6,0 0,-6z M86,158l6,0 0,6 -6,0 0,-6z M92,158l6,0 0,6 -6,0 0,-6z M98,158l6,0 0,6 -6,0 0,-6z M110,158l6,0 0,6 -6,0 0,-6z M122,158l6,0 0,6 -6,0 0,-6z M128,158l6,0 0,6 -6,0 0,-6z M140,158l6,0 0,6 -6,0 0,-6z M146,158l6,0 0,6 -6,0 0,-6z M158,158l6,0 0,6 -6,0 0,-6z M170,158l6,0 0,6 -6,0 0,-6z M182,158l6,0 0,6 -6,0 0,-6z M188,158l6,0 0,6 -6,0 0,-6z M2,164l6,0 0,6 -6,0 0,-6z M38,164l6,0 0,6 -6,0 0,-6z M50,164l6,0 0,6 -6,0 0,-6z M56,164l6,0 0,6 -6,0 0,-6z M62,164l6,0 0,6 -6,0 0,-6z M80,164l6,0 0,6 -6,0 0,-6z M98,164l6,0 0,6 -6,0 0,-6z M116,164l6,0 0,6 -6,0 0,-6z M122,164l6,0 0,6 -6,0 0,-6z M128,164l6,0 0,6 -6,0 0,-6z M134,164l6,0 0,6 -6,0 0,-6z M140,164l6,0 0,6 -6,0 0,-6z M146,164l6,0 0,6 -6,0 0,-6z M170,164l6,0 0,6 -6,0 0,-6z M176,164l6,0 0,6 -6,0 0,-6z M182,164l6,0 0,6 -6,0 0,-6z M2,170l6,0 0,6 -6,0 0,-6z M14,170l6,0 0,6 -6,0 0,-6z M20,170l6,0 0,6 -6,0 0,-6z M26,170l6,0 0,6 -6,0 0,-6z M38,170l6,0 0,6 -6,0 0,-6z M50,170l6,0 0,6 -6,0 0,-6z M56,170l6,0 0,6 -6,0 0,-6z M110,170l6,0 0,6 -6,0 0,-6z M128,170l6,0 0,6 -6,0 0,-6z M146,170l6,0 0,6 -6,0 0,-6z M152,170l6,0 0,6 -6,0 0,-6z M158,170l6,0 0,6 -6,0 0,-6z M164,170l6,0 0,6 -6,0 0,-6z M170,170l6,0 0,6 -6,0 0,-6z M176,170l6,0 0,6 -6,0 0,-6z M188,170l6,0 0,6 -6,0 0,-6z M194,170l6,0 0,6 -6,0 0,-6z M2,176l6,0 0,6 -6,0 0,-6z M14,176l6,0 0,6 -6,0 0,-6z M20,176l6,0 0,6 -6,0 0,-6z M26,176l6,0 0,6 -6,0 0,-6z M38,176l6,0 0,6 -6,0 0,-6z M50,176l6,0 0,6 -6,0 0,-6z M56,176l6,0 0,6 -6,0 0,-6z M62,176l6,0 0,6 -6,0 0,-6z M68,176l6,0 0,6 -6,0 0,-6z M86,176l6,0 0,6 -6,0 0,-6z M92,176l6,0 0,6 -6,0 0,-6z M98,176l6,0 0,6 -6,0 0,-6z M104,176l6,0 0,6 -6,0 0,-6z M122,176l6,0 0,6 -6,0 0,-6z M134,176l6,0 0,6 -6,0 0,-6z M140,176l6,0 0,6 -6,0 0,-6z M146,176l6,0 0,6 -6,0 0,-6z M152,176l6,0 0,6 -6,0 0,-6z M170,176l6,0 0,6 -6,0 0,-6z M176,176l6,0 0,6 -6,0 0,-6z M182,176l6,0 0,6 -6,0 0,-6z M194,176l6,0 0,6 -6,0 0,-6z M2,182l6,0 0,6 -6,0 0,-6z M14,182l6,0 0,6 -6,0 0,-6z M20,182l6,0 0,6 -6,0 0,-6z M26,182l6,0 0,6 -6,0 0,-6z M38,182l6,0 0,6 -6,0 0,-6z M50,182l6,0 0,6 -6,0 0,-6z M74,182l6,0 0,6 -6,0 0,-6z M86,182l6,0 0,6 -6,0 0,-6z M110,182l6,0 0,6 -6,0 0,-6z M116,182l6,0 0,6 -6,0 0,-6z M134,182l6,0 0,6 -6,0 0,-6z M140,182l6,0 0,6 -6,0 0,-6z M146,182l6,0 0,6 -6,0 0,-6z M158,182l6,0 0,6 -6,0 0,-6z M164,182l6,0 0,6 -6,0 0,-6z M2,188l6,0 0,6 -6,0 0,-6z M38,188l6,0 0,6 -6,0 0,-6z M68,188l6,0 0,6 -6,0 0,-6z M98,188l6,0 0,6 -6,0 0,-6z M116,188l6,0 0,6 -6,0 0,-6z M122,188l6,0 0,6 -6,0 0,-6z M128,188l6,0 0,6 -6,0 0,-6z M170,188l6,0 0,6 -6,0 0,-6z M176,188l6,0 0,6 -6,0 0,-6z M182,188l6,0 0,6 -6,0 0,-6z M2,194l6,0 0,6 -6,0 0,-6z M8,194l6,0 0,6 -6,0 0,-6z M14,194l6,0 0,6 -6,0 0,-6z M20,194l6,0 0,6 -6,0 0,-6z M26,194l6,0 0,6 -6,0 0,-6z M32,194l6,0 0,6 -6,0 0,-6z M38,194l6,0 0,6 -6,0 0,-6z M50,194l6,0 0,6 -6,0 0,-6z M74,194l6,0 0,6 -6,0 0,-6z M80,194l6,0 0,6 -6,0 0,-6z M104,194l6,0 0,6 -6,0 0,-6z M116,194l6,0 0,6 -6,0 0,-6z M134,194l6,0 0,6 -6,0 0,-6z M140,194l6,0 0,6 -6,0 0,-6z M146,194l6,0 0,6 -6,0 0,-6z M152,194l6,0 0,6 -6,0 0,-6z M158,194l6,0 0,6 -6,0 0,-6z M164,194l6,0 0,6 -6,0 0,-6z M188,194l6,0 0,6 -6,0 0,-6z " stroke="transparent" fill="black"/></svg></div>
 <footer class="app-footer">Réalisé par <a href="https://www.instagram.com/juliendestange/" target="_blank" rel="noopener" class="footer-link">Julien Destange</a> · <span id="appVersion"></span><br>Sons de ukulélé : <a href="https://github.com/francoiswnel/Ukulele" target="_blank" rel="noopener" class="footer-link">F. W. Nel</a> (CC0)</footer>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-var VERSION = '3.76';  // SOURCE UNIQUE de version - le footer affiche 'v'+VERSION (NE JAMAIS coder le footer en dur)
+var VERSION = '3.77';  // SOURCE UNIQUE de version - le footer affiche 'v'+VERSION (NE JAMAIS coder le footer en dur)
 (function(){var f=document.getElementById('appVersion'); if(f) f.textContent='v'+VERSION;})();
 try{ setTimeout(function(){ try{ ukePreload(); }catch(e){} }, 1200); }catch(e){}
 /* ══════════════════════════════════════════
@@ -760,9 +762,10 @@ function playStrum(chord, vol){
   vol=(vol==null?1:vol);
   var now=ctx.currentTime, gap=0.055;                      // grattage g -> a, posé
   var master=ctx.createGain(); master.gain.value=0.55*vol;  // niveau prudent (évite la satu au volume max du tél)
+  var hp=ctx.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=90; hp.Q.value=0.7;  // coupe DC/subsonique (HP de tél)
   var comp=ctx.createDynamicsCompressor();                 // limiteur (sécurité pics)
   comp.threshold.value=-10; comp.knee.value=22; comp.ratio.value=4; comp.attack.value=0.004; comp.release.value=0.25;
-  master.connect(comp); comp.connect(ctx.destination);
+  master.connect(hp); hp.connect(comp); comp.connect(ctx.destination);
   var played=0;
   // CHAQUE corde jouée séparément -> voicing + unissons respectés
   for(var st=0; st<4; st++){
@@ -773,7 +776,8 @@ function playStrum(chord, vol){
     var buf=_ukeBuf[url];
     if(buf){
       var src=ctx.createBufferSource(); src.buffer=buf;
-      var g=ctx.createGain(); g.gain.value=0.85;
+      var g=ctx.createGain();
+      g.gain.setValueAtTime(0.0001,t); g.gain.linearRampToValueAtTime(0.85,t+0.006);  // attaque adoucie (anti-grésil HP)
       src.connect(g); g.connect(master); src.start(t);
     } else {
       _ukeLoad(url)['catch'](function(){});                // prêt pour la prochaine fois
@@ -2340,6 +2344,8 @@ function crPlayExample(){
 /* ════════════════ ACCORDEUR (tuner) ════════════════ */
 var _tCtx=null,_tStream=null,_tAnalyser=null,_tRAF=null,_tBuf=null,_tRun=false,_tHist=[],_tValidated={},_tInTuneSince=0,_tLastName='',_tDispCents=null,_tLastGood=0,_tLockedName=null,_tSndTime={},_tSilenceSeen=true,_tRefUntil=0,_tStickName='',_tSwitchCand='',_tSwitchCount=0;
 var TUNER_STRINGS=[{name:'G',midi:67},{name:'C',midi:60},{name:'E',midi:64},{name:'A',midi:69}];
+var _tRefGain=null,_tRefSrc=null,_tRepeatName=null,_tRepeatTimer=null,_tRepeatCount=0,_tRepeatMax=10,_tRepeatGap=2000;
+var _TUNER_STRIDX={G:0,C:1,E:2,A:3};  // -> index pour _ukeFile (G=4,C=3,E=2,A=1)
 var TUNER_NOTES=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
 function tNoteFreq(m){ return 440*Math.pow(2,(m-69)/12); }
 function tFreqToMidi(f){ return Math.round(12*(Math.log(f/440)/Math.LN2)+69); }
@@ -2519,7 +2525,7 @@ function tunerOpen(){
   '</div>';
   document.body.appendChild(ov);
   var sc=document.getElementById('tunerStrings');
-  TUNER_STRINGS.forEach(function(st){ var c=document.createElement('div'); c.className='tuner-chip'; c.id='tchip-'+st.name; c.style.cursor='pointer'; c.title='Écouter la note '+tStringLabel(st.name); c.innerHTML='<span class="chip-l">'+st.name+'</span><span class="chip-fr">'+tStringLabel(st.name)+'</span>'; c.onclick=(function(m,n){ return function(){ tPlayRef(m,n); }; })(st.midi,st.name); sc.appendChild(c); });
+  TUNER_STRINGS.forEach(function(st){ var c=document.createElement('div'); c.className='tuner-chip'; c.id='tchip-'+st.name; c.style.cursor='pointer'; c.title='Écouter la note '+tStringLabel(st.name); c.innerHTML='<span class="chip-l">'+st.name+'</span><span class="chip-fr">'+tStringLabel(st.name)+'</span>'; c.onclick=(function(m,n){ return function(){ tToggleRef(m,n); }; })(st.midi,st.name); sc.appendChild(c); });
   document.getElementById('tunerCloseBtn').onclick=tunerClose;
   document.getElementById('tunerStartBtn').onclick=tunerStart;
   document.getElementById('tunerResetBtn').onclick=tunerReset;
@@ -2573,30 +2579,81 @@ function tunerStart(){
     .then(onOK)
     .catch(function(){ gum({audio:true,video:false}).then(onOK).catch(onErr); });
 }
+function tFadeOutRef(){
+  try{
+    if(_tRefGain && _tCtx){ var n=_tCtx.currentTime, cur=_tRefGain.gain.value;
+      _tRefGain.gain.cancelScheduledValues(n);
+      _tRefGain.gain.setValueAtTime(Math.max(0.0001,cur),n);
+      _tRefGain.gain.exponentialRampToValueAtTime(0.0001,n+0.10); }
+    if(_tRefSrc){ try{ _tRefSrc.stop(_tCtx.currentTime+0.16); }catch(e){} _tRefSrc=null; }
+  }catch(e){}
+  _tRefGain=null;
+}
+// Joue UNE fois la note de référence : vrai sample d'abord, repli oscillateurs sinon.
 function tPlayRef(midi,name){
   try{
     var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return;
     if(!_tCtx){ _tCtx=new AC(); }
     var ctx=_tCtx;
     if(ctx.state==='suspended'){ try{ ctx.resume(); }catch(e){} }
-    var f=tNoteFreq(midi), t0=ctx.currentTime, dur=3.0;
-    var master=ctx.createGain();
-    master.gain.setValueAtTime(0.0001,t0);
-    master.gain.exponentialRampToValueAtTime(0.32,t0+0.04);
-    master.gain.setValueAtTime(0.32,t0+0.6);
-    master.gain.exponentialRampToValueAtTime(0.0001,t0+dur);
-    master.connect(ctx.destination);
-    [[f,1,'sine'],[f*2,0.16,'sine'],[f*3,0.06,'triangle']].forEach(function(pp){
-      var o=ctx.createOscillator(), g=ctx.createGain();
-      o.type=pp[2]; o.frequency.value=pp[0]; g.gain.value=pp[1];
-      o.connect(g); g.connect(master); o.start(t0); o.stop(t0+dur+0.05);
-    });
+    tFadeOutRef();                                   // coupe la lecture précédente (pas d'empilement)
+    var t0=ctx.currentTime, dur=3.0;
+    var master=ctx.createGain(); _tRefGain=master;
+    var hp=ctx.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=90; hp.Q.value=0.7;
+    master.connect(hp); hp.connect(ctx.destination);
+    var idx=_TUNER_STRIDX[name];
+    var url=(idx!=null)?_ukeFile(idx,midi):null;
+    var buf=url?_ukeBuf[url]:null;
+    if(buf){                                          // VRAI sample de ukulélé
+      master.gain.setValueAtTime(0.0001,t0);
+      master.gain.linearRampToValueAtTime(0.72,t0+0.008);
+      master.gain.setValueAtTime(0.72,t0+dur-0.45);
+      master.gain.exponentialRampToValueAtTime(0.0001,t0+dur);
+      var src=ctx.createBufferSource(); src.buffer=buf; src.connect(master);
+      src.start(t0); src.stop(t0+dur+0.05); _tRefSrc=src;
+    } else {                                          // repli : ancien son additif
+      if(url) _ukeLoad(url)['catch'](function(){});
+      master.gain.setValueAtTime(0.0001,t0);
+      master.gain.exponentialRampToValueAtTime(0.32,t0+0.04);
+      master.gain.setValueAtTime(0.32,t0+0.6);
+      master.gain.exponentialRampToValueAtTime(0.0001,t0+dur);
+      var f=tNoteFreq(midi);
+      [[f,1,'sine'],[f*2,0.16,'sine'],[f*3,0.06,'triangle']].forEach(function(pp){
+        var o=ctx.createOscillator(), g=ctx.createGain();
+        o.type=pp[2]; o.frequency.value=pp[0]; g.gain.value=pp[1];
+        o.connect(g); g.connect(master); o.start(t0); o.stop(t0+dur+0.05);
+      });
+    }
     _tRefUntil=performance.now()+(dur*1000)+120;
     _tHist.length=0; _tInTuneSince=0; _tLockedName=null; _tLastName=''; _tStickName=''; _tSwitchCand=''; _tSwitchCount=0;
     var nz=document.getElementById('tunerCentsNum'); if(nz){ nz.textContent=''; nz.className='tuner-centsnum'; }
     var c=document.getElementById('tunerCents'); if(c){ c.innerHTML='🔊 Note de référence : <b>'+name+'</b> ('+tStringLabel(name)+')'; c.className='tuner-cents'; }
     var nEl=document.getElementById('tunerNote'); if(nEl){ nEl.textContent=name; nEl.className='tuner-note'; }
   }catch(e){}
+}
+// Sélection + répétition automatique (toggle, max _tRepeatMax fois)
+function tUpdateChipSel(){
+  TUNER_STRINGS.forEach(function(x){ var ch=document.getElementById('tchip-'+x.name); if(!ch) return;
+    var cls='tuner-chip'; if(_tValidated[x.name]) cls+=' done'; if(x.name===_tRepeatName) cls+=' selected';
+    ch.className=cls; });
+}
+function tStopRepeat(){
+  if(_tRepeatTimer){ clearTimeout(_tRepeatTimer); _tRepeatTimer=null; }
+  _tRepeatName=null; _tRepeatCount=0;
+  tFadeOutRef(); tUpdateChipSel();
+  _tRefUntil=0;
+}
+function tRepeatTick(midi,name){
+  if(_tRepeatName!==name) return;
+  tPlayRef(midi,name); _tRepeatCount++; tUpdateChipSel();
+  if(_tRepeatCount>=_tRepeatMax){ _tRepeatTimer=setTimeout(function(){ tStopRepeat(); }, _tRepeatGap); }
+  else { _tRepeatTimer=setTimeout(function(){ tRepeatTick(midi,name); }, _tRepeatGap); }
+}
+function tToggleRef(midi,name){
+  if(_tRepeatName===name){ tStopRepeat(); return; }   // re-tap = désélection
+  tStopRepeat();
+  _tRepeatName=name; _tRepeatCount=0; tUpdateChipSel();
+  tRepeatTick(midi,name);
 }
 function tunerLoop(){
   if(!_tRun) return;
@@ -2625,7 +2682,7 @@ function tunerLoop(){
     var cents=Math.round(_tDispCents), tuned=Math.abs(_tDispCents)<=3;
     var numEl=document.getElementById('tunerCentsNum');
     if(noteEl){ noteEl.textContent=name; noteEl.className='tuner-note'+(tuned?' ok':''); }
-    TUNER_STRINGS.forEach(function(x){ var ch=document.getElementById('tchip-'+x.name); if(!ch) return; if(_tValidated[x.name]) ch.className='tuner-chip done'; else ch.className='tuner-chip'+(x.name===name?' active':''); });
+    TUNER_STRINGS.forEach(function(x){ var ch=document.getElementById('tchip-'+x.name); if(!ch) return; var cls='tuner-chip'; if(_tValidated[x.name]) cls+=' done'; if(x.name===_tRepeatName) cls+=' selected'; else if(!_tValidated[x.name] && x.name===name) cls+=' active'; ch.className=cls; });
     if(needle){ needle.setAttribute('transform','rotate('+tNeedleAngle(_tDispCents)+' 100 108)'); needle.setAttribute('class','t-needle'+(tuned?' ok':'')); }
     if(_tLockedName!==name){
       if(numEl){ numEl.textContent=(cents>0?'+':'')+cents+' ¢'; numEl.className='tuner-centsnum'; }
@@ -2650,6 +2707,7 @@ function tunerLoop(){
   _tRAF=requestAnimationFrame(tunerLoop);
 }
 function tunerReset(){
+  tStopRepeat();
   _tValidated={}; _tHist=[]; _tInTuneSince=0; _tLastName=''; _tDispCents=null; _tLockedName=null; _tStickName=''; _tSwitchCand=''; _tSwitchCount=0; _tSndTime={}; _tSilenceSeen=true; _tRefUntil=0;
   TUNER_STRINGS.forEach(function(x){ var ch=document.getElementById('tchip-'+x.name); if(ch) ch.className='tuner-chip'; });
   var n=document.getElementById('tunerNote'); if(n){ n.textContent='–'; n.className='tuner-note'; }
@@ -2660,6 +2718,7 @@ function tunerReset(){
   var h=document.getElementById('tunerHint'); if(h) h.textContent='Joue une corde à vide (G, C, E ou A).';
 }
 function tunerClose(){
+  tStopRepeat();
   _tRun=false;
   if(_tRAF){ cancelAnimationFrame(_tRAF); _tRAF=null; }
   if(_tStream){ _tStream.getTracks().forEach(function(t){ t.stop(); }); _tStream=null; }
