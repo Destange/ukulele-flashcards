@@ -429,6 +429,28 @@
     #appSplash.splash-hide{opacity:0;pointer-events:none;}
     @keyframes splashPop{from{opacity:0;transform:scale(.86)}to{opacity:1;transform:scale(1)}}
 
+    /* ════════ TEST RECO ACCORDS (beta, temporaire) ════════ */
+    .cr-screen{width:100%;text-align:center;}
+    .cr-top{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+    .cr-badge-beta{font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;background:var(--accent);border-radius:8px;padding:3px 8px;}
+    .cr-target{font-family:'Playfair Display',serif;font-size:60px;line-height:1;color:var(--text);margin:4px 0;transition:color .15s;}
+    .cr-target.ok{color:var(--correct);}
+    .cr-notes{font-family:'Outfit',sans-serif;font-size:12px;color:var(--muted);margin-bottom:4px;}
+    .cr-verdict{font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;min-height:22px;margin:4px 0;}
+    .cr-verdict.ok{color:var(--correct);}
+    .cr-verdict.no{color:var(--muted);}
+    .cr-score{font-family:'Outfit',sans-serif;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;min-height:16px;}
+    .cr-bars{display:flex;align-items:flex-end;justify-content:center;gap:4px;height:110px;margin:12px 0;}
+    .cr-bar{flex:1;max-width:24px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+    .cr-bar-fill{width:100%;background:var(--border);border-radius:3px 3px 0 0;transition:height .08s linear;min-height:2px;}
+    .cr-bar.tgt .cr-bar-fill{background:var(--accent);}
+    .cr-bar.ok .cr-bar-fill{background:var(--correct);}
+    .cr-bar-lbl{font-family:'Outfit',sans-serif;font-size:9px;color:var(--muted);margin-top:3px;}
+    .cr-bar.tgt .cr-bar-lbl{color:var(--accent);font-weight:700;}
+    .cr-actions{display:flex;gap:10px;margin-top:6px;}
+    .cr-btn{flex:1;padding:13px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;border-radius:13px;cursor:pointer;border:1.5px solid var(--border);background:var(--card);color:var(--text);-webkit-tap-highlight-color:transparent;}
+    .cr-btn.primary{background:var(--accent);color:#fff;border-color:var(--accent);}
+    .cr-hint{font-size:11px;color:var(--muted);margin-top:10px;line-height:1.4;}
     /* ════════ ACCORDEUR v2 (cadran) ════════ */
     .tuner-strings{display:flex;justify-content:center;gap:8px;margin-bottom:10px;}
     .tuner-chip{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:52px;height:52px;border-radius:14px;border:1.5px solid var(--border);background:var(--card);color:var(--muted);transition:border-color .15s,background .15s,color .15s,transform .15s;}
@@ -460,7 +482,7 @@
 <div id="obQrSrc" style="display:none"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 202 202"  preserveAspectRatio="xMinYMin meet"><rect width="100%" height="100%" fill="white" cx="0" cy="0"/><path d="M2,2l6,0 0,6 -6,0 0,-6z M8,2l6,0 0,6 -6,0 0,-6z M14,2l6,0 0,6 -6,0 0,-6z M20,2l6,0 0,6 -6,0 0,-6z M26,2l6,0 0,6 -6,0 0,-6z M32,2l6,0 0,6 -6,0 0,-6z M38,2l6,0 0,6 -6,0 0,-6z M56,2l6,0 0,6 -6,0 0,-6z M68,2l6,0 0,6 -6,0 0,-6z M80,2l6,0 0,6 -6,0 0,-6z M86,2l6,0 0,6 -6,0 0,-6z M98,2l6,0 0,6 -6,0 0,-6z M104,2l6,0 0,6 -6,0 0,-6z M116,2l6,0 0,6 -6,0 0,-6z M122,2l6,0 0,6 -6,0 0,-6z M128,2l6,0 0,6 -6,0 0,-6z M140,2l6,0 0,6 -6,0 0,-6z M158,2l6,0 0,6 -6,0 0,-6z M164,2l6,0 0,6 -6,0 0,-6z M170,2l6,0 0,6 -6,0 0,-6z M176,2l6,0 0,6 -6,0 0,-6z M182,2l6,0 0,6 -6,0 0,-6z M188,2l6,0 0,6 -6,0 0,-6z M194,2l6,0 0,6 -6,0 0,-6z M2,8l6,0 0,6 -6,0 0,-6z M38,8l6,0 0,6 -6,0 0,-6z M62,8l6,0 0,6 -6,0 0,-6z M80,8l6,0 0,6 -6,0 0,-6z M86,8l6,0 0,6 -6,0 0,-6z M92,8l6,0 0,6 -6,0 0,-6z M98,8l6,0 0,6 -6,0 0,-6z M104,8l6,0 0,6 -6,0 0,-6z M158,8l6,0 0,6 -6,0 0,-6z M194,8l6,0 0,6 -6,0 0,-6z M2,14l6,0 0,6 -6,0 0,-6z M14,14l6,0 0,6 -6,0 0,-6z M20,14l6,0 0,6 -6,0 0,-6z M26,14l6,0 0,6 -6,0 0,-6z M38,14l6,0 0,6 -6,0 0,-6z M50,14l6,0 0,6 -6,0 0,-6z M80,14l6,0 0,6 -6,0 0,-6z M104,14l6,0 0,6 -6,0 0,-6z M110,14l6,0 0,6 -6,0 0,-6z M128,14l6,0 0,6 -6,0 0,-6z M134,14l6,0 0,6 -6,0 0,-6z M146,14l6,0 0,6 -6,0 0,-6z M158,14l6,0 0,6 -6,0 0,-6z M170,14l6,0 0,6 -6,0 0,-6z M176,14l6,0 0,6 -6,0 0,-6z M182,14l6,0 0,6 -6,0 0,-6z M194,14l6,0 0,6 -6,0 0,-6z M2,20l6,0 0,6 -6,0 0,-6z M14,20l6,0 0,6 -6,0 0,-6z M20,20l6,0 0,6 -6,0 0,-6z M26,20l6,0 0,6 -6,0 0,-6z M38,20l6,0 0,6 -6,0 0,-6z M50,20l6,0 0,6 -6,0 0,-6z M62,20l6,0 0,6 -6,0 0,-6z M68,20l6,0 0,6 -6,0 0,-6z M74,20l6,0 0,6 -6,0 0,-6z M86,20l6,0 0,6 -6,0 0,-6z M98,20l6,0 0,6 -6,0 0,-6z M116,20l6,0 0,6 -6,0 0,-6z M122,20l6,0 0,6 -6,0 0,-6z M158,20l6,0 0,6 -6,0 0,-6z M170,20l6,0 0,6 -6,0 0,-6z M176,20l6,0 0,6 -6,0 0,-6z M182,20l6,0 0,6 -6,0 0,-6z M194,20l6,0 0,6 -6,0 0,-6z M2,26l6,0 0,6 -6,0 0,-6z M14,26l6,0 0,6 -6,0 0,-6z M20,26l6,0 0,6 -6,0 0,-6z M26,26l6,0 0,6 -6,0 0,-6z M38,26l6,0 0,6 -6,0 0,-6z M50,26l6,0 0,6 -6,0 0,-6z M56,26l6,0 0,6 -6,0 0,-6z M62,26l6,0 0,6 -6,0 0,-6z M68,26l6,0 0,6 -6,0 0,-6z M92,26l6,0 0,6 -6,0 0,-6z M110,26l6,0 0,6 -6,0 0,-6z M140,26l6,0 0,6 -6,0 0,-6z M158,26l6,0 0,6 -6,0 0,-6z M170,26l6,0 0,6 -6,0 0,-6z M176,26l6,0 0,6 -6,0 0,-6z M182,26l6,0 0,6 -6,0 0,-6z M194,26l6,0 0,6 -6,0 0,-6z M2,32l6,0 0,6 -6,0 0,-6z M38,32l6,0 0,6 -6,0 0,-6z M50,32l6,0 0,6 -6,0 0,-6z M62,32l6,0 0,6 -6,0 0,-6z M68,32l6,0 0,6 -6,0 0,-6z M74,32l6,0 0,6 -6,0 0,-6z M86,32l6,0 0,6 -6,0 0,-6z M92,32l6,0 0,6 -6,0 0,-6z M98,32l6,0 0,6 -6,0 0,-6z M122,32l6,0 0,6 -6,0 0,-6z M134,32l6,0 0,6 -6,0 0,-6z M146,32l6,0 0,6 -6,0 0,-6z M158,32l6,0 0,6 -6,0 0,-6z M194,32l6,0 0,6 -6,0 0,-6z M2,38l6,0 0,6 -6,0 0,-6z M8,38l6,0 0,6 -6,0 0,-6z M14,38l6,0 0,6 -6,0 0,-6z M20,38l6,0 0,6 -6,0 0,-6z M26,38l6,0 0,6 -6,0 0,-6z M32,38l6,0 0,6 -6,0 0,-6z M38,38l6,0 0,6 -6,0 0,-6z M50,38l6,0 0,6 -6,0 0,-6z M62,38l6,0 0,6 -6,0 0,-6z M74,38l6,0 0,6 -6,0 0,-6z M86,38l6,0 0,6 -6,0 0,-6z M98,38l6,0 0,6 -6,0 0,-6z M110,38l6,0 0,6 -6,0 0,-6z M122,38l6,0 0,6 -6,0 0,-6z M134,38l6,0 0,6 -6,0 0,-6z M146,38l6,0 0,6 -6,0 0,-6z M158,38l6,0 0,6 -6,0 0,-6z M164,38l6,0 0,6 -6,0 0,-6z M170,38l6,0 0,6 -6,0 0,-6z M176,38l6,0 0,6 -6,0 0,-6z M182,38l6,0 0,6 -6,0 0,-6z M188,38l6,0 0,6 -6,0 0,-6z M194,38l6,0 0,6 -6,0 0,-6z M50,44l6,0 0,6 -6,0 0,-6z M56,44l6,0 0,6 -6,0 0,-6z M62,44l6,0 0,6 -6,0 0,-6z M74,44l6,0 0,6 -6,0 0,-6z M86,44l6,0 0,6 -6,0 0,-6z M92,44l6,0 0,6 -6,0 0,-6z M128,44l6,0 0,6 -6,0 0,-6z M2,50l6,0 0,6 -6,0 0,-6z M14,50l6,0 0,6 -6,0 0,-6z M20,50l6,0 0,6 -6,0 0,-6z M26,50l6,0 0,6 -6,0 0,-6z M32,50l6,0 0,6 -6,0 0,-6z M38,50l6,0 0,6 -6,0 0,-6z M56,50l6,0 0,6 -6,0 0,-6z M74,50l6,0 0,6 -6,0 0,-6z M80,50l6,0 0,6 -6,0 0,-6z M86,50l6,0 0,6 -6,0 0,-6z M92,50l6,0 0,6 -6,0 0,-6z M104,50l6,0 0,6 -6,0 0,-6z M134,50l6,0 0,6 -6,0 0,-6z M146,50l6,0 0,6 -6,0 0,-6z M158,50l6,0 0,6 -6,0 0,-6z M164,50l6,0 0,6 -6,0 0,-6z M170,50l6,0 0,6 -6,0 0,-6z M176,50l6,0 0,6 -6,0 0,-6z M182,50l6,0 0,6 -6,0 0,-6z M2,56l6,0 0,6 -6,0 0,-6z M20,56l6,0 0,6 -6,0 0,-6z M26,56l6,0 0,6 -6,0 0,-6z M50,56l6,0 0,6 -6,0 0,-6z M62,56l6,0 0,6 -6,0 0,-6z M74,56l6,0 0,6 -6,0 0,-6z M98,56l6,0 0,6 -6,0 0,-6z M110,56l6,0 0,6 -6,0 0,-6z M116,56l6,0 0,6 -6,0 0,-6z M122,56l6,0 0,6 -6,0 0,-6z M140,56l6,0 0,6 -6,0 0,-6z M158,56l6,0 0,6 -6,0 0,-6z M164,56l6,0 0,6 -6,0 0,-6z M176,56l6,0 0,6 -6,0 0,-6z M182,56l6,0 0,6 -6,0 0,-6z M194,56l6,0 0,6 -6,0 0,-6z M2,62l6,0 0,6 -6,0 0,-6z M8,62l6,0 0,6 -6,0 0,-6z M26,62l6,0 0,6 -6,0 0,-6z M32,62l6,0 0,6 -6,0 0,-6z M38,62l6,0 0,6 -6,0 0,-6z M56,62l6,0 0,6 -6,0 0,-6z M92,62l6,0 0,6 -6,0 0,-6z M98,62l6,0 0,6 -6,0 0,-6z M110,62l6,0 0,6 -6,0 0,-6z M134,62l6,0 0,6 -6,0 0,-6z M146,62l6,0 0,6 -6,0 0,-6z M170,62l6,0 0,6 -6,0 0,-6z M182,62l6,0 0,6 -6,0 0,-6z M188,62l6,0 0,6 -6,0 0,-6z M14,68l6,0 0,6 -6,0 0,-6z M50,68l6,0 0,6 -6,0 0,-6z M56,68l6,0 0,6 -6,0 0,-6z M62,68l6,0 0,6 -6,0 0,-6z M68,68l6,0 0,6 -6,0 0,-6z M74,68l6,0 0,6 -6,0 0,-6z M86,68l6,0 0,6 -6,0 0,-6z M92,68l6,0 0,6 -6,0 0,-6z M98,68l6,0 0,6 -6,0 0,-6z M122,68l6,0 0,6 -6,0 0,-6z M128,68l6,0 0,6 -6,0 0,-6z M134,68l6,0 0,6 -6,0 0,-6z M152,68l6,0 0,6 -6,0 0,-6z M158,68l6,0 0,6 -6,0 0,-6z M170,68l6,0 0,6 -6,0 0,-6z M176,68l6,0 0,6 -6,0 0,-6z M182,68l6,0 0,6 -6,0 0,-6z M20,74l6,0 0,6 -6,0 0,-6z M32,74l6,0 0,6 -6,0 0,-6z M38,74l6,0 0,6 -6,0 0,-6z M62,74l6,0 0,6 -6,0 0,-6z M92,74l6,0 0,6 -6,0 0,-6z M110,74l6,0 0,6 -6,0 0,-6z M128,74l6,0 0,6 -6,0 0,-6z M146,74l6,0 0,6 -6,0 0,-6z M152,74l6,0 0,6 -6,0 0,-6z M170,74l6,0 0,6 -6,0 0,-6z M176,74l6,0 0,6 -6,0 0,-6z M188,74l6,0 0,6 -6,0 0,-6z M194,74l6,0 0,6 -6,0 0,-6z M14,80l6,0 0,6 -6,0 0,-6z M20,80l6,0 0,6 -6,0 0,-6z M44,80l6,0 0,6 -6,0 0,-6z M68,80l6,0 0,6 -6,0 0,-6z M80,80l6,0 0,6 -6,0 0,-6z M86,80l6,0 0,6 -6,0 0,-6z M92,80l6,0 0,6 -6,0 0,-6z M98,80l6,0 0,6 -6,0 0,-6z M122,80l6,0 0,6 -6,0 0,-6z M128,80l6,0 0,6 -6,0 0,-6z M140,80l6,0 0,6 -6,0 0,-6z M158,80l6,0 0,6 -6,0 0,-6z M176,80l6,0 0,6 -6,0 0,-6z M182,80l6,0 0,6 -6,0 0,-6z M188,80l6,0 0,6 -6,0 0,-6z M194,80l6,0 0,6 -6,0 0,-6z M2,86l6,0 0,6 -6,0 0,-6z M14,86l6,0 0,6 -6,0 0,-6z M26,86l6,0 0,6 -6,0 0,-6z M32,86l6,0 0,6 -6,0 0,-6z M38,86l6,0 0,6 -6,0 0,-6z M44,86l6,0 0,6 -6,0 0,-6z M80,86l6,0 0,6 -6,0 0,-6z M104,86l6,0 0,6 -6,0 0,-6z M110,86l6,0 0,6 -6,0 0,-6z M116,86l6,0 0,6 -6,0 0,-6z M134,86l6,0 0,6 -6,0 0,-6z M146,86l6,0 0,6 -6,0 0,-6z M152,86l6,0 0,6 -6,0 0,-6z M158,86l6,0 0,6 -6,0 0,-6z M176,86l6,0 0,6 -6,0 0,-6z M182,86l6,0 0,6 -6,0 0,-6z M188,86l6,0 0,6 -6,0 0,-6z M8,92l6,0 0,6 -6,0 0,-6z M32,92l6,0 0,6 -6,0 0,-6z M56,92l6,0 0,6 -6,0 0,-6z M68,92l6,0 0,6 -6,0 0,-6z M86,92l6,0 0,6 -6,0 0,-6z M98,92l6,0 0,6 -6,0 0,-6z M110,92l6,0 0,6 -6,0 0,-6z M116,92l6,0 0,6 -6,0 0,-6z M122,92l6,0 0,6 -6,0 0,-6z M128,92l6,0 0,6 -6,0 0,-6z M134,92l6,0 0,6 -6,0 0,-6z M140,92l6,0 0,6 -6,0 0,-6z M146,92l6,0 0,6 -6,0 0,-6z M152,92l6,0 0,6 -6,0 0,-6z M158,92l6,0 0,6 -6,0 0,-6z M164,92l6,0 0,6 -6,0 0,-6z M182,92l6,0 0,6 -6,0 0,-6z M2,98l6,0 0,6 -6,0 0,-6z M8,98l6,0 0,6 -6,0 0,-6z M14,98l6,0 0,6 -6,0 0,-6z M32,98l6,0 0,6 -6,0 0,-6z M38,98l6,0 0,6 -6,0 0,-6z M44,98l6,0 0,6 -6,0 0,-6z M50,98l6,0 0,6 -6,0 0,-6z M62,98l6,0 0,6 -6,0 0,-6z M98,98l6,0 0,6 -6,0 0,-6z M104,98l6,0 0,6 -6,0 0,-6z M110,98l6,0 0,6 -6,0 0,-6z M116,98l6,0 0,6 -6,0 0,-6z M122,98l6,0 0,6 -6,0 0,-6z M134,98l6,0 0,6 -6,0 0,-6z M152,98l6,0 0,6 -6,0 0,-6z M164,98l6,0 0,6 -6,0 0,-6z M170,98l6,0 0,6 -6,0 0,-6z M194,98l6,0 0,6 -6,0 0,-6z M2,104l6,0 0,6 -6,0 0,-6z M8,104l6,0 0,6 -6,0 0,-6z M20,104l6,0 0,6 -6,0 0,-6z M56,104l6,0 0,6 -6,0 0,-6z M68,104l6,0 0,6 -6,0 0,-6z M86,104l6,0 0,6 -6,0 0,-6z M98,104l6,0 0,6 -6,0 0,-6z M104,104l6,0 0,6 -6,0 0,-6z M110,104l6,0 0,6 -6,0 0,-6z M116,104l6,0 0,6 -6,0 0,-6z M122,104l6,0 0,6 -6,0 0,-6z M140,104l6,0 0,6 -6,0 0,-6z M158,104l6,0 0,6 -6,0 0,-6z M164,104l6,0 0,6 -6,0 0,-6z M176,104l6,0 0,6 -6,0 0,-6z M182,104l6,0 0,6 -6,0 0,-6z M194,104l6,0 0,6 -6,0 0,-6z M8,110l6,0 0,6 -6,0 0,-6z M14,110l6,0 0,6 -6,0 0,-6z M20,110l6,0 0,6 -6,0 0,-6z M26,110l6,0 0,6 -6,0 0,-6z M38,110l6,0 0,6 -6,0 0,-6z M44,110l6,0 0,6 -6,0 0,-6z M50,110l6,0 0,6 -6,0 0,-6z M56,110l6,0 0,6 -6,0 0,-6z M62,110l6,0 0,6 -6,0 0,-6z M80,110l6,0 0,6 -6,0 0,-6z M86,110l6,0 0,6 -6,0 0,-6z M92,110l6,0 0,6 -6,0 0,-6z M98,110l6,0 0,6 -6,0 0,-6z M104,110l6,0 0,6 -6,0 0,-6z M122,110l6,0 0,6 -6,0 0,-6z M134,110l6,0 0,6 -6,0 0,-6z M158,110l6,0 0,6 -6,0 0,-6z M164,110l6,0 0,6 -6,0 0,-6z M170,110l6,0 0,6 -6,0 0,-6z M182,110l6,0 0,6 -6,0 0,-6z M188,110l6,0 0,6 -6,0 0,-6z M2,116l6,0 0,6 -6,0 0,-6z M20,116l6,0 0,6 -6,0 0,-6z M26,116l6,0 0,6 -6,0 0,-6z M44,116l6,0 0,6 -6,0 0,-6z M56,116l6,0 0,6 -6,0 0,-6z M80,116l6,0 0,6 -6,0 0,-6z M86,116l6,0 0,6 -6,0 0,-6z M98,116l6,0 0,6 -6,0 0,-6z M104,116l6,0 0,6 -6,0 0,-6z M110,116l6,0 0,6 -6,0 0,-6z M140,116l6,0 0,6 -6,0 0,-6z M146,116l6,0 0,6 -6,0 0,-6z M164,116l6,0 0,6 -6,0 0,-6z M170,116l6,0 0,6 -6,0 0,-6z M176,116l6,0 0,6 -6,0 0,-6z M182,116l6,0 0,6 -6,0 0,-6z M188,116l6,0 0,6 -6,0 0,-6z M14,122l6,0 0,6 -6,0 0,-6z M26,122l6,0 0,6 -6,0 0,-6z M32,122l6,0 0,6 -6,0 0,-6z M38,122l6,0 0,6 -6,0 0,-6z M44,122l6,0 0,6 -6,0 0,-6z M62,122l6,0 0,6 -6,0 0,-6z M74,122l6,0 0,6 -6,0 0,-6z M86,122l6,0 0,6 -6,0 0,-6z M98,122l6,0 0,6 -6,0 0,-6z M116,122l6,0 0,6 -6,0 0,-6z M122,122l6,0 0,6 -6,0 0,-6z M128,122l6,0 0,6 -6,0 0,-6z M134,122l6,0 0,6 -6,0 0,-6z M152,122l6,0 0,6 -6,0 0,-6z M164,122l6,0 0,6 -6,0 0,-6z M170,122l6,0 0,6 -6,0 0,-6z M176,122l6,0 0,6 -6,0 0,-6z M188,122l6,0 0,6 -6,0 0,-6z M2,128l6,0 0,6 -6,0 0,-6z M8,128l6,0 0,6 -6,0 0,-6z M20,128l6,0 0,6 -6,0 0,-6z M44,128l6,0 0,6 -6,0 0,-6z M56,128l6,0 0,6 -6,0 0,-6z M68,128l6,0 0,6 -6,0 0,-6z M74,128l6,0 0,6 -6,0 0,-6z M92,128l6,0 0,6 -6,0 0,-6z M104,128l6,0 0,6 -6,0 0,-6z M110,128l6,0 0,6 -6,0 0,-6z M128,128l6,0 0,6 -6,0 0,-6z M140,128l6,0 0,6 -6,0 0,-6z M158,128l6,0 0,6 -6,0 0,-6z M176,128l6,0 0,6 -6,0 0,-6z M194,128l6,0 0,6 -6,0 0,-6z M2,134l6,0 0,6 -6,0 0,-6z M26,134l6,0 0,6 -6,0 0,-6z M38,134l6,0 0,6 -6,0 0,-6z M56,134l6,0 0,6 -6,0 0,-6z M86,134l6,0 0,6 -6,0 0,-6z M92,134l6,0 0,6 -6,0 0,-6z M98,134l6,0 0,6 -6,0 0,-6z M104,134l6,0 0,6 -6,0 0,-6z M122,134l6,0 0,6 -6,0 0,-6z M128,134l6,0 0,6 -6,0 0,-6z M134,134l6,0 0,6 -6,0 0,-6z M152,134l6,0 0,6 -6,0 0,-6z M164,134l6,0 0,6 -6,0 0,-6z M176,134l6,0 0,6 -6,0 0,-6z M182,134l6,0 0,6 -6,0 0,-6z M188,134l6,0 0,6 -6,0 0,-6z M2,140l6,0 0,6 -6,0 0,-6z M14,140l6,0 0,6 -6,0 0,-6z M20,140l6,0 0,6 -6,0 0,-6z M26,140l6,0 0,6 -6,0 0,-6z M50,140l6,0 0,6 -6,0 0,-6z M56,140l6,0 0,6 -6,0 0,-6z M62,140l6,0 0,6 -6,0 0,-6z M92,140l6,0 0,6 -6,0 0,-6z M110,140l6,0 0,6 -6,0 0,-6z M128,140l6,0 0,6 -6,0 0,-6z M134,140l6,0 0,6 -6,0 0,-6z M146,140l6,0 0,6 -6,0 0,-6z M170,140l6,0 0,6 -6,0 0,-6z M176,140l6,0 0,6 -6,0 0,-6z M182,140l6,0 0,6 -6,0 0,-6z M194,140l6,0 0,6 -6,0 0,-6z M2,146l6,0 0,6 -6,0 0,-6z M14,146l6,0 0,6 -6,0 0,-6z M32,146l6,0 0,6 -6,0 0,-6z M38,146l6,0 0,6 -6,0 0,-6z M44,146l6,0 0,6 -6,0 0,-6z M50,146l6,0 0,6 -6,0 0,-6z M56,146l6,0 0,6 -6,0 0,-6z M68,146l6,0 0,6 -6,0 0,-6z M74,146l6,0 0,6 -6,0 0,-6z M80,146l6,0 0,6 -6,0 0,-6z M86,146l6,0 0,6 -6,0 0,-6z M92,146l6,0 0,6 -6,0 0,-6z M104,146l6,0 0,6 -6,0 0,-6z M146,146l6,0 0,6 -6,0 0,-6z M152,146l6,0 0,6 -6,0 0,-6z M158,146l6,0 0,6 -6,0 0,-6z M164,146l6,0 0,6 -6,0 0,-6z M170,146l6,0 0,6 -6,0 0,-6z M188,146l6,0 0,6 -6,0 0,-6z M194,146l6,0 0,6 -6,0 0,-6z M50,152l6,0 0,6 -6,0 0,-6z M62,152l6,0 0,6 -6,0 0,-6z M110,152l6,0 0,6 -6,0 0,-6z M116,152l6,0 0,6 -6,0 0,-6z M122,152l6,0 0,6 -6,0 0,-6z M128,152l6,0 0,6 -6,0 0,-6z M140,152l6,0 0,6 -6,0 0,-6z M146,152l6,0 0,6 -6,0 0,-6z M170,152l6,0 0,6 -6,0 0,-6z M182,152l6,0 0,6 -6,0 0,-6z M194,152l6,0 0,6 -6,0 0,-6z M2,158l6,0 0,6 -6,0 0,-6z M8,158l6,0 0,6 -6,0 0,-6z M14,158l6,0 0,6 -6,0 0,-6z M20,158l6,0 0,6 -6,0 0,-6z M26,158l6,0 0,6 -6,0 0,-6z M32,158l6,0 0,6 -6,0 0,-6z M38,158l6,0 0,6 -6,0 0,-6z M62,158l6,0 0,6 -6,0 0,-6z M68,158l6,0 0,6 -6,0 0,-6z M80,158l6,0 0,6 -6,0 0,-6z M86,158l6,0 0,6 -6,0 0,-6z M92,158l6,0 0,6 -6,0 0,-6z M98,158l6,0 0,6 -6,0 0,-6z M110,158l6,0 0,6 -6,0 0,-6z M122,158l6,0 0,6 -6,0 0,-6z M128,158l6,0 0,6 -6,0 0,-6z M140,158l6,0 0,6 -6,0 0,-6z M146,158l6,0 0,6 -6,0 0,-6z M158,158l6,0 0,6 -6,0 0,-6z M170,158l6,0 0,6 -6,0 0,-6z M182,158l6,0 0,6 -6,0 0,-6z M188,158l6,0 0,6 -6,0 0,-6z M2,164l6,0 0,6 -6,0 0,-6z M38,164l6,0 0,6 -6,0 0,-6z M50,164l6,0 0,6 -6,0 0,-6z M56,164l6,0 0,6 -6,0 0,-6z M62,164l6,0 0,6 -6,0 0,-6z M80,164l6,0 0,6 -6,0 0,-6z M98,164l6,0 0,6 -6,0 0,-6z M116,164l6,0 0,6 -6,0 0,-6z M122,164l6,0 0,6 -6,0 0,-6z M128,164l6,0 0,6 -6,0 0,-6z M134,164l6,0 0,6 -6,0 0,-6z M140,164l6,0 0,6 -6,0 0,-6z M146,164l6,0 0,6 -6,0 0,-6z M170,164l6,0 0,6 -6,0 0,-6z M176,164l6,0 0,6 -6,0 0,-6z M182,164l6,0 0,6 -6,0 0,-6z M2,170l6,0 0,6 -6,0 0,-6z M14,170l6,0 0,6 -6,0 0,-6z M20,170l6,0 0,6 -6,0 0,-6z M26,170l6,0 0,6 -6,0 0,-6z M38,170l6,0 0,6 -6,0 0,-6z M50,170l6,0 0,6 -6,0 0,-6z M56,170l6,0 0,6 -6,0 0,-6z M110,170l6,0 0,6 -6,0 0,-6z M128,170l6,0 0,6 -6,0 0,-6z M146,170l6,0 0,6 -6,0 0,-6z M152,170l6,0 0,6 -6,0 0,-6z M158,170l6,0 0,6 -6,0 0,-6z M164,170l6,0 0,6 -6,0 0,-6z M170,170l6,0 0,6 -6,0 0,-6z M176,170l6,0 0,6 -6,0 0,-6z M188,170l6,0 0,6 -6,0 0,-6z M194,170l6,0 0,6 -6,0 0,-6z M2,176l6,0 0,6 -6,0 0,-6z M14,176l6,0 0,6 -6,0 0,-6z M20,176l6,0 0,6 -6,0 0,-6z M26,176l6,0 0,6 -6,0 0,-6z M38,176l6,0 0,6 -6,0 0,-6z M50,176l6,0 0,6 -6,0 0,-6z M56,176l6,0 0,6 -6,0 0,-6z M62,176l6,0 0,6 -6,0 0,-6z M68,176l6,0 0,6 -6,0 0,-6z M86,176l6,0 0,6 -6,0 0,-6z M92,176l6,0 0,6 -6,0 0,-6z M98,176l6,0 0,6 -6,0 0,-6z M104,176l6,0 0,6 -6,0 0,-6z M122,176l6,0 0,6 -6,0 0,-6z M134,176l6,0 0,6 -6,0 0,-6z M140,176l6,0 0,6 -6,0 0,-6z M146,176l6,0 0,6 -6,0 0,-6z M152,176l6,0 0,6 -6,0 0,-6z M170,176l6,0 0,6 -6,0 0,-6z M176,176l6,0 0,6 -6,0 0,-6z M182,176l6,0 0,6 -6,0 0,-6z M194,176l6,0 0,6 -6,0 0,-6z M2,182l6,0 0,6 -6,0 0,-6z M14,182l6,0 0,6 -6,0 0,-6z M20,182l6,0 0,6 -6,0 0,-6z M26,182l6,0 0,6 -6,0 0,-6z M38,182l6,0 0,6 -6,0 0,-6z M50,182l6,0 0,6 -6,0 0,-6z M74,182l6,0 0,6 -6,0 0,-6z M86,182l6,0 0,6 -6,0 0,-6z M110,182l6,0 0,6 -6,0 0,-6z M116,182l6,0 0,6 -6,0 0,-6z M134,182l6,0 0,6 -6,0 0,-6z M140,182l6,0 0,6 -6,0 0,-6z M146,182l6,0 0,6 -6,0 0,-6z M158,182l6,0 0,6 -6,0 0,-6z M164,182l6,0 0,6 -6,0 0,-6z M2,188l6,0 0,6 -6,0 0,-6z M38,188l6,0 0,6 -6,0 0,-6z M68,188l6,0 0,6 -6,0 0,-6z M98,188l6,0 0,6 -6,0 0,-6z M116,188l6,0 0,6 -6,0 0,-6z M122,188l6,0 0,6 -6,0 0,-6z M128,188l6,0 0,6 -6,0 0,-6z M170,188l6,0 0,6 -6,0 0,-6z M176,188l6,0 0,6 -6,0 0,-6z M182,188l6,0 0,6 -6,0 0,-6z M2,194l6,0 0,6 -6,0 0,-6z M8,194l6,0 0,6 -6,0 0,-6z M14,194l6,0 0,6 -6,0 0,-6z M20,194l6,0 0,6 -6,0 0,-6z M26,194l6,0 0,6 -6,0 0,-6z M32,194l6,0 0,6 -6,0 0,-6z M38,194l6,0 0,6 -6,0 0,-6z M50,194l6,0 0,6 -6,0 0,-6z M74,194l6,0 0,6 -6,0 0,-6z M80,194l6,0 0,6 -6,0 0,-6z M104,194l6,0 0,6 -6,0 0,-6z M116,194l6,0 0,6 -6,0 0,-6z M134,194l6,0 0,6 -6,0 0,-6z M140,194l6,0 0,6 -6,0 0,-6z M146,194l6,0 0,6 -6,0 0,-6z M152,194l6,0 0,6 -6,0 0,-6z M158,194l6,0 0,6 -6,0 0,-6z M164,194l6,0 0,6 -6,0 0,-6z M188,194l6,0 0,6 -6,0 0,-6z " stroke="transparent" fill="black"/></svg></div>
 <footer class="app-footer">Réalisé par <a href="https://www.instagram.com/juliendestange/" target="_blank" rel="noopener" class="footer-link">Julien Destange</a> · <span id="appVersion"></span></footer>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-var VERSION = '3.55';  // SOURCE UNIQUE de version - le footer affiche 'v'+VERSION (NE JAMAIS coder le footer en dur)
+var VERSION = '3.56';  // SOURCE UNIQUE de version - le footer affiche 'v'+VERSION (NE JAMAIS coder le footer en dur)
 (function(){var f=document.getElementById('appVersion'); if(f) f.textContent='v'+VERSION;})();
 /* ══════════════════════════════════════════
    SVG ICONS (Lucide-style, trait 2.5px)
@@ -999,7 +1021,9 @@ var _historyReady = false;
 var _chordDetailNav = false;
 
 function _doRender(root){
+  if(app.screen!=='cr-test') crStop();
   if     (app.screen==='home')          renderHome(root);
+  else if(app.screen==='cr-test')       renderCRTest(root);
   else if(app.screen==='mode-preview')  renderModePreview(root);
   else if(app.screen==='custom-select') renderCustomSelect(root);
   else if(app.screen==='session')       renderSession(root);
@@ -1141,6 +1165,7 @@ function renderHome(root){
       '<button class="home-action-btn" id="bCustom"><span class="hab-icon">✏️</span><span class="hab-text">Session libre</span><span class="hab-arrow">'+ICON_ARROW_RIGHT+'</span></button>'+
       '<button class="home-action-btn" id="bRef"><span class="hab-icon">📚</span><span class="hab-text">Voir tous les accords</span><span class="hab-arrow">'+ICON_ARROW_RIGHT+'</span></button>'+
       '<button class="home-action-btn" id="bTuner"><span class="hab-icon">🎚️</span><span class="hab-text">Accordeur</span><span class="hab-arrow">'+ICON_ARROW_RIGHT+'</span></button>'+
+      '<button class="home-action-btn" id="bCRTest"><span class="hab-icon">🎤</span><span class="hab-text">Test reco accords (beta)</span><span class="hab-arrow">'+ICON_ARROW_RIGHT+'</span></button>'+
     '</div>'+
     '<div class="home-data-bar">'+
       '<button class="btn-data" id="bExport">'+ICON_DOWNLOAD+'Exporter ma progression</button>'+
@@ -1185,6 +1210,7 @@ function renderHome(root){
   div.querySelector('#bCustom').onclick=function(){ app.screen='custom-select'; render(); };
   div.querySelector('#bRef').onclick=function(){ app.screen='reference'; render(); };
   div.querySelector('#bTuner').onclick=function(){ tunerOpen(); };
+  div.querySelector('#bCRTest').onclick=function(){ app.screen='cr-test'; render(); };
   div.querySelector('#bExport').onclick = exportProgress;
   div.querySelector('#bImport').onclick = function() { div.querySelector('#importFile').click(); };
   div.querySelector('#importFile').onchange = function(e) { if (e.target.files[0]) importProgress(e.target.files[0]); };
@@ -1989,6 +2015,102 @@ function obStart(force){ if(obIsStandalone() && !force){ obTourStart(); return; 
 window.addEventListener('scroll', obPlaceTip, true);
 window.addEventListener('resize', obPlaceTip);
 
+/* ════════════════ TEST RECO ACCORDS (beta, temporaire — à retirer) ════════════════ */
+var _crCtx=null,_crStream=null,_crAnalyser=null,_crRAF=null,_crFreq=null,_crTime=null,_crRun=false;
+var _crChroma=new Float32Array(12),_crIdx=0,_crHoldSince=0,_crAdvancing=false;
+var CR_THRESH=0.70, CR_HOLD=500, CR_NOTES=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+function crSolfege(pc){ return ['Do','Do#','Ré','Ré#','Mi','Fa','Fa#','Sol','Sol#','La','La#','Si'][pc]; }
+function crChordPCs(chord){ var open=[7,0,4,9], set={}; chord.frets.forEach(function(fr,i){ if(fr>=0) set[(open[i]+fr)%12]=true; }); return set; }
+function crResetState(){ _crChroma=new Float32Array(12); _crHoldSince=0; _crAdvancing=false; }
+function crGo(d){ _crIdx=(_crIdx+d+CHORDS.length)%CHORDS.length; crResetState(); render(); }
+function crDing(){ if(!_crCtx) return; try{ var t=_crCtx.currentTime; [[0,880],[0.11,1318.51]].forEach(function(pp){ var o=_crCtx.createOscillator(),g=_crCtx.createGain(); o.type='sine'; o.frequency.value=pp[1]; g.gain.setValueAtTime(0.0001,t+pp[0]); g.gain.exponentialRampToValueAtTime(0.2,t+pp[0]+0.02); g.gain.exponentialRampToValueAtTime(0.0001,t+pp[0]+0.18); o.connect(g); g.connect(_crCtx.destination); o.start(t+pp[0]); o.stop(t+pp[0]+0.2); }); }catch(e){} }
+function renderCRTest(root){
+  var chord=CHORDS[_crIdx], pcs=crChordPCs(chord);
+  var pcList=Object.keys(pcs).map(Number).sort(function(a,b){return a-b;});
+  var notesTxt=pcList.map(function(pc){ return CR_NOTES[pc]+' ('+crSolfege(pc)+')'; }).join(' · ');
+  var bars=''; for(var pc=0;pc<12;pc++){ bars+='<div class="cr-bar'+(pcs[pc]?' tgt':'')+'" id="crBar'+pc+'"><div class="cr-bar-fill" id="crFill'+pc+'" style="height:2px"></div><div class="cr-bar-lbl">'+CR_NOTES[pc]+'</div></div>'; }
+  var div=document.createElement('div'); div.className='cr-screen fadein';
+  div.innerHTML=
+    '<div class="cr-top"><button class="btn-nav-back" id="crBack" aria-label="Retour">'+ICON_BACK+'<span class="btn-nav-label">Retour</span></button><span class="cr-badge-beta">Test reco · beta</span></div>'+
+    '<div class="face-tag">Joue cet accord<br>sur ton ukulélé</div>'+
+    '<div class="cr-target" id="crTarget">'+chord.name+'</div>'+
+    (chord.sub?'<div class="chord-sub">'+chord.sub+'</div>':'')+
+    '<div class="cr-notes">Notes attendues : '+notesTxt+'</div>'+
+    '<div class="cr-verdict no" id="crVerdict">En attente du son…</div>'+
+    '<div class="cr-score" id="crScore">—</div>'+
+    '<div class="cr-bars">'+bars+'</div>'+
+    '<div class="cr-actions"><button class="cr-btn" id="crPrev">← Précédent</button><button class="cr-btn primary" id="crNext">Accord suivant →</button></div>'+
+    '<div class="cr-hint">Page de test temporaire. Joue l\'accord, micro tout près du ukulélé. Barres = notes détectées ; en couleur = notes de l\'accord cible. Validation auto si ça matche.</div>';
+  root.appendChild(div);
+  document.getElementById('crBack').onclick=function(){ navHome(); };
+  document.getElementById('crNext').onclick=function(){ crGo(1); };
+  document.getElementById('crPrev').onclick=function(){ crGo(-1); };
+  crStart();
+}
+function crStart(){
+  if(_crRun) return;
+  var md=navigator.mediaDevices, gum=(md&&md.getUserMedia)?function(c){return md.getUserMedia(c);}:null;
+  var v=document.getElementById('crVerdict');
+  if(!gum){ if(v) v.textContent='Micro non disponible sur ce navigateur.'; return; }
+  if(v) v.textContent='Autorisation micro…';
+  gum({audio:{echoCancellation:false,autoGainControl:false,noiseSuppression:false},video:false}).then(function(stream){
+    _crStream=stream;
+    var AC=window.AudioContext||window.webkitAudioContext; _crCtx=new AC();
+    if(_crCtx.state==='suspended'){ try{ _crCtx.resume(); }catch(e){} }
+    var src=_crCtx.createMediaStreamSource(stream);
+    _crAnalyser=_crCtx.createAnalyser(); _crAnalyser.fftSize=16384; _crAnalyser.smoothingTimeConstant=0.3;
+    src.connect(_crAnalyser);
+    _crFreq=new Float32Array(_crAnalyser.frequencyBinCount);
+    _crTime=new Float32Array(_crAnalyser.fftSize);
+    _crRun=true; crLoop();
+  }).catch(function(){ var v2=document.getElementById('crVerdict'); if(v2) v2.textContent='Micro refusé. Autorise-le dans le navigateur puis reviens.'; });
+}
+function crStop(){
+  _crRun=false; if(_crRAF){ cancelAnimationFrame(_crRAF); _crRAF=null; }
+  if(_crStream){ _crStream.getTracks().forEach(function(t){ t.stop(); }); _crStream=null; }
+  if(_crCtx){ try{ _crCtx.close(); }catch(e){} _crCtx=null; }
+  _crAnalyser=null;
+}
+function crLoop(){
+  if(!_crRun) return;
+  _crAnalyser.getFloatFrequencyData(_crFreq);
+  _crAnalyser.getFloatTimeDomainData(_crTime);
+  var i, rms=0; for(i=0;i<_crTime.length;i++){ rms+=_crTime[i]*_crTime[i]; } rms=Math.sqrt(rms/_crTime.length);
+  var quiet = rms<0.012;
+  var sr=_crCtx.sampleRate, N=_crAnalyser.fftSize, binHz=sr/N;
+  var ch=new Float32Array(12);
+  var kmin=Math.max(1,Math.floor(120/binHz)), kmax=Math.min(_crFreq.length-1,Math.ceil(1600/binHz));
+  for(var k=kmin;k<=kmax;k++){
+    var f=k*binHz, amp=Math.pow(10,_crFreq[k]/20);
+    var pitch=69+12*Math.log(f/440)/Math.LN2;
+    var pc=((Math.round(pitch)%12)+12)%12;
+    ch[pc]+=amp;
+  }
+  var mx=0; for(i=0;i<12;i++) if(ch[i]>mx) mx=ch[i];
+  if(mx>0) for(i=0;i<12;i++) ch[i]/=mx;
+  for(i=0;i<12;i++) _crChroma[i]+=((quiet?0:ch[i])-_crChroma[i])*0.25;
+  var chord=CHORDS[_crIdx], pcs=crChordPCs(chord);
+  var total=0,inSet=0; for(i=0;i<12;i++){ total+=_crChroma[i]; if(pcs[i]) inSet+=_crChroma[i]; }
+  var score= total>0? inSet/total : 0;
+  for(i=0;i<12;i++){ var fe=document.getElementById('crFill'+i); if(fe) fe.style.height=Math.max(2,Math.round(_crChroma[i]*100))+'%'; var be=document.getElementById('crBar'+i); if(be) be.className='cr-bar'+(pcs[i]?' tgt':'')+((pcs[i]&&_crChroma[i]>0.25)?' ok':''); }
+  var sc=document.getElementById('crScore'); if(sc) sc.textContent= quiet?'(silence)':'Score : '+Math.round(score*100)+'% (seuil '+Math.round(CR_THRESH*100)+'%)';
+  var vEl=document.getElementById('crVerdict'), tEl=document.getElementById('crTarget');
+  var now=performance.now();
+  if(!quiet && score>=CR_THRESH){
+    if(!_crHoldSince) _crHoldSince=now;
+    else if(now-_crHoldSince>=CR_HOLD && !_crAdvancing){
+      _crAdvancing=true;
+      if(vEl){ vEl.textContent='✓ Bravo, c\'est '+chord.name+' !'; vEl.className='cr-verdict ok'; }
+      if(tEl) tEl.className='cr-target ok';
+      crDing();
+      setTimeout(function(){ crGo(1); }, 1300);
+    }
+  } else if(!_crAdvancing){
+    _crHoldSince=0;
+    if(vEl){ if(quiet){ vEl.textContent='En attente du son…'; } else { vEl.textContent='Continue…'; } vEl.className='cr-verdict no'; }
+  }
+  _crRAF=requestAnimationFrame(crLoop);
+}
 /* ════════════════ ACCORDEUR (tuner) ════════════════ */
 var _tCtx=null,_tStream=null,_tAnalyser=null,_tRAF=null,_tBuf=null,_tRun=false,_tHist=[],_tValidated={},_tInTuneSince=0,_tLastName='',_tDispCents=null,_tLastGood=0,_tLockedName=null,_tSndTime={},_tSilenceSeen=true,_tRefUntil=0,_tStickName='',_tSwitchCand='',_tSwitchCount=0;
 var TUNER_STRINGS=[{name:'G',midi:67},{name:'C',midi:60},{name:'E',midi:64},{name:'A',midi:69}];
